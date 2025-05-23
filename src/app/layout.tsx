@@ -1,14 +1,8 @@
 "use client";
 
 import { theme } from "@/app/theme/theme";
-import MenuIcon from "@mui/icons-material/Menu";
-import {
-	AppBar,
-	Box,
-	CssBaseline,
-	ThemeProvider,
-	Toolbar,
-} from "@mui/material";
+import Navbar from "@/components/Navbar/Navbar";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type React from "react";
 
@@ -23,11 +17,7 @@ export default function RootLayout({
 				<AppRouterCacheProvider>
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
-						<AppBar position="static">
-							<Toolbar>
-								<MenuIcon />
-							</Toolbar>
-						</AppBar>
+						<Navbar />
 						<Box height="100vh">{children}</Box>
 					</ThemeProvider>
 				</AppRouterCacheProvider>

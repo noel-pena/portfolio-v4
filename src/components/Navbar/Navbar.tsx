@@ -10,20 +10,28 @@ import {
 	IconButton,
 	MenuItem,
 	Toolbar,
+	useTheme,
 } from "@mui/material";
 
 function Navbar() {
+	const theme = useTheme();
 	const menuItems = ["About", "Projects", "XP"];
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
+			<AppBar position="static" color="transparent" elevation={0}>
 				<Toolbar>
 					<Grid container justifyContent="space-between" width="100%">
 						<Grid display="flex" direction="row">
 							<IconButton edge="start">
-								<ArrowBackIosIcon fontSize="small" />
-								<ArrowForwardIosIcon fontSize="small" />
+								<ArrowBackIosIcon
+									fontSize="small"
+									sx={{ color: theme.palette.text.primary }}
+								/>
+								<ArrowForwardIosIcon
+									fontSize="small"
+									sx={{ color: theme.palette.text.primary }}
+								/>
 							</IconButton>
 							{menuItems.map((menuItem) => (
 								<MenuItem key={menuItem}>{menuItem}</MenuItem>
@@ -31,15 +39,15 @@ function Navbar() {
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={1}>
 							<IconButton edge="start">
-								<GitHubIcon />
+								<GitHubIcon sx={{ color: theme.palette.text.primary }} />
 							</IconButton>
 							<IconButton edge="start">
-								<LinkedInIcon />
+								<LinkedInIcon sx={{ color: theme.palette.text.primary }} />
 							</IconButton>
-							<Button color="inherit" variant="outlined" size="small">
+							<Button variant="outlined" size="small">
 								Contact
 							</Button>
-							<Button color="inherit" variant="outlined" size="small">
+							<Button variant="contained" size="small">
 								Resume
 							</Button>
 						</Grid>

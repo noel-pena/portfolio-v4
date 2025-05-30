@@ -1,5 +1,22 @@
 import { createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles" {
+	interface Theme {
+		gradientColors: {
+			darkBlue: string;
+			lightBlue: string;
+			lighterBlue: string;
+		};
+	}
+	interface ThemeOptions {
+		gradientColors: {
+			darkBlue: string;
+			lightBlue: string;
+			lighterBlue: string;
+		};
+	}
+}
+
 export const theme = createTheme({
 	palette: {
 		primary: {
@@ -15,6 +32,11 @@ export const theme = createTheme({
 		text: {
 			primary: "#EAEAEA",
 		},
+	},
+	gradientColors: {
+		darkBlue: "#0F2027",
+		lightBlue: "#203A43",
+		lighterBlue: "#2C5364",
 	},
 	components: {
 		MuiButton: {

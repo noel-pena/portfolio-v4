@@ -68,7 +68,7 @@ function Hero() {
 							</Stack>
 							<Typography
 								variant="subtitle2"
-								sx={{ display: "flex", alignItems: "center" }}
+								sx={{ display: "flex", alignItems: "center", color: "gray" }}
 							>
 								portfolio/components/about-me.tsx
 							</Typography>

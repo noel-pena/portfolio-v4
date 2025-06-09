@@ -1,18 +1,32 @@
 import { createTheme } from "@mui/material/styles";
 
+type gradientColors = {
+	darkBlue: string;
+	lightBlue: string;
+	lighterBlue: string;
+};
+
 declare module "@mui/material/styles" {
 	interface Theme {
-		gradientColors: {
-			darkBlue: string;
-			lightBlue: string;
-			lighterBlue: string;
+		developerWindow: {
+			background: string;
+			textPrimary: string;
+			textSecondary: string;
+			closeDot: string;
+			minimizeDot: string;
+			fullScreenDot: string;
+			gradient: gradientColors;
 		};
 	}
 	interface ThemeOptions {
-		gradientColors: {
-			darkBlue: string;
-			lightBlue: string;
-			lighterBlue: string;
+		developerWindow: {
+			background: string;
+			textPrimary: string;
+			textSecondary: string;
+			closeDot: string;
+			minimizeDot: string;
+			fullScreenDot: string;
+			gradient: gradientColors;
 		};
 	}
 }
@@ -33,10 +47,18 @@ export const theme = createTheme({
 			primary: "#EAEAEA",
 		},
 	},
-	gradientColors: {
-		darkBlue: "#0F2027",
-		lightBlue: "#203A43",
-		lighterBlue: "#2C5364",
+	developerWindow: {
+		background: "#1e1e1e",
+		textPrimary: "#d4d4d4",
+		textSecondary: "darkgrey",
+		closeDot: "#FF5757",
+		minimizeDot: "#FFDA65",
+		fullScreenDot: "#4CAF50",
+		gradient: {
+			darkBlue: "#0F2027",
+			lightBlue: "#203A43",
+			lighterBlue: "#2C5364",
+		},
 	},
 	components: {
 		MuiButton: {

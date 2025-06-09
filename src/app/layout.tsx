@@ -24,7 +24,6 @@ export default function RootLayout({
 						<Box height="100vh">{children}</Box>
 					</ThemeProvider>
 				</AppRouterCacheProvider>
-				{children}
 			</body>
 		</html>
 	);

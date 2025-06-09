@@ -1,6 +1,16 @@
-import { Box, Card, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import {
+	Box,
+	Card,
+	CardMedia,
+	Grid,
+	Stack,
+	Typography,
+	useTheme,
+} from "@mui/material";
 
 function Hero() {
+	const theme = useTheme();
+
 	const codeLines = [
 		{ id: 1, content: "type Developer = {" },
 		{ id: 2, content: "  name: string" },
@@ -36,7 +46,7 @@ function Hero() {
 				<Grid size={{ xs: 12, md: 6 }} minWidth="450px">
 					<Box
 						sx={{
-							background: "linear-gradient(135deg, #2c5364, #203a43, #0f2027)",
+							background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.gradient.lightBlue}, ${theme.developerWindow.gradient.darkBlue})`,
 							borderRadius: 2,
 							pb: 2,
 							px: 2,
@@ -63,7 +73,7 @@ function Hero() {
 										width: "12px",
 										height: "12px",
 										borderRadius: "50%",
-										bgcolor: "#FF5757",
+										bgcolor: theme.developerWindow.closeDot,
 									}}
 								/>
 								<Box
@@ -71,7 +81,7 @@ function Hero() {
 										width: "12px",
 										height: "12px",
 										borderRadius: "50%",
-										bgcolor: "#FFDA65",
+										bgcolor: theme.developerWindow.minimizeDot,
 									}}
 								/>
 								<Box
@@ -79,21 +89,25 @@ function Hero() {
 										width: "12px",
 										height: "12px",
 										borderRadius: "50%",
-										bgcolor: "#4CAF50",
+										bgcolor: theme.developerWindow.fullScreenDot,
 									}}
 								/>
 							</Stack>
 							<Typography
 								variant="subtitle2"
-								sx={{ display: "flex", alignItems: "center", color: "gray" }}
+								sx={{
+									display: "flex",
+									alignItems: "center",
+									color: theme.developerWindow.textPrimary,
+								}}
 							>
 								portfolio/components/about-me.tsx
 							</Typography>
 						</Box>
 						<Card
 							sx={{
-								bgcolor: "#1e1e1e",
-								color: "#d4d4d4",
+								bgcolor: theme.developerWindow.background,
+								color: theme.developerWindow.textPrimary,
 								fontFamily: "monospace",
 								p: 1,
 								minHeight: 200,
@@ -102,7 +116,7 @@ function Hero() {
 							<CardMedia sx={{ p: 1 }}>
 								<Typography
 									variant="subtitle2"
-									sx={{ color: "darkgrey", py: 1 }}
+									sx={{ color: theme.developerWindow.textSecondary, py: 1 }}
 								>
 									portfolio/components/about-me.tsx
 								</Typography>
@@ -111,7 +125,7 @@ function Hero() {
 										<Stack display="flex" direction="row">
 											<Typography
 												sx={{
-													color: "gray",
+													color: theme.developerWindow.textSecondary,
 													pr: 1,
 													minWidth: "28px",
 													textAlign: "right",
@@ -119,7 +133,12 @@ function Hero() {
 											>
 												{line.id}
 											</Typography>
-											<Typography sx={{ color: "gray", whiteSpace: "pre" }}>
+											<Typography
+												sx={{
+													color: theme.developerWindow.textPrimary,
+													whiteSpace: "pre",
+												}}
+											>
 												{line.content}
 											</Typography>
 										</Stack>

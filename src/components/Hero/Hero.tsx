@@ -42,8 +42,10 @@ function Hero() {
 				justifyContent="space-around"
 				alignItems="center"
 				spacing={4}
+				width="100%"
+				maxWidth="lg"
 			>
-				<Grid size={{ xs: 12, md: 6 }} minWidth="450px">
+				<Grid size={{ xs: 12, md: 6 }}>
 					<Box
 						sx={{
 							background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.gradient.lightBlue}, ${theme.developerWindow.gradient.darkBlue})`,

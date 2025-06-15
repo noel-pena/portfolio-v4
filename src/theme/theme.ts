@@ -16,6 +16,10 @@ declare module "@mui/material/styles" {
 			minimizeDot: string;
 			fullScreenDot: string;
 			gradient: gradientColors;
+			muted: string;
+			variable: string;
+			type: string;
+			developerText: string;
 		};
 	}
 	interface ThemeOptions {
@@ -27,6 +31,10 @@ declare module "@mui/material/styles" {
 			minimizeDot: string;
 			fullScreenDot: string;
 			gradient: gradientColors;
+			muted: string;
+			variable: string;
+			type: string;
+			developerText: string;
 		};
 	}
 }
@@ -59,6 +67,10 @@ export const theme = createTheme({
 			lightBlue: "#203A43",
 			lighterBlue: "#2C5364",
 		},
+		muted: "#838383",
+		variable: "#88ACFF",
+		type: "#69D767",
+		developerText: "#DB88FF",
 	},
 	components: {
 		MuiButton: {

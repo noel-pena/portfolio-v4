@@ -7,26 +7,74 @@ import {
 	Typography,
 	useTheme,
 } from "@mui/material";
+import type React from "react";
+import { useId } from "react";
+
+type CodeLinesProp = {
+	id: number;
+	content: string;
+};
 
 function Hero() {
 	const theme = useTheme();
+	const yearsOfExperience = new Date().getFullYear() - 2023;
+	const varWords = ["type", "const"];
+	const typeWords = [
+		"string",
+		"Noel",
+		"TypeScript",
+		"JavaScript",
+		"Flutter",
+		"Kotlin",
+		"number",
+		`${yearsOfExperience.toString()}`,
+	];
+	const developerText = ["Developer"];
+	const uniqueId = useId();
 
-	const codeLines = [
+	const codeLines: Array<CodeLinesProp> = [
 		{ id: 1, content: "type Developer = {" },
-		{ id: 2, content: "  name: string" },
-		{ id: 3, content: "  skills: Array<string>" },
-		{ id: 4, content: "  experience: 'string'" },
+		{ id: 2, content: "   name: string" },
+		{ id: 3, content: "   skills: string[]" },
+		{ id: 4, content: "   yearsOfExperience: number" },
 		{ id: 5, content: "}" },
 		{ id: 6, content: "" },
 		{ id: 7, content: "const developer: Developer = {" },
-		{ id: 8, content: "  name: 'Noel Pena'" },
+		{ id: 8, content: "   name: 'Noel'," },
 		{
 			id: 9,
-			content: "  skills: ['TypeScript', 'JavaScript', 'Flutter', 'Kotlin']",
+			content: "   skills: ['TypeScript', 'JavaScript', 'Flutter', 'Kotlin'],",
 		},
-		{ id: 10, content: "  experience: 'Full Stack Web Developer'" },
+		{ id: 10, content: `   yearsOfExperience: ${yearsOfExperience},` },
 		{ id: 11, content: "}" },
 	];
+
+	const CodeLines = ({
+		line,
+		lineKey,
+	}: { line: string; lineKey: string }): React.ReactNode => {
+		return line.split(/(\s+|[\[\]\{\}\:\,\'])/g).map((token) => {
+			let color = theme.developerWindow.textPrimary;
+
+			if (varWords.includes(token)) {
+				color = theme.developerWindow.variable;
+			} else if (typeWords.includes(token)) {
+				color = theme.developerWindow.type;
+			} else if (developerText.includes(token)) {
+				color = theme.developerWindow.developerText;
+			}
+
+			return (
+				<Typography
+					key={`${lineKey}-${Math.random() * 11}`}
+					component="span"
+					sx={{ color, whiteSpace: "pre" }}
+				>
+					{token}
+				</Typography>
+			);
+		});
+	};
 
 	return (
 		<Box
@@ -45,6 +93,7 @@ function Hero() {
 				width="100%"
 				maxWidth="lg"
 			>
+				{/* Retained your original Grid structure and props */}
 				<Grid size={{ xs: 12, md: 6 }}>
 					<Box
 						sx={{
@@ -107,6 +156,7 @@ function Hero() {
 							</Typography>
 						</Box>
 						<Card
+							elevation={0}
 							sx={{
 								bgcolor: theme.developerWindow.background,
 								color: theme.developerWindow.textPrimary,
@@ -127,7 +177,7 @@ function Hero() {
 										<Stack display="flex" direction="row">
 											<Typography
 												sx={{
-													color: theme.developerWindow.textSecondary,
+													color: theme.developerWindow.muted,
 													pr: 1,
 													minWidth: "28px",
 													textAlign: "right",
@@ -135,14 +185,11 @@ function Hero() {
 											>
 												{line.id}
 											</Typography>
-											<Typography
-												sx={{
-													color: theme.developerWindow.textPrimary,
-													whiteSpace: "pre",
-												}}
-											>
-												{line.content}
-											</Typography>
+											{/* Pass a unique prefix to CodeLines for its internal keys */}
+											<CodeLines
+												lineKey={`${uniqueId}-${line.id}`}
+												line={line.content}
+											/>
 										</Stack>
 									</Box>
 								))}
@@ -150,6 +197,7 @@ function Hero() {
 						</Card>
 					</Box>
 				</Grid>
+				{/* Retained your original Grid structure and props */}
 				<Grid size={{ xs: 12, md: 6 }}>right</Grid>
 			</Grid>
 		</Box>

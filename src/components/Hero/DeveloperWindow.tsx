@@ -22,7 +22,6 @@ function DeveloperWindow() {
 		"string",
 		"Noel",
 		"TypeScript",
-		"JavaScript",
 		"Flutter",
 		"Kotlin",
 		"number",
@@ -42,16 +41,13 @@ function DeveloperWindow() {
 		{ id: 8, content: "   name: 'Noel'," },
 		{
 			id: 9,
-			content: "   skills: ['TypeScript', 'JavaScript', 'Flutter', 'Kotlin'],",
+			content: "   skills: ['TypeScript', 'Flutter', 'Kotlin'],",
 		},
 		{ id: 10, content: `   yearsOfExperience: ${yearsOfExperience},` },
 		{ id: 11, content: "}" },
 	];
 
-	const CodeLines = ({
-		line,
-		lineKey,
-	}: { line: string; lineKey: string }): React.ReactNode => {
+	const CodeLines = ({ line }: { line: string }): React.ReactNode => {
 		return line.split(/(\s+|[\[\]\{\}\:\,\'])/g).map((token) => {
 			let color = theme.developerWindow.textPrimary;
 
@@ -65,9 +61,15 @@ function DeveloperWindow() {
 
 			return (
 				<Typography
-					key={`${lineKey}-${Math.random() * 11}`}
+					key={`${uniqueId}-${Math.random() * 10}`}
 					component="span"
-					sx={{ color, whiteSpace: "pre" }}
+					sx={{
+						color,
+						whiteSpace: "pre",
+						fontFamily: "inherit",
+						fontSize: "0.64rem",
+						letterSpacing: 0,
+					}}
 				>
 					{token}
 				</Typography>
@@ -82,7 +84,7 @@ function DeveloperWindow() {
 				borderRadius: 2,
 				pb: 2,
 				px: 2,
-				boxShadow: 6,
+				boxShadow: 2,
 			}}
 		>
 			<Box
@@ -143,33 +145,41 @@ function DeveloperWindow() {
 					color: theme.developerWindow.textPrimary,
 					fontFamily: "monospace",
 					p: 1,
-					minHeight: 200,
 				}}
 			>
 				<CardMedia sx={{ p: 1 }}>
 					<Typography
-						variant="subtitle2"
-						sx={{ color: theme.developerWindow.textSecondary, py: 1 }}
+						sx={{
+							color: theme.developerWindow.textSecondary,
+							fontFamily: "monospace",
+							fontSize: "0.64rem",
+							py: 1,
+						}}
 					>
 						portfolio/components/about-me.tsx
 					</Typography>
 					{codeLines.map((line) => (
 						<Box px={1} key={line.id}>
-							<Stack display="flex" direction="row">
+							<Stack
+								display="flex"
+								direction="row"
+								flexWrap="wrap"
+								alignItems="center"
+							>
 								<Typography
 									sx={{
 										color: theme.developerWindow.muted,
 										pr: 1,
 										minWidth: "28px",
 										textAlign: "right",
+										fontFamily: "monospace",
+										fontSize: "0.64rem",
+										py: "2px",
 									}}
 								>
 									{line.id}
 								</Typography>
-								<CodeLines
-									lineKey={`${uniqueId}-${line.id}`}
-									line={line.content}
-								/>
+								<CodeLines line={line.content} />
 							</Stack>
 						</Box>
 					))}

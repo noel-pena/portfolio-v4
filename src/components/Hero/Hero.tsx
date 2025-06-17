@@ -20,7 +20,7 @@ function Hero() {
 				width="100%"
 				maxWidth="lg"
 			>
-				<Grid size={{ xs: 12, md: 6 }}>
+				<Grid size={{ xs: 12, md: 6 }} minWidth="386px" maxWidth="400px">
 					<DeveloperWindow />
 				</Grid>
 				<Grid size={{ xs: 12, md: 6 }}>right</Grid>

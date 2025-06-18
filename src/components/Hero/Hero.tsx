@@ -1,6 +1,5 @@
-import DeveloperWindow from "@/components/Hero/DeveloperWindow";
 import { Box, Grid } from "@mui/material";
-import type React from "react";
+import DeveloperWindow from "@/components/Hero/DeveloperWindow";
 
 function Hero() {
 	return (
@@ -20,7 +19,12 @@ function Hero() {
 				width="100%"
 				maxWidth="lg"
 			>
-				<Grid size={{ xs: 12, md: 6 }} minWidth="386px" maxWidth="400px">
+				<Grid
+					size={{ xs: 12, md: 6 }}
+					minWidth={386}
+					maxWidth={400}
+					width="100%"
+				>
 					<DeveloperWindow />
 				</Grid>
 				<Grid size={{ xs: 12, md: 6 }}>right</Grid>

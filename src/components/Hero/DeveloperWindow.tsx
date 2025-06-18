@@ -9,28 +9,64 @@ import {
 import type React from "react";
 import { useId } from "react";
 
-type CodeLinesProp = {
+type CodeLinesProps = {
 	id: number;
 	content: string;
 };
 
+function CodeLines({
+	line,
+	uniqueId,
+}: {
+	line: string;
+	uniqueId: string;
+}): React.ReactNode {
+	const theme = useTheme();
+
+	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
+		let color = theme.developerWindow.textPrimary;
+
+		if (["type", "const"].includes(token)) {
+			color = theme.developerWindow.variable;
+		} else if (
+			[
+				"string",
+				"Noel",
+				"TypeScript",
+				"Flutter",
+				"Kotlin",
+				"number",
+				`${new Date().getFullYear() - 2023}`,
+			].includes(token)
+		) {
+			color = theme.developerWindow.type;
+		} else if (["Developer"].includes(token)) {
+			color = theme.developerWindow.developerText;
+		}
+
+		return (
+			<Typography
+				key={`${uniqueId}-${Math.random() * 10}`}
+				component="span"
+				sx={{
+					color,
+					whiteSpace: "pre",
+					fontFamily: "inherit",
+					fontSize: "0.64rem",
+					letterSpacing: 0,
+				}}
+			>
+				{token}
+			</Typography>
+		);
+	});
+}
+
 function DeveloperWindow() {
 	const theme = useTheme();
-	const yearsOfExperience = new Date().getFullYear() - 2023;
-	const varWords = ["type", "const"];
-	const typeWords = [
-		"string",
-		"Noel",
-		"TypeScript",
-		"Flutter",
-		"Kotlin",
-		"number",
-		`${yearsOfExperience.toString()}`,
-	];
-	const developerText = ["Developer"];
 	const uniqueId = useId();
 
-	const codeLines: Array<CodeLinesProp> = [
+	const codeLines: Array<CodeLinesProps> = [
 		{ id: 1, content: "type Developer = {" },
 		{ id: 2, content: "   name: string" },
 		{ id: 3, content: "   skills: string[]" },
@@ -43,39 +79,12 @@ function DeveloperWindow() {
 			id: 9,
 			content: "   skills: ['TypeScript', 'Flutter', 'Kotlin'],",
 		},
-		{ id: 10, content: `   yearsOfExperience: ${yearsOfExperience},` },
+		{
+			id: 10,
+			content: `   yearsOfExperience: ${new Date().getFullYear() - 2023},`,
+		},
 		{ id: 11, content: "}" },
 	];
-
-	const CodeLines = ({ line }: { line: string }): React.ReactNode => {
-		return line.split(/(\s+|[\[\]\{\}\:\,\'])/g).map((token) => {
-			let color = theme.developerWindow.textPrimary;
-
-			if (varWords.includes(token)) {
-				color = theme.developerWindow.variable;
-			} else if (typeWords.includes(token)) {
-				color = theme.developerWindow.type;
-			} else if (developerText.includes(token)) {
-				color = theme.developerWindow.developerText;
-			}
-
-			return (
-				<Typography
-					key={`${uniqueId}-${Math.random() * 10}`}
-					component="span"
-					sx={{
-						color,
-						whiteSpace: "pre",
-						fontFamily: "inherit",
-						fontSize: "0.64rem",
-						letterSpacing: 0,
-					}}
-				>
-					{token}
-				</Typography>
-			);
-		});
-	};
 
 	return (
 		<Box
@@ -179,7 +188,7 @@ function DeveloperWindow() {
 								>
 									{line.id}
 								</Typography>
-								<CodeLines line={line.content} />
+								<CodeLines line={line.content} uniqueId={uniqueId} />
 							</Stack>
 						</Box>
 					))}

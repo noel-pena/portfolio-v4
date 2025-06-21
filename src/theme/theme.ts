@@ -56,8 +56,8 @@ export const theme = createTheme({
 		},
 	},
 	developerWindow: {
-		background: "#1e1e1e",
-		textPrimary: "#d4d4d4",
+		background: "#1E1E1E",
+		textPrimary: "#D4D4D4",
 		textSecondary: "darkgrey",
 		closeDot: "#FF5757",
 		minimizeDot: "#FFDA65",
@@ -78,9 +78,10 @@ export const theme = createTheme({
 				{
 					props: { variant: "contained" },
 					style: {
-						backgroundColor: "#6A86A0",
+						backgroundColor: "#203A43",
+						color: "#EAEAEA",
 						"&:hover": {
-							backgroundColor: "#9BAEBF",
+							backgroundColor: "#2C5364",
 						},
 					},
 				},

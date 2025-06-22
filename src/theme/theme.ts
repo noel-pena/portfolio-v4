@@ -21,6 +21,10 @@ declare module "@mui/material/styles" {
 			type: string;
 			developerText: string;
 		};
+		glowColors: {
+			yellow: string;
+			green: string;
+		};
 	}
 	interface ThemeOptions {
 		developerWindow: {
@@ -35,6 +39,10 @@ declare module "@mui/material/styles" {
 			variable: string;
 			type: string;
 			developerText: string;
+		};
+		glowColors: {
+			yellow: string;
+			green: string;
 		};
 	}
 }
@@ -71,6 +79,10 @@ export const theme = createTheme({
 		variable: "#88ACFF",
 		type: "#69D767",
 		developerText: "#DB88FF",
+	},
+	glowColors: {
+		yellow: "#FFFA77",
+		green: "#399E5A",
 	},
 	components: {
 		MuiButton: {

@@ -20,8 +20,32 @@ export default function RootLayout({
 				<AppRouterCacheProvider>
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
-						<Navbar />
-						<Box height="100vh">{children}</Box>
+						<Box
+							sx={{
+								position: "fixed",
+								width: "100%",
+								height: "100%",
+								top: 0,
+								left: 0,
+								zIndex: -999,
+								overflow: "hidden",
+							}}
+						>
+							<Box
+								sx={{
+									position: "absolute",
+									width: 100,
+									height: 200,
+									background: theme.glowColors.yellow,
+									borderRadius: "50%",
+									filter: "blur(150px)",
+									bottom: 200,
+									right: 100,
+								}}
+							/>
+							<Navbar />
+							<Box height="100vh">{children}</Box>
+						</Box>
 					</ThemeProvider>
 				</AppRouterCacheProvider>
 			</body>

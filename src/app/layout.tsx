@@ -33,14 +33,42 @@ export default function RootLayout({
 						>
 							<Box
 								sx={{
+									zIndex: -999,
 									position: "absolute",
 									width: 100,
+									height: 100,
+									background: theme.glowColors.green,
+									borderRadius: "50%",
+									filter: "blur(150px)",
+									bottom: 100,
+									left: 100,
+									transform: "scale(1)",
+									animation: "pulseGlow 4s ease-in-out infinite",
+									"@keyframes pulseGlow": {
+										"0%": { transform: "scale(1)" },
+										"50%": { transform: "scale(1.5)" },
+										"100%": { transform: "scale(1)" },
+									},
+								}}
+							/>
+							<Box
+								sx={{
+									zIndex: -999,
+									position: "absolute",
+									width: 50,
 									height: 200,
 									background: theme.glowColors.yellow,
 									borderRadius: "50%",
 									filter: "blur(150px)",
 									bottom: 200,
 									right: 100,
+									transform: "scale(1)",
+									animation: "pulseGlow 4s ease-in-out infinite",
+									"@keyframes pulseGlow": {
+										"0%": { transform: "scale(1)" },
+										"50%": { transform: "scale(1.5)" },
+										"100%": { transform: "scale(1)" },
+									},
 								}}
 							/>
 							<Navbar />

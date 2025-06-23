@@ -1,13 +1,15 @@
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
 	Box,
 	Card,
 	CardMedia,
+	IconButton,
 	Stack,
+	Tooltip,
 	Typography,
 	useTheme,
 } from "@mui/material";
-import type React from "react";
-import { useId } from "react";
+import React, { useId } from "react";
 
 type CodeLinesProps = {
 	id: number;
@@ -63,8 +65,24 @@ function CodeLines({
 }
 
 function DeveloperWindow() {
+	const [openToolTip, setOpenToolTip] = React.useState(false);
+
 	const theme = useTheme();
 	const uniqueId = useId();
+
+	const developerMarkdown = `
+		type Developer = {
+		  name: string;
+		  skills: string[];
+		  yearsOfExperience: number;
+		}
+		
+		const developer: Developer = {
+		  name: 'Noel',
+		  skills: ['TypeScript', 'Flutter', 'Kotlin'],
+		  yearsOfExperience: ${new Date().getFullYear() - 2023}
+		}
+	`;
 
 	const codeLines: Array<CodeLinesProps> = [
 		{ id: 1, content: "type Developer = {" },
@@ -157,16 +175,41 @@ function DeveloperWindow() {
 				}}
 			>
 				<CardMedia sx={{ p: 1 }}>
-					<Typography
-						sx={{
-							color: theme.developerWindow.textSecondary,
-							fontFamily: "monospace",
-							fontSize: "0.64rem",
-							py: 1,
-						}}
+					<Stack
+						direction="row"
+						justifyContent="space-between"
+						alignItems="center"
 					>
-						portfolio/components/about-me.tsx
-					</Typography>
+						<Typography
+							sx={{
+								color: theme.developerWindow.textSecondary,
+								fontFamily: "monospace",
+								fontSize: "0.64rem",
+								py: 1,
+							}}
+						>
+							portfolio/components/about-me.tsx
+						</Typography>
+						<Tooltip title="Copied!" open={openToolTip}>
+							<IconButton
+								onClick={async () => {
+									await navigator.clipboard.writeText(developerMarkdown);
+									setOpenToolTip(!open);
+									setTimeout(() => {
+										setOpenToolTip(false);
+									}, 2000);
+								}}
+							>
+								<ContentCopyIcon
+									sx={{
+										width: "12px",
+										height: "12px",
+										color: theme.developerWindow.textSecondary,
+									}}
+								/>
+							</IconButton>
+						</Tooltip>
+					</Stack>
 					{codeLines.map((line) => (
 						<Box px={1} key={line.id}>
 							<Stack

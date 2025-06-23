@@ -25,16 +25,24 @@ function Navbar() {
 						<Grid display="flex" direction="row">
 							<IconButton edge="start">
 								<ArrowBackIosIcon
-									fontSize="small"
-									sx={{ color: theme.palette.text.primary }}
+									sx={{
+										color: theme.palette.text.primary,
+										width: "16px",
+										height: "24px",
+									}}
 								/>
 								<ArrowForwardIosIcon
-									fontSize="small"
-									sx={{ color: theme.palette.text.primary }}
+									sx={{
+										color: theme.palette.text.primary,
+										width: "16px",
+										height: "24px",
+									}}
 								/>
 							</IconButton>
 							{menuItems.map((menuItem) => (
-								<MenuItem key={menuItem}>{menuItem}</MenuItem>
+								<MenuItem sx={{ fontWeight: 200 }} key={menuItem}>
+									{menuItem}
+								</MenuItem>
 							))}
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={1}>

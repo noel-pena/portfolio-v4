@@ -10,54 +10,85 @@ import {
 	IconButton,
 	MenuItem,
 	Toolbar,
-	useTheme,
 } from "@mui/material";
+import { useMediaQuery } from "@mui/system";
+import { theme } from "@/theme/theme";
 
 function Navbar() {
-	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const menuItems = ["About", "Projects", "XP"];
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" color="transparent" elevation={0}>
 				<Toolbar>
-					<Grid container justifyContent="space-between" width="100%">
+					<Grid
+						container
+						justifyContent="space-between"
+						alignItems="center"
+						width="100%"
+					>
 						<Grid display="flex" direction="row">
-							<IconButton edge="start">
+							<IconButton edge="start" sx={{ borderRadius: "8px" }}>
 								<ArrowBackIosIcon
 									sx={{
 										color: theme.palette.text.primary,
-										width: "16px",
-										height: "24px",
+										width: 24,
+										height: 24,
 									}}
 								/>
 								<ArrowForwardIosIcon
 									sx={{
 										color: theme.palette.text.primary,
-										width: "16px",
-										height: "24px",
+										width: 24,
+										height: 24,
 									}}
 								/>
 							</IconButton>
-							{menuItems.map((menuItem) => (
-								<MenuItem sx={{ fontWeight: 200 }} key={menuItem}>
-									{menuItem}
-								</MenuItem>
-							))}
+							{!isMobile &&
+								menuItems.map((menuItem) => (
+									<MenuItem
+										sx={{ fontWeight: 200, borderRadius: "8px" }}
+										key={menuItem}
+									>
+										{menuItem}
+									</MenuItem>
+								))}
 						</Grid>
-						<Grid display="flex" direction="row" alignItems="center" gap={1}>
+						<Grid
+							display="flex"
+							direction="row"
+							alignItems="center"
+							gap={isMobile ? 3 : 2}
+						>
 							<IconButton edge="start">
-								<GitHubIcon sx={{ color: theme.palette.text.primary }} />
+								<GitHubIcon
+									sx={{
+										color: theme.palette.text.primary,
+										width: 30,
+										height: 30,
+									}}
+								/>
 							</IconButton>
 							<IconButton edge="start">
-								<LinkedInIcon sx={{ color: theme.palette.text.primary }} />
+								<LinkedInIcon
+									sx={{
+										color: theme.palette.text.primary,
+										width: 30,
+										height: 30,
+									}}
+								/>
 							</IconButton>
-							<Button variant="outlined" size="small">
-								Contact
-							</Button>
-							<Button variant="contained" size="small">
-								Resume
-							</Button>
+							{!isMobile && (
+								<>
+									<Button variant="contained" size="large">
+										Contact
+									</Button>
+									<Button variant="outlined" size="large">
+										Resume
+									</Button>
+								</>
+							)}
 						</Grid>
 					</Grid>
 				</Toolbar>

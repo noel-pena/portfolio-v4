@@ -1,61 +1,92 @@
-import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { useMediaQuery } from "@mui/system";
 import DeveloperWindow from "@/components/Hero/DeveloperWindow";
+import { theme } from "@/theme/theme";
 
 function Hero() {
-	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
 		<Box
 			sx={{
 				display: "flex",
 				justifyContent: "center",
-				alignItems: "center",
-				minHeight: "100%",
+				alignItems: isMobile ? "center" : "center",
+				minHeight: isMobile ? "90%" : "100%",
 			}}
 		>
 			<Grid
 				container
 				justifyContent="space-around"
-				alignItems="center"
-				spacing={4}
 				width="100%"
 				maxWidth="lg"
+				spacing={4}
 			>
 				<Grid
 					size={{ xs: 12, md: 6 }}
-					minWidth={386}
+					minWidth={325}
 					maxWidth={400}
 					width="100%"
 				>
 					<DeveloperWindow />
 				</Grid>
 				<Grid size={{ xs: 12, md: 6 }}>
-					<Typography variant="h2">
-						Hi, my name is
-						<Box
-							component="span"
-							sx={{
-								background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.fullScreenDot}, ${theme.developerWindow.minimizeDot})`,
-								WebkitBackgroundClip: "text",
-								WebkitTextFillColor: "transparent",
-								display: "inline-block",
-							}}
-						>
-							Noel Peña
-						</Box>
-					</Typography>
-					<Typography
-						variant="subtitle1"
-						color={theme.developerWindow.muted}
-						sx={{ fontWeight: 200 }}
+					<Stack
+						display="flex"
+						spacing={isMobile ? 2 : 1}
+						sx={{
+							alignItems: isMobile ? "center" : "flex-start",
+							px: isMobile ? 3 : 0,
+							width: "100%",
+						}}
 					>
-						Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
-						consectetur adipiscing elit quisque faucibus ex. Adipiscing elit
-						quisque faucibus ex sapien vitae pellentesque.
-					</Typography>
-					<Stack direction="row" gap={3} pt={2}>
-						<Button variant="contained">Contact</Button>
-						<Button variant="outlined">Projects</Button>
+						<Typography
+							variant={isMobile ? "h3" : "h2"}
+							textAlign={isMobile ? "center" : "left"}
+						>
+							Hi, my name is
+							<Box
+								component="span"
+								sx={{
+									background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.fullScreenDot}, ${theme.developerWindow.minimizeDot})`,
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent",
+									display: "flex",
+									justifyContent: isMobile ? "center" : "flex-start",
+								}}
+							>
+								Noel Peña
+							</Box>
+						</Typography>
+						<Typography
+							variant={isMobile ? "body1" : "subtitle1"}
+							textAlign={isMobile ? "center" : "left"}
+							color={theme.developerWindow.muted}
+							sx={{ fontWeight: 200, px: isMobile ? 2 : 0 }}
+						>
+							Full stack developer experienced in TypeScript, React, Flutter,
+							and Kotlin. Focused on building clean, responsive applications
+							across web and mobile platforms.
+						</Typography>
+						<Stack
+							direction={isMobile ? "column" : "row"}
+							alignItems="center"
+							gap={2}
+							pt={isMobile ? 1 : 2}
+						>
+							<Button
+								sx={{ minWidth: isMobile ? 275 : 150, p: isMobile ? 2 : 1 }}
+								variant="contained"
+							>
+								Contact
+							</Button>
+							<Button
+								sx={{ minWidth: isMobile ? 275 : 150, p: isMobile ? 2 : 1 }}
+								variant="outlined"
+							>
+								Projects
+							</Button>
+						</Stack>
 					</Stack>
 				</Grid>
 			</Grid>

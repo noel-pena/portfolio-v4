@@ -7,9 +7,10 @@ import {
 	Stack,
 	Tooltip,
 	Typography,
-	useTheme,
 } from "@mui/material";
+import { useMediaQuery } from "@mui/system";
 import React, { useId } from "react";
+import { theme } from "@/theme/theme";
 
 type CodeLinesProps = {
 	id: number;
@@ -23,7 +24,7 @@ function CodeLines({
 	line: string;
 	uniqueId: string;
 }): React.ReactNode {
-	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
 		let color = theme.developerWindow.textPrimary;
@@ -54,7 +55,7 @@ function CodeLines({
 					color,
 					whiteSpace: "pre",
 					fontFamily: "inherit",
-					fontSize: "0.64rem",
+					fontSize: isMobile ? "0.55rem" : "0.64rem",
 					letterSpacing: 0,
 				}}
 			>
@@ -66,10 +67,8 @@ function CodeLines({
 
 function DeveloperWindow() {
 	const [openToolTip, setOpenToolTip] = React.useState(false);
-
-	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const uniqueId = useId();
-
 	const developerMarkdown = `
 		type Developer = {
 		  name: string;
@@ -83,7 +82,6 @@ function DeveloperWindow() {
 		  yearsOfExperience: ${new Date().getFullYear() - 2023}
 		}
 	`;
-
 	const codeLines: Array<CodeLinesProps> = [
 		{ id: 1, content: "type Developer = {" },
 		{ id: 2, content: "   name: string" },
@@ -155,14 +153,14 @@ function DeveloperWindow() {
 					/>
 				</Stack>
 				<Typography
-					variant="subtitle2"
+					variant="body2"
 					sx={{
 						display: "flex",
 						alignItems: "center",
 						color: theme.developerWindow.textPrimary,
 					}}
 				>
-					portfolio/components/about-me.tsx
+					portfolio/components/portfolio.tsx
 				</Typography>
 			</Box>
 			<Card
@@ -171,7 +169,7 @@ function DeveloperWindow() {
 					bgcolor: theme.developerWindow.background,
 					color: theme.developerWindow.textPrimary,
 					fontFamily: "monospace",
-					p: 1,
+					p: isMobile ? 0 : 1,
 				}}
 			>
 				<CardMedia sx={{ p: 1 }}>
@@ -184,11 +182,11 @@ function DeveloperWindow() {
 							sx={{
 								color: theme.developerWindow.textSecondary,
 								fontFamily: "monospace",
-								fontSize: "0.64rem",
+								fontSize: isMobile ? "0.55rem" : "0.64rem",
 								py: 1,
 							}}
 						>
-							portfolio/components/about-me.tsx
+							portfolio/components/portfolio.tsx
 						</Typography>
 						<Tooltip title="Copied!" open={openToolTip}>
 							<IconButton
@@ -211,7 +209,7 @@ function DeveloperWindow() {
 						</Tooltip>
 					</Stack>
 					{codeLines.map((line) => (
-						<Box px={1} key={line.id}>
+						<Box px={isMobile ? 0 : 1} key={line.id}>
 							<Stack
 								display="flex"
 								direction="row"
@@ -225,7 +223,7 @@ function DeveloperWindow() {
 										minWidth: "28px",
 										textAlign: "right",
 										fontFamily: "monospace",
-										fontSize: "0.64rem",
+										fontSize: isMobile ? "0.55rem" : "0.64rem",
 										py: "2px",
 									}}
 								>

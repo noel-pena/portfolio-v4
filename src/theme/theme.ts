@@ -24,6 +24,7 @@ declare module "@mui/material/styles" {
 		glowColors: {
 			yellow: string;
 			green: string;
+			purple: string;
 		};
 	}
 	interface ThemeOptions {
@@ -43,6 +44,7 @@ declare module "@mui/material/styles" {
 		glowColors: {
 			yellow: string;
 			green: string;
+			purple: string;
 		};
 	}
 }
@@ -60,7 +62,12 @@ export const theme = createTheme({
 			paper: "#0E1522",
 		},
 		text: {
-			primary: "#EAEAEA",
+			primary: "#cfcfcf",
+		},
+	},
+	typography: {
+		h3: {
+			fontSize: "2.5rem",
 		},
 	},
 	developerWindow: {
@@ -81,8 +88,9 @@ export const theme = createTheme({
 		developerText: "#DB88FF",
 	},
 	glowColors: {
-		yellow: "#FFFA77",
+		yellow: "#FFE627",
 		green: "#399E5A",
+		purple: "#5F3D75",
 	},
 	components: {
 		MuiButton: {
@@ -100,7 +108,7 @@ export const theme = createTheme({
 				{
 					props: { variant: "outlined" },
 					style: {
-						border: "1px solid #EAEAEA",
+						border: "1px solid rgba(234, 234, 234, 0.4)",
 						backgroundColor: "transparent",
 						color: "#EAEAEA",
 					},
@@ -108,9 +116,9 @@ export const theme = createTheme({
 			],
 			styleOverrides: {
 				root: {
-					padding: "8px 10px",
 					borderRadius: "8px",
 					fontSize: "0.75rem",
+					fontWeight: 200,
 				},
 			},
 		},

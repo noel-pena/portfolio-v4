@@ -16,7 +16,7 @@ import { theme } from "@/theme/theme";
 
 function Navbar() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-	const menuItems = ["About", "Projects", "XP"];
+	const menuItems = ["About", "Projects"];
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>

@@ -3,7 +3,7 @@ import { useMediaQuery } from "@mui/system";
 import DeveloperWindow from "@/components/Hero/DeveloperWindow";
 import { theme } from "@/theme/theme";
 
-function Hero() {
+export default function Hero() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
@@ -11,7 +11,7 @@ function Hero() {
 			sx={{
 				display: "flex",
 				justifyContent: "center",
-				alignItems: isMobile ? "center" : "center",
+				alignItems: "center",
 				minHeight: isMobile ? "90%" : "100%",
 			}}
 		>
@@ -24,7 +24,7 @@ function Hero() {
 			>
 				<Grid
 					size={{ xs: 12, md: 6 }}
-					minWidth={325}
+					minWidth={326}
 					maxWidth={400}
 					width="100%"
 				>
@@ -93,5 +93,3 @@ function Hero() {
 		</Box>
 	);
 }
-
-export default Hero;

@@ -66,7 +66,7 @@ export default function RootLayout({
 								}}
 							/>
 							<Navbar />
-							<Box px={4} height="100vh">
+							<Box px={4} height="calc(100vh - 64px)">
 								{children}
 							</Box>
 						</Box>

@@ -1,56 +1,106 @@
+import GitHubIcon from "@mui/icons-material/GitHub";
 import {
+	Button,
 	Card,
+	CardActions,
 	CardContent,
 	CardMedia,
+	Chip,
 	Stack,
 	Typography,
-	useTheme,
 } from "@mui/material";
+import { theme } from "@/theme/theme";
 
-interface ProjectCardProps {
+type ProjectCardProps = {
 	title: string;
 	description: string;
 	imageUrl: string;
-	altText?: string;
-}
+	altText: string;
+	tags?: Array<string>;
+	codeLink?: string;
+	demoLink?: string;
+};
 
-export default function ProjectCard(props: ProjectCardProps) {
-	const { title, description, imageUrl, altText } = props;
-
-	const theme = useTheme();
-
+export default function ProjectCard({
+	title,
+	description,
+	imageUrl,
+	altText,
+	tags = [],
+	codeLink,
+	demoLink,
+}: ProjectCardProps) {
 	return (
 		<Card
 			sx={{
-				borderRadius: 5,
-				bgcolor: theme.palette.background.default,
-				border: `${theme.palette.background.paper} solid 1px`,
-				transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
-				"&:hover": {
-					transform: "translateY(-4px)",
-					boxShadow: theme.shadows[5],
-				},
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "space-between",
+				borderRadius: 3,
+				backgroundColor: theme.palette.background.default,
+				color: theme.palette.text.primary,
+				boxShadow: 3,
+				height: "100%",
 			}}
 		>
-			<Stack>
-				<CardMedia
-					component="img"
-					alt={altText || title}
-					image={imageUrl}
-					sx={{
-						aspectRatio: "16 / 9",
-						width: "100%",
-					}}
-				/>
-				<CardContent sx={{ p: 2 }}>
-					<Typography variant="h6" component="div" fontWeight="bold" mb={0.5}>
-						{title}
-					</Typography>
-					<Typography variant="body2" color="text.secondary">
-						{description}
-					</Typography>
-				</CardContent>
-			</Stack>
+			<CardMedia
+				component="img"
+				image={imageUrl || "https://via.placeholder.com/400x200"}
+				alt={altText || title}
+				sx={{ height: 200, objectFit: "cover" }}
+			/>
+			<CardContent sx={{ flexGrow: 1 }}>
+				<Typography gutterBottom variant="h6" component="div">
+					{title}
+				</Typography>
+				<Typography
+					variant="body2"
+					color={theme.developerWindow.muted}
+					fontWeight={200}
+				>
+					{description}
+				</Typography>
+				{tags.length > 0 && (
+					<Stack direction="row" spacing={1} mt={2} flexWrap="wrap">
+						{tags.map((tag) => (
+							<Chip
+								key={tag}
+								label={tag}
+								variant="filled"
+								sx={{
+									bgcolor: theme.developerWindow.gradient.lightBlue,
+									color: "white",
+									fontSize: "0.75rem",
+									height: 24,
+								}}
+							/>
+						))}
+					</Stack>
+				)}
+			</CardContent>
+			<CardActions sx={{ px: 2, pb: 2 }}>
+				{codeLink && (
+					<Button
+						sx={{ color: theme.developerWindow.textPrimary }}
+						href={codeLink}
+						target="_blank"
+						startIcon={<GitHubIcon />}
+						variant="outlined"
+					>
+						Code
+					</Button>
+				)}
+				{demoLink && (
+					<Button
+						sx={{ color: theme.developerWindow.textPrimary }}
+						href={demoLink}
+						variant="contained"
+						target="_blank"
+					>
+						Demo
+					</Button>
+				)}
+			</CardActions>
 		</Card>
 	);
 }

@@ -12,7 +12,7 @@ export default function Hero() {
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
-				minHeight: isMobile ? "90%" : "100%",
+				minHeight: "100%",
 			}}
 		>
 			<Grid

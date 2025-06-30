@@ -1,5 +1,4 @@
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import CodeIcon from "@mui/icons-material/Code";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
@@ -8,6 +7,7 @@ import {
 	Button,
 	Grid,
 	IconButton,
+	Link,
 	MenuItem,
 	Toolbar,
 } from "@mui/material";
@@ -29,19 +29,17 @@ function Navbar() {
 						width="100%"
 					>
 						<Grid display="flex" direction="row">
-							<IconButton edge="start" sx={{ borderRadius: "8px" }}>
-								<ArrowBackIosIcon
+							<IconButton
+								edge="start"
+								component={Link}
+								href="/"
+								sx={{ borderRadius: "8px" }}
+							>
+								<CodeIcon
 									sx={{
 										color: theme.palette.text.primary,
-										width: 24,
-										height: 24,
-									}}
-								/>
-								<ArrowForwardIosIcon
-									sx={{
-										color: theme.palette.text.primary,
-										width: 24,
-										height: 24,
+										height: 32,
+										width: 32,
 									}}
 								/>
 							</IconButton>
@@ -61,7 +59,11 @@ function Navbar() {
 							alignItems="center"
 							gap={isMobile ? 3 : 2}
 						>
-							<IconButton edge="start">
+							<IconButton
+								edge="start"
+								component={Link}
+								href="https://github.com/noel-pena"
+							>
 								<GitHubIcon
 									sx={{
 										color: theme.palette.text.primary,
@@ -70,7 +72,11 @@ function Navbar() {
 									}}
 								/>
 							</IconButton>
-							<IconButton edge="start">
+							<IconButton
+								edge="start"
+								component={Link}
+								href="https://linkedin.com/in/noel-pena-1138aa167/"
+							>
 								<LinkedInIcon
 									sx={{
 										color: theme.palette.text.primary,
@@ -84,7 +90,12 @@ function Navbar() {
 									<Button variant="contained" size="large">
 										Contact
 									</Button>
-									<Button variant="outlined" size="large">
+									<Button
+										variant="outlined"
+										size="large"
+										component={Link}
+										href="https://cdn.noel-pena.com/Noel-Pena.pdf"
+									>
 										Resume
 									</Button>
 								</>

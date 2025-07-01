@@ -42,7 +42,16 @@ export default function RootLayout({
 									borderRadius: "50%",
 									filter: "blur(150px)",
 									bottom: isMobile ? 300 : 350,
-									left: isMobile ? 100 : 200,
+									left: isMobile ? 100 : 250,
+									transform: "scale(0.75)",
+									animation: "pulseMoveGlow 4s ease-in-out infinite",
+									"@keyframes pulseMoveGlow": {
+										"0%": { transform: "translateX(0) scale(0.75)" },
+										"25%": { transform: "translateX(-70px) scale(1)" },
+										"50%": { transform: "translateX(0) scale(0.75)" },
+										"75%": { transform: "translateX(40px) scale(1)" },
+										"100%": { transform: "translateX(0) scale(0.75)" },
+									},
 								}}
 							/>
 							<Box
@@ -51,10 +60,10 @@ export default function RootLayout({
 									position: "absolute",
 									width: 75,
 									height: 75,
-									background: theme.glowColors.yellow,
+									background: theme.glowColors.green,
 									borderRadius: "50%",
-									filter: "blur(100px)",
-									bottom: 0,
+									filter: "blur(75px)",
+									top: 400,
 									right: 0,
 									transform: "scale(1)",
 									animation: "pulseGlow 5s ease-in-out infinite",
@@ -69,7 +78,7 @@ export default function RootLayout({
 							<Box
 								px={4}
 								sx={{
-									height: "calc(100vh - 64px)",
+									height: "calc(100vh - 66px)",
 									overflow: "auto",
 									scrollbarWidth: "none",
 								}}

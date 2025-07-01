@@ -22,20 +22,23 @@ export default function Hero() {
 				maxWidth="lg"
 				spacing={4}
 			>
-				<Grid
-					size={{ xs: 12, md: 6 }}
-					minWidth={326}
-					maxWidth={400}
-					width="100%"
-				>
-					<DeveloperWindow />
-				</Grid>
+				{!isMobile && (
+					<Grid
+						size={{ xs: 12, md: 6 }}
+						minWidth={326}
+						maxWidth={400}
+						width="100%"
+					>
+						<DeveloperWindow />
+					</Grid>
+				)}
 				<Grid size={{ xs: 12, md: 6 }}>
 					<Stack
 						display="flex"
 						spacing={isMobile ? 2 : 1}
 						sx={{
 							alignItems: isMobile ? "center" : "flex-start",
+							justifyContent: "space-between",
 							px: isMobile ? 3 : 0,
 							width: "100%",
 						}}
@@ -59,10 +62,10 @@ export default function Hero() {
 							</Box>
 						</Typography>
 						<Typography
-							variant={isMobile ? "body1" : "subtitle1"}
+							variant="subtitle1"
 							textAlign={isMobile ? "center" : "left"}
 							color={theme.developerWindow.muted}
-							sx={{ fontWeight: 200, px: isMobile ? 2 : 0 }}
+							sx={{ fontWeight: 200 }}
 						>
 							Full stack developer experienced in TypeScript, React, Flutter,
 							and Kotlin. Focused on building clean, responsive applications
@@ -71,17 +74,17 @@ export default function Hero() {
 						<Stack
 							direction={isMobile ? "column" : "row"}
 							alignItems="center"
-							gap={2}
+							gap={isMobile ? 3 : 2}
 							pt={isMobile ? 1 : 2}
 						>
 							<Button
-								sx={{ minWidth: isMobile ? 275 : 150, p: isMobile ? 2 : 1 }}
+								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="contained"
 							>
 								Contact
 							</Button>
 							<Button
-								sx={{ minWidth: isMobile ? 275 : 150, p: isMobile ? 2 : 1 }}
+								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="outlined"
 							>
 								Projects

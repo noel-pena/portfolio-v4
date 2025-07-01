@@ -65,7 +65,7 @@ function CodeLines({
 	});
 }
 
-function DeveloperWindow() {
+export default function DeveloperWindow() {
 	const [openToolTip, setOpenToolTip] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const uniqueId = useId();
@@ -238,5 +238,3 @@ function DeveloperWindow() {
 		</Box>
 	);
 }
-
-export default DeveloperWindow;

@@ -69,9 +69,10 @@ export default function ProjectCard({
 								variant="filled"
 								sx={{
 									bgcolor: theme.developerWindow.gradient.lightBlue,
-									color: "white",
-									fontSize: "0.75rem",
+									color: theme.developerWindow.textPrimary,
+									fontSize: "0.65rem",
 									height: 24,
+									borderRadius: "8px",
 								}}
 							/>
 						))}
@@ -81,21 +82,25 @@ export default function ProjectCard({
 			<CardActions sx={{ px: 2, pb: 2 }}>
 				{codeLink && (
 					<Button
+						size="small"
 						sx={{ color: theme.developerWindow.textPrimary }}
 						href={codeLink}
 						target="_blank"
+						rel="noopener"
 						startIcon={<GitHubIcon />}
-						variant="outlined"
+						variant="contained"
 					>
 						Code
 					</Button>
 				)}
 				{demoLink && (
 					<Button
+						size="small"
 						sx={{ color: theme.developerWindow.textPrimary }}
 						href={demoLink}
-						variant="contained"
+						variant="outlined"
 						target="_blank"
+						rel="noopener"
 					>
 						Demo
 					</Button>

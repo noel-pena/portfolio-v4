@@ -75,7 +75,7 @@ export const theme = createTheme({
 		textPrimary: "#D4D4D4",
 		textSecondary: "darkgrey",
 		closeDot: "#FF5757",
-		minimizeDot: "#FFDA65",
+		minimizeDot: "#FFCC33",
 		fullScreenDot: "#4CAF50",
 		gradient: {
 			darkBlue: "#0F2027",

@@ -9,6 +9,7 @@ export default function Projects() {
 
 	return (
 		<Box
+			id="projects"
 			sx={{
 				flexDirection: "column",
 				width: "100%",

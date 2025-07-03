@@ -16,7 +16,10 @@ import { theme } from "@/theme/theme";
 
 export default function Navbar() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-	const menuItems = ["Skills", "Projects"];
+	const menuItems = [
+		{ item: "Skills", linkContext: "#skills" },
+		{ item: "Projects", linkContext: "#projects" },
+	];
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
@@ -31,7 +34,7 @@ export default function Navbar() {
 						<Grid display="flex" direction="row">
 							<IconButton
 								component={Link}
-								href="/"
+								href="#home"
 								sx={{ borderRadius: "8px", p: 0, pr: 1 }}
 							>
 								<CodeIcon
@@ -45,10 +48,12 @@ export default function Navbar() {
 							{!isMobile &&
 								menuItems.map((menuItem) => (
 									<MenuItem
+										component={Link}
+										href={menuItem.linkContext}
 										sx={{ fontWeight: 200, borderRadius: "8px" }}
-										key={menuItem}
+										key={menuItem.item}
 									>
-										{menuItem}
+										{menuItem.item}
 									</MenuItem>
 								))}
 						</Grid>

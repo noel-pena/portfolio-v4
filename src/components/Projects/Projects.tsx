@@ -30,7 +30,7 @@ export default function Projects() {
 					color={theme.developerWindow.muted}
 					sx={{ fontWeight: 200, mb: isMobile ? 3 : 5 }}
 				>
-					A showcase of recent personal work as a full-stack developer
+					A showcase of recent personal projects as a full-stack developer
 				</Typography>
 			</Stack>
 			<Grid container justifyContent="center" alignItems="center" spacing={5}>

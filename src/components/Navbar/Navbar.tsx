@@ -24,7 +24,7 @@ export default function Navbar() {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" color="transparent" elevation={0}>
-				<Toolbar sx={{ p: 0, py: 1 }}>
+				<Toolbar sx={{ py: isMobile ? 2 : 1, px: isMobile ? 2 : 0 }}>
 					<Grid
 						container
 						justifyContent="space-between"

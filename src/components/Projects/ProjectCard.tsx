@@ -47,7 +47,7 @@ export default function ProjectCard({
 				component="img"
 				image={imageUrl || "https://via.placeholder.com/400x200"}
 				alt={altText || title}
-				sx={{ height: 200, objectFit: "cover" }}
+				sx={{ height: 300, objectFit: "cover" }}
 			/>
 			<CardContent sx={{ flexGrow: 1 }}>
 				<Typography gutterBottom variant="h6" component="div">

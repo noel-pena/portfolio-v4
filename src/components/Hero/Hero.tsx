@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Stack, Typography } from "@mui/material";
 import { useMediaQuery } from "@mui/system";
 import DeveloperWindow from "@/components/Hero/DeveloperWindow";
 import { theme } from "@/theme/theme";
@@ -85,10 +85,14 @@ export default function Hero() {
 								Contact
 							</Button>
 							<Button
+								component={Link}
+								href="https://cdn.noel-pena.com/Noel-Pena.pdf"
+								target="_blank"
+								rel="noopener"
 								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="outlined"
 							>
-								Projects
+								Resume
 							</Button>
 						</Stack>
 					</Stack>

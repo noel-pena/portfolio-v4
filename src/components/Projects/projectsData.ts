@@ -6,7 +6,7 @@ export const projectsData = [
 		imageUrl: "",
 		altText: "",
 		codeLink: "https://github.com/noel-pena/portfolio-v4",
-		tags: ["TypeScript", "Material UI", "Next.js"],
+		tags: ["TypeScript", "React", "Material UI", "Next.js"],
 	},
 	{
 		title: "Interviewer AI",
@@ -16,7 +16,7 @@ export const projectsData = [
 		altText: "",
 		codeLink: "https://github.com/noel-pena/InterviewerAI",
 		demoLink: "https://interviewerai.onrender.com",
-		tags: ["JavaScript", "Python", "Flask", "OpenAI API"],
+		tags: ["JavaScript", "React", "Python", "Flask", "OpenAI API"],
 	},
 	{
 		title: "Wallpaper App",

@@ -1,5 +1,6 @@
 import GitHubIcon from "@mui/icons-material/GitHub";
 import {
+	Box,
 	Button,
 	Card,
 	CardActions,
@@ -41,14 +42,30 @@ export default function ProjectCard({
 				color: theme.palette.text.primary,
 				boxShadow: 3,
 				height: "100%",
+				transition: "box-shadow 0.3s ease-in-out",
+				"&:hover": {
+					boxShadow: 10,
+				},
+				"&:hover .media": {
+					transform: "scale(1.05)",
+					filter: "blur(0)",
+				},
 			}}
 		>
-			<CardMedia
-				component="img"
-				image={imageUrl || "https://via.placeholder.com/400x200"}
-				alt={altText || title}
-				sx={{ height: 300, objectFit: "cover" }}
-			/>
+			<Box sx={{ overflow: "hidden" }}>
+				<CardMedia
+					className="media"
+					component="img"
+					image={imageUrl}
+					alt={altText}
+					sx={{
+						height: 300,
+						objectFit: "cover",
+						transition: "transform 0.3s ease-in-out, filter 0.3s ease-in-out",
+						filter: "blur(3px)",
+					}}
+				/>
+			</Box>
 			<CardContent sx={{ flexGrow: 1 }}>
 				<Typography gutterBottom variant="h6" component="div">
 					{title}

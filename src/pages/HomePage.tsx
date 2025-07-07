@@ -6,8 +6,8 @@ export default function HomePage() {
 	return (
 		<>
 			<Hero />
-			<Projects />
 			<Skills />
+			<Projects />
 		</>
 	);
 }

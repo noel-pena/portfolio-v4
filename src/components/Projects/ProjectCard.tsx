@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { theme } from "@/theme/theme";
 
-type ProjectCardProps = {
+export interface ProjectCardProps {
 	title: string;
 	description: string;
 	imageUrl: string;
@@ -20,7 +20,7 @@ type ProjectCardProps = {
 	tags?: Array<string>;
 	codeLink?: string;
 	demoLink?: string;
-};
+}
 
 export default function ProjectCard({
 	title,

@@ -12,8 +12,8 @@ export default function Projects() {
 			id="projects"
 			sx={{
 				flexDirection: "column",
-				width: "100%",
-				minHeight: isMobile ? "100%" : "75%",
+				minHeight: "100%",
+				pb: 3,
 			}}
 		>
 			<Stack>
@@ -30,7 +30,7 @@ export default function Projects() {
 					color={theme.developerWindow.muted}
 					sx={{ fontWeight: 200, mb: isMobile ? 3 : 5 }}
 				>
-					A showcase of recent personal projects as a full-stack developer
+					A Showcase of My Personal Projects as a Full-stack Developer
 				</Typography>
 			</Stack>
 			<Grid container justifyContent="center" alignItems="center" spacing={5}>

@@ -1,4 +1,6 @@
-export const projectsData = [
+import type { ProjectCardProps } from "@/components/Projects/ProjectCard";
+
+export const projectsData: Array<ProjectCardProps> = [
 	{
 		title: "Portfolio",
 		description:

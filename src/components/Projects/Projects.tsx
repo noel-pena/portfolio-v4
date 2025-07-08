@@ -14,6 +14,7 @@ export default function Projects() {
 				flexDirection: "column",
 				minHeight: "100%",
 				pb: 3,
+				pt: isMobile ? 7 : 0,
 			}}
 		>
 			<Stack>

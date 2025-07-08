@@ -1,5 +1,4 @@
 import { Card, CardMedia, Typography } from "@mui/material";
-import { theme } from "@/theme/theme";
 
 export interface SkillSlotProps {
 	primaryText: string;
@@ -16,11 +15,10 @@ export default function SkillSlot(props: SkillSlotProps) {
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				justifyContent: "space-around",
+				justifyContent: "space-evenly",
 				alignItems: "center",
 				borderRadius: 3,
 				backgroundColor: "transparent",
-				color: theme.palette.text.primary,
 				boxShadow: 3,
 				aspectRatio: "1/1",
 				transition: "background-color 0.3s ease-in-out, color 0.3s ease-in-out",
@@ -30,15 +28,12 @@ export default function SkillSlot(props: SkillSlotProps) {
 			}}
 		>
 			<CardMedia
-				className="media"
 				component="img"
 				image={icon}
 				sx={{ width: 125, height: 125 }}
 				alt={altText}
 			/>
-			<Typography variant="h6" sx={{ fontWeight: 200 }}>
-				{primaryText}
-			</Typography>
+			<Typography variant="h6">{primaryText}</Typography>
 		</Card>
 	);
 }

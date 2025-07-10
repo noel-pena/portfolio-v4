@@ -11,6 +11,7 @@ export default function Skills() {
 		<Box
 			id="skills"
 			sx={{
+				px: 4,
 				flexDirection: "column",
 				minHeight: "100%",
 			}}

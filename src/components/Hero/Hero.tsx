@@ -10,6 +10,7 @@ export default function Hero() {
 		<Box
 			id="home"
 			sx={{
+				px: 4,
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",

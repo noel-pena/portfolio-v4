@@ -76,7 +76,6 @@ export default function RootLayout({
 							/>
 							<Navbar />
 							<Box
-								px={4}
 								sx={{
 									height: "calc(100vh - 66px)",
 									overflow: "auto",

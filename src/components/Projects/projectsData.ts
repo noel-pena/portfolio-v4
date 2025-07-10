@@ -18,7 +18,7 @@ export const projectsData: Array<ProjectCardProps> = [
 		altText: "picture of the interviewer ai app",
 		codeLink: "https://github.com/noel-pena/InterviewerAI",
 		demoLink: "https://interviewerai.onrender.com",
-		tags: ["JavaScript", "React", "Python", "Flask", "OpenAI API"],
+		tags: ["JavaScript", "React", "Python", "OpenAI API"],
 	},
 	{
 		title: "Wallpaper App",

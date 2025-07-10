@@ -15,6 +15,7 @@ export default function Projects() {
 				minHeight: "100%",
 				pb: 3,
 				pt: isMobile ? 7 : 0,
+				px: 4,
 			}}
 		>
 			<Stack>

@@ -1,4 +1,6 @@
 import { Card, CardMedia, Typography } from "@mui/material";
+import { useMediaQuery } from "@mui/system";
+import { theme } from "@/theme/theme";
 
 export interface SkillSlotProps {
 	primaryText: string;
@@ -9,6 +11,7 @@ export interface SkillSlotProps {
 
 export default function SkillSlot(props: SkillSlotProps) {
 	const { altText, icon, primaryText, primaryColor } = props;
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
 		<Card
@@ -30,10 +33,12 @@ export default function SkillSlot(props: SkillSlotProps) {
 			<CardMedia
 				component="img"
 				image={icon}
-				sx={{ width: 125, height: 125 }}
+				sx={{ width: isMobile ? 75 : 125, height: isMobile ? 75 : 125 }}
 				alt={altText}
 			/>
-			<Typography variant="h6">{primaryText}</Typography>
+			<Typography variant={isMobile ? "subtitle1" : "h6"}>
+				{primaryText}
+			</Typography>
 		</Card>
 	);
 }

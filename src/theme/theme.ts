@@ -25,6 +25,7 @@ declare module "@mui/material/styles" {
 			yellow: string;
 			green: string;
 			purple: string;
+			wallpaper: string;
 		};
 	}
 	interface ThemeOptions {
@@ -45,6 +46,7 @@ declare module "@mui/material/styles" {
 			yellow: string;
 			green: string;
 			purple: string;
+			wallpaper: string;
 		};
 	}
 }
@@ -91,6 +93,7 @@ export const theme = createTheme({
 		yellow: "#FFE627",
 		green: "#399E5A",
 		purple: "#5F3D75",
+		wallpaper: "#272d33",
 	},
 	components: {
 		MuiButton: {

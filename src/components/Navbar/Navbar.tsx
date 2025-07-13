@@ -13,12 +13,13 @@ import {
 } from "@mui/material";
 import { useMediaQuery } from "@mui/system";
 import { theme } from "@/theme/theme";
+import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Navbar() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-	const menuItems = [
-		{ item: "Skills", linkContext: "#skills" },
-		{ item: "Projects", linkContext: "#projects" },
+	const menuItems: Array<MenuItemProps> = [
+		{ item: "Skills", href: "#skills" },
+		{ item: "Projects", href: "#projects" },
 	];
 
 	return (
@@ -49,7 +50,7 @@ export default function Navbar() {
 								menuItems.map((menuItem) => (
 									<MenuItem
 										component={Link}
-										href={menuItem.linkContext}
+										href={menuItem.href}
 										sx={{ fontWeight: 200, borderRadius: "8px" }}
 										key={menuItem.item}
 									>

@@ -1,10 +1,38 @@
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import CodeIcon from "@mui/icons-material/Code";
+import {
+	Box,
+	Divider,
+	Grid,
+	Link,
+	List,
+	ListItem,
+	MenuItem,
+	Stack,
+	Typography,
+} from "@mui/material";
 import { useMediaQuery } from "@mui/system";
 import type React from "react";
 import { theme } from "@/theme/theme";
+import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Footer() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	const menuItems: Array<MenuItemProps> = [
+		{
+			item: "Skills",
+			anchorRef: "#skills",
+		},
+		{
+			item: "Projects",
+			anchorRef: "#projects",
+		},
+		{
+			item: "Resume",
+			href: "https://cdn.noel-pena.com/Noel-Pena.pdf",
+			rel: "noopener",
+			target: "_blank",
+		},
+	];
 
 	return (
 		<Box
@@ -76,19 +104,21 @@ export default function Footer() {
 			/>
 			<Grid container p={4} spacing={2}>
 				<Grid size={{ xs: 12, md: 6 }} sx={{ zIndex: 2 }}>
-					<Stack>
+					<Stack direction="row" alignItems="center" gap={0.5}>
+						<CodeIcon sx={{ width: 30, height: 30, pb: "2px" }} />
 						<Typography variant="h6" fontWeight="bold">
 							Full Stack Dev
 						</Typography>
-						<Typography
-							variant="subtitle2"
-							color={theme.developerWindow.muted}
-							fontWeight={200}
-						>
-							Crafting digital experiences with passion and precision. Always
-							learning, always building.
-						</Typography>
 					</Stack>
+
+					<Typography
+						variant="subtitle2"
+						color={theme.developerWindow.muted}
+						fontWeight={200}
+					>
+						Crafting digital experiences with passion and precision. Always
+						learning, always building.
+					</Typography>
 				</Grid>
 				<Grid size={{ xs: 12, md: 3 }}>
 					<Stack>
@@ -96,34 +126,26 @@ export default function Footer() {
 							Quick Links
 						</Typography>
 						<Stack>
-							<Typography
-								variant="subtitle2"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								Home
-							</Typography>
-							<Typography
-								variant="subtitle2"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								Skills
-							</Typography>
-							<Typography
-								variant="subtitle2"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								Projects
-							</Typography>
-							<Typography
-								variant="subtitle2"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								Resume
-							</Typography>
+							<List disablePadding>
+								{menuItems.map((menuItem) => (
+									<MenuItem
+										key={menuItem.item}
+										component={Link}
+										href={menuItem.href || menuItem.anchorRef}
+										rel={menuItem.rel || undefined}
+										target={menuItem.target || undefined}
+										disableGutters
+										sx={{ p: 0, py: 0.5 }}
+									>
+										<Typography
+											variant="subtitle2"
+											color={theme.developerWindow.muted}
+										>
+											{menuItem.item}
+										</Typography>
+									</MenuItem>
+								))}
+							</List>
 						</Stack>
 					</Stack>
 				</Grid>
@@ -153,29 +175,27 @@ export default function Footer() {
 						background: `linear-gradient(135deg, ${theme.developerWindow.gradient.darkBlue}, ${theme.glowColors.green}, ${theme.developerWindow.gradient.darkBlue})`,
 					}}
 				/>
-				<Grid container p={4} spacing={2}>
-					<Grid size={{ xs: 12 }}>
-						<Stack
-							justifyContent="space-between"
-							alignItems="center"
-							direction={isMobile ? "column" : "row"}
+				<Grid size={{ xs: 12 }} p={4}>
+					<Stack
+						justifyContent="space-between"
+						alignItems="center"
+						direction={isMobile ? "column" : "row"}
+					>
+						<Typography
+							variant="subtitle2"
+							color={theme.developerWindow.muted}
+							fontWeight={200}
 						>
-							<Typography
-								variant="subtitle2"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								© {new Date().getFullYear()} Build with love and lots of coffee
-							</Typography>
-							<Typography
-								variant="caption"
-								color={theme.developerWindow.muted}
-								fontWeight={200}
-							>
-								Powered by React & Material UI
-							</Typography>
-						</Stack>
-					</Grid>
+							© {new Date().getFullYear()} Build with love and lots of coffee
+						</Typography>
+						<Typography
+							variant="caption"
+							color={theme.developerWindow.muted}
+							fontWeight={200}
+						>
+							Powered by React & Material UI
+						</Typography>
+					</Stack>
 				</Grid>
 			</Box>
 		</Box>

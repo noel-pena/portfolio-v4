@@ -1,3 +1,4 @@
+import { EmailOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
 import CodeIcon from "@mui/icons-material/Code";
 import {
 	Box,
@@ -5,7 +6,6 @@ import {
 	Grid,
 	Link,
 	List,
-	ListItem,
 	MenuItem,
 	Stack,
 	Typography,
@@ -16,7 +16,7 @@ import { theme } from "@/theme/theme";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Footer() {
-	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const menuItems: Array<MenuItemProps> = [
 		{
 			item: "Skills",
@@ -102,7 +102,7 @@ export default function Footer() {
 					opacity: "40%",
 				}}
 			/>
-			<Grid container p={4} spacing={2}>
+			<Grid container p={4} spacing={isMobile ? 7 : 3}>
 				<Grid size={{ xs: 12, md: 6 }} sx={{ zIndex: 2 }}>
 					<Stack direction="row" alignItems="center" gap={0.5}>
 						<CodeIcon sx={{ width: 30, height: 30, pb: "2px" }} />
@@ -135,7 +135,7 @@ export default function Footer() {
 										rel={menuItem.rel || undefined}
 										target={menuItem.target || undefined}
 										disableGutters
-										sx={{ p: 0, py: 0.5 }}
+										sx={{ p: 0, py: 0.5, minHeight: 32 }}
 									>
 										<Typography
 											variant="subtitle2"
@@ -154,13 +154,22 @@ export default function Footer() {
 						<Typography variant="body1" fontWeight="bold">
 							Contact
 						</Typography>
-						<Typography
-							variant="subtitle2"
-							color={theme.developerWindow.muted}
-							fontWeight={200}
-						>
-							noel.pena@hotmail.com
-						</Typography>
+						<MenuItem disableGutters sx={{ p: 0, py: 0.5, minHeight: 32 }}>
+							<EmailOutlined
+								sx={{
+									color: theme.developerWindow.muted,
+									width: 16,
+									height: 16,
+								}}
+							/>
+							<Typography
+								variant="subtitle2"
+								color={theme.developerWindow.muted}
+								pl={1}
+							>
+								noel.pena@hotmail.com
+							</Typography>
+						</MenuItem>
 					</Stack>
 				</Grid>
 			</Grid>
@@ -186,7 +195,23 @@ export default function Footer() {
 							color={theme.developerWindow.muted}
 							fontWeight={200}
 						>
-							© {new Date().getFullYear()} Build with love and lots of coffee
+							© {new Date().getFullYear()} Built with
+							<FavoriteBorderOutlined
+								sx={{
+									width: 16,
+									height: 16,
+									verticalAlign: "middle",
+									mx: 0.5,
+									color: "red",
+									animation: "pulseGlow 2s ease-in-out infinite",
+									"@keyframes pulseGlow": {
+										"0%": { opacity: 0.25 },
+										"50%": { opacity: 1 },
+										"100%": { opacity: 0.25 },
+									},
+								}}
+							/>
+							and lots of coffee.
 						</Typography>
 						<Typography
 							variant="caption"

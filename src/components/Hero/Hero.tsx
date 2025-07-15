@@ -1,9 +1,12 @@
 import { Box, Button, Grid, Link, Stack, Typography } from "@mui/material";
 import { useMediaQuery } from "@mui/system";
+import React from "react";
+import ContactForm from "@/components/ContactForm/ContactForm";
 import DeveloperWindow from "@/components/Hero/DeveloperWindow";
 import { theme } from "@/theme/theme";
 
 export default function Hero() {
+	const [open, setOpen] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
@@ -82,6 +85,7 @@ export default function Hero() {
 							<Button
 								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="contained"
+								onClick={() => setOpen(true)}
 							>
 								Contact
 							</Button>
@@ -99,6 +103,7 @@ export default function Hero() {
 					</Stack>
 				</Grid>
 			</Grid>
+			<ContactForm open={open} onClose={() => setOpen(false)} />
 		</Box>
 	);
 }

@@ -12,10 +12,13 @@ import {
 	Toolbar,
 } from "@mui/material";
 import { useMediaQuery } from "@mui/system";
+import React from "react";
+import ContactForm from "@/components/ContactForm/ContactForm";
 import { theme } from "@/theme/theme";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Navbar() {
+	const [open, setOpen] = React.useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const menuItems: Array<MenuItemProps> = [
 		{ item: "Skills", href: "#skills" },
@@ -61,7 +64,11 @@ export default function Navbar() {
 						<Grid display="flex" direction="row" alignItems="center" gap={3}>
 							{!isMobile && (
 								<>
-									<Button variant="contained" size="large">
+									<Button
+										variant="contained"
+										size="large"
+										onClick={() => setOpen(true)}
+									>
 										Contact
 									</Button>
 									<Button
@@ -110,6 +117,7 @@ export default function Navbar() {
 					</Grid>
 				</Toolbar>
 			</AppBar>
+			<ContactForm open={open} onClose={() => setOpen(false)} />
 		</Box>
 	);
 }

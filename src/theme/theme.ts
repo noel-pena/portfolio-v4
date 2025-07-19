@@ -125,5 +125,28 @@ export const theme = createTheme({
 				},
 			},
 		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "#23282c",
+					"&:hover .MuiOutlinedInput-notchedOutline": {
+						borderColor: "#cccccc",
+					},
+					"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+						borderColor: "#a0a0a0",
+					},
+				},
+				notchedOutline: {
+					borderColor: "#838383",
+				},
+				input: {
+					p: 0,
+					"::placeholder": {
+						fontSize: "0.875rem",
+						fontWeight: 400,
+					},
+				},
+			},
+		},
 	},
 });

@@ -78,7 +78,7 @@ export default function ProjectCard({
 					{description}
 				</Typography>
 				{tags.length > 0 && (
-					<Stack direction="row" spacing={1} mt={2} flexWrap="wrap">
+					<Stack direction="row" gap={1} mt={2} flexWrap="wrap">
 						{tags.map((tag) => (
 							<Chip
 								key={tag}
@@ -89,7 +89,7 @@ export default function ProjectCard({
 									color: theme.developerWindow.textPrimary,
 									fontSize: "0.65rem",
 									height: 24,
-									borderRadius: "8px",
+									borderRadius: 1,
 								}}
 							/>
 						))}

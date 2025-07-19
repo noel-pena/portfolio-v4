@@ -1,22 +1,22 @@
 import { EmailOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
+import SendIcon from "@mui/icons-material/Send";
 import {
 	Avatar,
+	Box,
+	Button,
 	Dialog,
 	DialogContent,
 	type DialogProps,
 	DialogTitle,
 	IconButton,
 	Stack,
+	TextField,
 	Typography,
 } from "@mui/material";
 import { theme } from "@/theme/theme";
 
-interface ContactFormProps extends DialogProps {
-	isMobile?: boolean;
-}
-
-export default function ContactForm(props: ContactFormProps) {
+export default function ContactForm(props: DialogProps) {
 	const { open, onClose } = props;
 
 	return (
@@ -27,6 +27,7 @@ export default function ContactForm(props: ContactFormProps) {
 				paper: {
 					sx: {
 						bgcolor: theme.palette.background.default,
+						borderRadius: 2,
 					},
 				},
 			}}
@@ -35,7 +36,7 @@ export default function ContactForm(props: ContactFormProps) {
 				<Stack alignItems="center">
 					<IconButton
 						onClick={(e) => onClose?.(e, "backdropClick")}
-						sx={{ alignSelf: "end" }}
+						sx={{ alignSelf: "end", p: 0 }}
 					>
 						<CloseIcon
 							fontSize="small"
@@ -50,10 +51,16 @@ export default function ContactForm(props: ContactFormProps) {
 					>
 						<EmailOutlined />
 					</Avatar>
-					<Typography pt={1} variant="body1" fontWeight="bold">
+					<Typography
+						pt={1}
+						variant="body1"
+						fontWeight="bold"
+						textAlign="center"
+					>
 						Get in Touch
 					</Typography>
 					<Typography
+						textAlign="center"
 						variant="caption"
 						color={theme.developerWindow.muted}
 						fontWeight={200}
@@ -62,7 +69,54 @@ export default function ContactForm(props: ContactFormProps) {
 					</Typography>
 				</Stack>
 			</DialogTitle>
-			<DialogContent>..forms</DialogContent>
+			<DialogContent>
+				<Box display="flex" flexDirection="column" gap={2}>
+					<Stack>
+						<Typography variant="body2">Name</Typography>
+						<TextField
+							slotProps={{
+								input: {
+									sx: { height: 36 },
+								},
+							}}
+							fullWidth
+							placeholder="Your name"
+							margin="dense"
+						/>
+					</Stack>
+					<Stack>
+						<Typography variant="body2">Email</Typography>
+						<TextField
+							slotProps={{
+								input: {
+									sx: { height: 36 },
+								},
+							}}
+							fullWidth
+							placeholder="your.email@example.com"
+							margin="dense"
+						/>
+					</Stack>
+					<Stack>
+						<Typography variant="body2">Message</Typography>
+						<TextField
+							fullWidth
+							margin="dense"
+							placeholder="Message me about any work or just say hello."
+							multiline
+							rows={5}
+						/>
+					</Stack>
+					<Button
+						sx={{ mt: 1, "& .MuiButton-endIcon": { mb: "2px" } }}
+						endIcon={<SendIcon sx={{ width: 16, height: 16 }} />}
+						variant="contained"
+						disableElevation
+					>
+						Send Message
+					</Button>
+				</Box>
+			</DialogContent>
 		</Dialog>
 	);
 }

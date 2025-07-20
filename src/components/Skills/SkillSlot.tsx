@@ -33,10 +33,10 @@ export default function SkillSlot(props: SkillSlotProps) {
 			<CardMedia
 				component="img"
 				image={icon}
-				sx={{ width: isMobile ? 75 : 125, height: isMobile ? 75 : 125 }}
+				sx={{ width: 100, height: 100 }}
 				alt={altText}
 			/>
-			<Typography variant={isMobile ? "subtitle1" : "h6"}>
+			<Typography fontWeight={200} variant={isMobile ? "subtitle1" : "h6"}>
 				{primaryText}
 			</Typography>
 		</Card>

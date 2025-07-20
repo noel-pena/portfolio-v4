@@ -20,9 +20,18 @@ export default function Skills() {
 				<Typography
 					variant={isMobile ? "h4" : "h3"}
 					textAlign={isMobile ? "left" : "center"}
-					sx={{ mb: 1 }}
+					mb={1}
 				>
-					Tech Stack
+					Tech{" "}
+					<Box
+						component="span"
+						fontFamily="Helvetica Neue"
+						fontWeight={100}
+						letterSpacing={3}
+						color={theme.glowColors.green}
+					>
+						Stack
+					</Box>
 				</Typography>
 				<Typography
 					variant={isMobile ? "body1" : "subtitle1"}
@@ -33,7 +42,7 @@ export default function Skills() {
 					Key Technologies in My Development Arsenal
 				</Typography>
 			</Stack>
-			<Container maxWidth="lg">
+			<Container maxWidth="md" disableGutters>
 				<Grid container spacing={4}>
 					{skillsData.map((skill) => (
 						<Grid key={skill.primaryText} size={{ xs: 6, md: 3 }}>

@@ -148,5 +148,44 @@ export const theme = createTheme({
 				},
 			},
 		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					"&:hover": {
+						backgroundColor: "rgba(44,83,100,0.08)",
+					},
+				},
+			},
+		},
+		MuiButtonBase: {
+			defaultProps: {
+				disableRipple: false,
+			},
+			styleOverrides: {
+				root: {
+					"&:hover": {
+						backgroundColor: "rgba(44,83,100,0.08)",
+					},
+				},
+			},
+		},
+		MuiListItemButton: {
+			styleOverrides: {
+				root: {
+					"&:hover": {
+						backgroundColor: "rgba(44,83,100,0.08)",
+					},
+				},
+			},
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					"&:hover": {
+						backgroundColor: "rgba(44,83,100,0.08)",
+					},
+				},
+			},
+		},
 	},
 });

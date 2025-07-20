@@ -70,7 +70,7 @@ export default function ContactForm(props: DialogProps) {
 				</Stack>
 			</DialogTitle>
 			<DialogContent>
-				<Box display="flex" flexDirection="column" gap={2}>
+				<Box display="flex" flexDirection="column" gap={2} pb={1}>
 					<Stack>
 						<Typography variant="body2">Name</Typography>
 						<TextField
@@ -108,12 +108,12 @@ export default function ContactForm(props: DialogProps) {
 						/>
 					</Stack>
 					<Button
-						sx={{ mt: 1, "& .MuiButton-endIcon": { mb: "2px" } }}
-						endIcon={<SendIcon sx={{ width: 16, height: 16 }} />}
+						sx={{ mt: 1, "& .MuiButton-endIcon": { mb: 0.25 } }}
+						endIcon={<SendIcon sx={{ width: 14, height: 14 }} />}
 						variant="contained"
 						disableElevation
 					>
-						Send Message
+						Send
 					</Button>
 				</Box>
 			</DialogContent>

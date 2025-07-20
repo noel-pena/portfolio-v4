@@ -35,17 +35,17 @@ export default function Navbar() {
 						alignItems="center"
 						width="100%"
 					>
-						<Grid display="flex" direction="row">
+						<Grid display="flex" direction="row" gap={1}>
 							<IconButton
 								component={Link}
 								href="#home"
-								sx={{ borderRadius: "8px", p: 0, pr: 1 }}
+								sx={{ borderRadius: "8px", p: 0, px: 1 }}
 							>
 								<CodeIcon
 									sx={{
 										color: theme.palette.text.primary,
-										height: 38,
-										width: 38,
+										height: 36,
+										width: 36,
 									}}
 								/>
 							</IconButton>
@@ -54,8 +54,9 @@ export default function Navbar() {
 									<MenuItem
 										component={Link}
 										href={menuItem.href}
-										sx={{ fontWeight: 200, borderRadius: "8px" }}
+										sx={{ fontWeight: 200, borderRadius: "8px", px: 1 }}
 										key={menuItem.item}
+										disableGutters
 									>
 										{menuItem.item}
 									</MenuItem>

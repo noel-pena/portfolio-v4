@@ -22,9 +22,18 @@ export default function Projects() {
 				<Typography
 					variant={isMobile ? "h4" : "h3"}
 					textAlign={isMobile ? "left" : "center"}
-					sx={{ mb: 1 }}
+					mb={1}
 				>
-					Featured Projects
+					Featured{" "}
+					<Box
+						component="span"
+						fontFamily="Helvetica Neue"
+						fontWeight={100}
+						color={theme.glowColors.green}
+						letterSpacing={3}
+					>
+						Projects
+					</Box>
 				</Typography>
 				<Typography
 					variant={isMobile ? "body1" : "subtitle1"}

@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
@@ -14,10 +15,31 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { theme } from "@/theme/theme";
+
+const formSchema = z.object({
+	name: z.string().min(2, "Name must be at least 2 characters"),
+	email: z.email("Invalid email address"),
+	message: z
+		.string()
+		.min(5, "Minimum 5 characters")
+		.max(200, "Maximum 200 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function ContactForm(props: DialogProps) {
 	const { open, onClose } = props;
+	const {
+		register,
+		// handleSubmit, TODO: Add wrapper to onSubmit when ready
+		formState: { errors },
+	} = useForm<FormData>({
+		resolver: zodResolver(formSchema),
+		mode: "onBlur",
+	});
 
 	return (
 		<Dialog
@@ -74,6 +96,9 @@ export default function ContactForm(props: DialogProps) {
 					<Stack>
 						<Typography variant="body2">Name</Typography>
 						<TextField
+							{...register("name")}
+							error={!!errors.name}
+							helperText={errors.name?.message}
 							slotProps={{
 								input: {
 									sx: { height: 36 },
@@ -87,6 +112,9 @@ export default function ContactForm(props: DialogProps) {
 					<Stack>
 						<Typography variant="body2">Email</Typography>
 						<TextField
+							{...register("email")}
+							error={!!errors.email}
+							helperText={errors.email?.message}
 							slotProps={{
 								input: {
 									sx: { height: 36 },
@@ -100,6 +128,9 @@ export default function ContactForm(props: DialogProps) {
 					<Stack>
 						<Typography variant="body2">Message</Typography>
 						<TextField
+							{...register("message")}
+							error={!!errors.message}
+							helperText={errors.message?.message}
 							fullWidth
 							margin="dense"
 							placeholder="Message me about any work or just say hello."

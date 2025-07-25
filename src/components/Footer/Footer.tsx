@@ -115,6 +115,7 @@ export default function Footer() {
 						variant="subtitle2"
 						color={theme.developerWindow.muted}
 						fontWeight={200}
+						pl={1}
 					>
 						Crafting digital experiences with passion and precision. Always
 						learning, always building.
@@ -135,7 +136,13 @@ export default function Footer() {
 										rel={menuItem.rel || undefined}
 										target={menuItem.target || undefined}
 										disableGutters
-										sx={{ p: 0, py: 0.5, minHeight: 32 }}
+										sx={{
+											p: 0,
+											py: 0.5,
+											pl: 0.5,
+											minHeight: 32,
+											borderRadius: 1,
+										}}
 									>
 										<Typography
 											variant="subtitle2"
@@ -154,7 +161,10 @@ export default function Footer() {
 						<Typography variant="body1" fontWeight="bold">
 							Contact
 						</Typography>
-						<MenuItem disableGutters sx={{ p: 0, py: 0.5, minHeight: 32 }}>
+						<MenuItem
+							disableGutters
+							sx={{ p: 0, pl: 0.5, py: 0.5, minHeight: 32, borderRadius: 1 }}
+						>
 							<EmailOutlined
 								sx={{
 									color: theme.developerWindow.muted,
@@ -163,9 +173,11 @@ export default function Footer() {
 								}}
 							/>
 							<Typography
+								component={Link}
+								href="mailto:noel.pena@hotmail.com"
 								variant="subtitle2"
 								color={theme.developerWindow.muted}
-								pl={1}
+								sx={{ textDecoration: "none", pl: 1 }}
 							>
 								noel.pena@hotmail.com
 							</Typography>

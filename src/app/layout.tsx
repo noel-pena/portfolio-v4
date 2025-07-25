@@ -80,6 +80,7 @@ export default function RootLayout({
 									height: "calc(100vh - 66px)",
 									overflow: "auto",
 									scrollbarWidth: "none",
+									scrollBehavior: "smooth",
 								}}
 							>
 								{children}

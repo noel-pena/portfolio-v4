@@ -1,3 +1,5 @@
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -6,6 +8,7 @@ import {
 	Avatar,
 	Box,
 	Button,
+	CircularProgress,
 	Dialog,
 	DialogContent,
 	type DialogProps,
@@ -15,9 +18,11 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { theme } from "@/theme/theme";
+import { useSnackbar } from "../ContactForm/SnackbarContext";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,16 +35,49 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function ContactForm(props: DialogProps) {
+type ContactFormProps = DialogProps & {
+	onResult?: (msg: string) => void;
+};
+
+export default function ContactForm(props: ContactFormProps) {
 	const { open, onClose } = props;
 	const {
 		register,
-		// handleSubmit, TODO: Add wrapper to onSubmit when ready
+		handleSubmit,
 		formState: { errors },
 	} = useForm<FormData>({
 		resolver: zodResolver(formSchema),
 		mode: "onBlur",
 	});
+	const { showMessage } = useSnackbar();
+	const [loading, setLoading] = React.useState(false);
+
+	const onSubmit = async (data: FormData) => {
+		setLoading(true);
+		try {
+			const response = await fetch("https://formspree.io/f/xkgzrvyv", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
+
+			if (response.ok) {
+				showMessage("Message sent successfully.");
+				onClose?.({}, "backdropClick");
+			} else {
+				showMessage("Submission error.");
+				console.error("Submission error.");
+			}
+		} catch (error) {
+			showMessage("Network error. Please try again.");
+			console.error("Network error: ", error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
 		<Dialog
@@ -140,9 +178,16 @@ export default function ContactForm(props: DialogProps) {
 					</Stack>
 					<Button
 						sx={{ mt: 1, "& .MuiButton-endIcon": { mb: 0.25 } }}
-						endIcon={<SendIcon sx={{ width: 14, height: 14 }} />}
+						endIcon={
+							loading ? (
+								<CircularProgress size="14px" />
+							) : (
+								<SendIcon sx={{ width: 14, height: 14 }} />
+							)
+						}
 						variant="contained"
 						disableElevation
+						onClick={handleSubmit(onSubmit)}
 					>
 						Send
 					</Button>

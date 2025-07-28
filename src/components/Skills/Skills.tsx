@@ -1,10 +1,19 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
+"use client";
+
+import {
+	Box,
+	Container,
+	Grid,
+	Stack,
+	Typography,
+	useMediaQuery,
+	useTheme,
+} from "@mui/material";
 import SkillSlot from "@/components/Skills/SkillSlot";
 import { skillsData } from "@/components/Skills/skillsData";
-import { theme } from "@/theme/theme";
 
 export default function Skills() {
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (

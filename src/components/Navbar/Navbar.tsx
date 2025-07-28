@@ -1,3 +1,5 @@
+"use client";
+
 import CodeIcon from "@mui/icons-material/Code";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -10,15 +12,16 @@ import {
 	Link,
 	MenuItem,
 	Toolbar,
+	useMediaQuery,
+	useTheme,
 } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
 import React from "react";
 import ContactForm from "@/components/ContactForm/ContactForm";
-import { theme } from "@/theme/theme";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Navbar() {
 	const [open, setOpen] = React.useState(false);
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const menuItems: Array<MenuItemProps> = [
 		{ item: "Skills", href: "#skills" },

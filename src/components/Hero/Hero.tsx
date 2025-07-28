@@ -1,12 +1,22 @@
-import { Box, Button, Grid, Link, Stack, Typography } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
+"use client";
+
+import {
+	Box,
+	Button,
+	Grid,
+	Link,
+	Stack,
+	Typography,
+	useMediaQuery,
+	useTheme,
+} from "@mui/material";
 import React from "react";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import DeveloperWindow from "@/components/Hero/DeveloperWindow";
-import { theme } from "@/theme/theme";
 
 export default function Hero() {
 	const [open, setOpen] = React.useState(false);
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (

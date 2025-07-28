@@ -1,12 +1,12 @@
 "use client";
 
-import AppShell from "@/app/AppShell";
+import AppWrapper from "@/app/AppWrapper";
 import HomePage from "@/pages/HomePage";
 
 export default function Home() {
 	return (
-		<AppShell>
+		<AppWrapper>
 			<HomePage />
-		</AppShell>
+		</AppWrapper>
 	);
 }

@@ -1,56 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-type gradientColors = {
-	darkBlue: string;
-	lightBlue: string;
-	lighterBlue: string;
-};
-
-declare module "@mui/material/styles" {
-	interface Theme {
-		developerWindow: {
-			background: string;
-			textPrimary: string;
-			textSecondary: string;
-			closeDot: string;
-			minimizeDot: string;
-			fullScreenDot: string;
-			gradient: gradientColors;
-			muted: string;
-			variable: string;
-			type: string;
-			developerText: string;
-		};
-		glowColors: {
-			yellow: string;
-			green: string;
-			purple: string;
-			wallpaper: string;
-		};
-	}
-	interface ThemeOptions {
-		developerWindow: {
-			background: string;
-			textPrimary: string;
-			textSecondary: string;
-			closeDot: string;
-			minimizeDot: string;
-			fullScreenDot: string;
-			gradient: gradientColors;
-			muted: string;
-			variable: string;
-			type: string;
-			developerText: string;
-		};
-		glowColors: {
-			yellow: string;
-			green: string;
-			purple: string;
-			wallpaper: string;
-		};
-	}
-}
-
 export const theme = createTheme({
 	palette: {
 		primary: {

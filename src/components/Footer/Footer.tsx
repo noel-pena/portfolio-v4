@@ -1,3 +1,5 @@
+"use client";
+
 import { EmailOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
 import CodeIcon from "@mui/icons-material/Code";
 import {
@@ -9,13 +11,14 @@ import {
 	MenuItem,
 	Stack,
 	Typography,
+	useMediaQuery,
+	useTheme,
 } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
 import type React from "react";
-import { theme } from "@/theme/theme";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Footer() {
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const menuItems: Array<MenuItemProps> = [
 		{

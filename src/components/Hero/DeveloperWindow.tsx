@@ -1,3 +1,5 @@
+"use client";
+
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
 	Box,
@@ -7,10 +9,10 @@ import {
 	Stack,
 	Tooltip,
 	Typography,
+	useMediaQuery,
+	useTheme,
 } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
 import React, { useId } from "react";
-import { theme } from "@/theme/theme";
 
 type CodeLinesProps = {
 	id: number;
@@ -24,9 +26,10 @@ function CodeLines({
 	line: string;
 	uniqueId: string;
 }): React.ReactNode {
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
+	return line.split(/(\s+|[[\]{}:,'])/g).map((token, index) => {
 		let color = theme.developerWindow.textPrimary;
 
 		if (["type", "const"].includes(token)) {
@@ -67,6 +70,7 @@ function CodeLines({
 
 export default function DeveloperWindow() {
 	const [openToolTip, setOpenToolTip] = React.useState(false);
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const uniqueId = useId();
 	const developerMarkdown = `
@@ -192,7 +196,7 @@ export default function DeveloperWindow() {
 							<IconButton
 								onClick={async () => {
 									await navigator.clipboard.writeText(developerMarkdown);
-									setOpenToolTip(!open);
+									setOpenToolTip(!openToolTip);
 									setTimeout(() => {
 										setOpenToolTip(false);
 									}, 2000);

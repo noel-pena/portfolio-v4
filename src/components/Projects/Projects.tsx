@@ -1,10 +1,18 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
+"use client";
+
+import {
+	Box,
+	Grid,
+	Stack,
+	Typography,
+	useMediaQuery,
+	useTheme,
+} from "@mui/material";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import { projectsData } from "@/components/Projects/projectsData";
-import { theme } from "@/theme/theme";
 
 export default function Projects() {
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (

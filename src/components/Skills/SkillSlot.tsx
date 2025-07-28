@@ -1,6 +1,12 @@
-import { Card, CardMedia, Typography } from "@mui/material";
-import { useMediaQuery } from "@mui/system";
-import { theme } from "@/theme/theme";
+"use client";
+
+import {
+	Card,
+	CardMedia,
+	Typography,
+	useMediaQuery,
+	useTheme,
+} from "@mui/material";
 
 export interface SkillSlotProps {
 	primaryText: string;
@@ -11,6 +17,7 @@ export interface SkillSlotProps {
 
 export default function SkillSlot(props: SkillSlotProps) {
 	const { altText, icon, primaryText, primaryColor } = props;
+	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (

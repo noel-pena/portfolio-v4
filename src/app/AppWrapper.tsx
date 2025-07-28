@@ -1,11 +1,14 @@
 "use client";
 
-import { Box, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import type React from "react";
 import Navbar from "@/components/Navbar/Navbar";
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppWrapper({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 

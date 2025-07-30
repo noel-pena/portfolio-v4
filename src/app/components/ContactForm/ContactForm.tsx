@@ -22,7 +22,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { theme } from "@/theme/theme";
-import { useSnackbar } from "../ContactForm/SnackbarContext";
+import { useSnackbar } from "./SnackbarContext";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name must be at least 2 characters"),

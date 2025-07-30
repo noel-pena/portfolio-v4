@@ -16,7 +16,7 @@ import {
 	useTheme,
 } from "@mui/material";
 import React from "react";
-import ContactForm from "@/components/ContactForm/ContactForm";
+import ContactForm from "@/app/components/ContactForm/ContactForm";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Navbar() {

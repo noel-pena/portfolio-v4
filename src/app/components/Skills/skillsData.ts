@@ -1,4 +1,4 @@
-import type { SkillSlotProps } from "@/components/Skills/SkillSlot";
+import type { SkillSlotProps } from "@/app/components/Skills/SkillSlot";
 
 export const skillsData: Array<SkillSlotProps> = [
 	{

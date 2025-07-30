@@ -8,8 +8,8 @@ import {
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
-import ProjectCard from "@/components/Projects/ProjectCard";
-import { projectsData } from "@/components/Projects/projectsData";
+import ProjectCard from "@/app/components/Projects/ProjectCard";
+import { projectsData } from "@/app/components/Projects/projectsData";
 
 export default function Projects() {
 	const theme = useTheme();

@@ -2,7 +2,7 @@
 
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import type React from "react";
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/app/components/Navbar/Navbar";
 
 export default function AppWrapper({
 	children,

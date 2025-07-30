@@ -11,8 +11,8 @@ import {
 	useTheme,
 } from "@mui/material";
 import React from "react";
-import ContactForm from "@/components/ContactForm/ContactForm";
-import DeveloperWindow from "@/components/Hero/DeveloperWindow";
+import ContactForm from "@/app/components/ContactForm/ContactForm";
+import DeveloperWindow from "@/app/components/Hero/DeveloperWindow";
 
 export default function Hero() {
 	const [open, setOpen] = React.useState(false);

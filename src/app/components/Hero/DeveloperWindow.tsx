@@ -29,7 +29,7 @@ function CodeLines({
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-	return line.split(/(\s+|[[\]{}:,'])/g).map((token, index) => {
+	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
 		let color = theme.developerWindow.textPrimary;
 
 		if (["type", "const"].includes(token)) {

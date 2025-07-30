@@ -9,8 +9,8 @@ import {
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
-import SkillSlot from "@/components/Skills/SkillSlot";
-import { skillsData } from "@/components/Skills/skillsData";
+import SkillSlot from "@/app/components/Skills/SkillSlot";
+import { skillsData } from "@/app/components/Skills/skillsData";
 
 export default function Skills() {
 	const theme = useTheme();

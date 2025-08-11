@@ -15,11 +15,10 @@ export default function AppWrapper({
 	return (
 		<Box
 			sx={{
-				position: "fixed",
+				display: "flex",
+				flexDirection: "column",
 				width: "100%",
-				height: "100%",
-				top: 0,
-				left: 0,
+				height: "100vh",
 				overflow: "hidden",
 			}}
 		>
@@ -67,8 +66,9 @@ export default function AppWrapper({
 			/>
 			<Box
 				sx={{
-					height: "100vh",
+					flexGrow: 1,
 					overflow: "auto",
+					minHeight: 0,
 					scrollbarWidth: "none",
 					scrollBehavior: "smooth",
 				}}

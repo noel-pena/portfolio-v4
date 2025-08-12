@@ -55,6 +55,8 @@ export default function Navbar() {
 							{!isMobile &&
 								menuItems.map((menuItem) => (
 									<MenuItem
+										aria-label={`${menuItem.item} link`}
+										role="menuitem"
 										component={Link}
 										href={menuItem.href}
 										sx={{ fontWeight: 200, borderRadius: "8px", px: 1 }}
@@ -69,6 +71,7 @@ export default function Navbar() {
 							{!isMobile && (
 								<>
 									<Button
+										aria-label="Contact button"
 										variant="contained"
 										size="large"
 										onClick={() => setOpen(true)}
@@ -76,6 +79,7 @@ export default function Navbar() {
 										Contact
 									</Button>
 									<Button
+										aria-label="Resume button"
 										variant="outlined"
 										size="large"
 										component={Link}
@@ -88,6 +92,7 @@ export default function Navbar() {
 								</>
 							)}
 							<IconButton
+								aria-label="GitHub profile button"
 								sx={{ p: 0 }}
 								component={Link}
 								href="https://github.com/noel-pena"
@@ -103,6 +108,7 @@ export default function Navbar() {
 								/>
 							</IconButton>
 							<IconButton
+								aria-label="LinkedIn profile button"
 								sx={{ p: 0 }}
 								component={Link}
 								href="https://linkedin.com/in/noel-pena-1138aa167/"

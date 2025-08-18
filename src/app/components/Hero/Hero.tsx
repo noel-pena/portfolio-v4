@@ -59,6 +59,7 @@ export default function Hero() {
 						}}
 					>
 						<Typography
+							component="h1"
 							variant={isMobile ? "h3" : "h2"}
 							textAlign={isMobile ? "center" : "left"}
 						>
@@ -77,6 +78,7 @@ export default function Hero() {
 							</Box>
 						</Typography>
 						<Typography
+							component="p"
 							variant="subtitle1"
 							textAlign={isMobile ? "center" : "left"}
 							color={theme.developerWindow.muted}
@@ -93,6 +95,7 @@ export default function Hero() {
 							pt={isMobile ? 1 : 2}
 						>
 							<Button
+								aria-label="Contact button"
 								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="contained"
 								onClick={() => setOpen(true)}
@@ -100,6 +103,7 @@ export default function Hero() {
 								Contact
 							</Button>
 							<Button
+								aria-label="Resume button"
 								component={Link}
 								href="https://cdn.noel-pena.com/Noel-Pena.pdf"
 								target="_blank"

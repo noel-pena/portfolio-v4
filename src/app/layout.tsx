@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={montserrat.className}>
+			<head>
+				<title>Portfolio by Noel</title>
+			</head>
 			<body>
 				<AppRouterCacheProvider>
 					<ThemeProvider theme={theme}>

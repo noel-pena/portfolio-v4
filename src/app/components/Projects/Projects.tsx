@@ -54,7 +54,11 @@ export default function Projects() {
 			</Stack>
 			<Grid container justifyContent="center" alignItems="center" spacing={5}>
 				{projectsData.map((project) => (
-					<Grid key={project.title} size={{ xs: 12, md: 6, xl: 3 }}>
+					<Grid
+						key={project.title}
+						size={{ xs: 12, md: 6, xl: 3 }}
+						aria-label={project.title}
+					>
 						<ProjectCard
 							title={project.title}
 							description={project.description}

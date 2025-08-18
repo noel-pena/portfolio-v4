@@ -8,13 +8,12 @@ import {
 	Grid,
 	Link,
 	List,
-	MenuItem,
+	ListItemButton,
 	Stack,
 	Typography,
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
-import type React from "react";
 import type { MenuItemProps } from "@/types/MenuItemProps";
 
 export default function Footer() {
@@ -132,13 +131,13 @@ export default function Footer() {
 						<Stack>
 							<List disablePadding>
 								{menuItems.map((menuItem) => (
-									<MenuItem
+									<ListItemButton
+										aria-label={`${menuItem.item} link`}
 										key={menuItem.item}
 										component={Link}
 										href={menuItem.href || menuItem.anchorRef}
 										rel={menuItem.rel || undefined}
 										target={menuItem.target || undefined}
-										disableGutters
 										sx={{
 											p: 0,
 											py: 0.5,
@@ -153,7 +152,7 @@ export default function Footer() {
 										>
 											{menuItem.item}
 										</Typography>
-									</MenuItem>
+									</ListItemButton>
 								))}
 							</List>
 						</Stack>
@@ -164,7 +163,8 @@ export default function Footer() {
 						<Typography variant="body1" fontWeight="bold">
 							Contact
 						</Typography>
-						<MenuItem
+						<ListItemButton
+							aria-label="Send email to noel.pena@hotmail.com button"
 							disableGutters
 							sx={{ p: 0, pl: 0.5, py: 0.5, minHeight: 32, borderRadius: 1 }}
 						>
@@ -184,7 +184,7 @@ export default function Footer() {
 							>
 								noel.pena@hotmail.com
 							</Typography>
-						</MenuItem>
+						</ListItemButton>
 					</Stack>
 				</Grid>
 			</Grid>

@@ -101,6 +101,7 @@ export default function ProjectCard({
 			<CardActions sx={{ px: 2, pb: 2 }}>
 				{codeLink && (
 					<Button
+						aria-label={`${title} code source button`}
 						size="small"
 						sx={{ color: theme.developerWindow.textPrimary }}
 						href={codeLink}
@@ -114,6 +115,7 @@ export default function ProjectCard({
 				)}
 				{demoLink && (
 					<Button
+						aria-label={`${title} demo button`}
 						size="small"
 						sx={{ color: theme.developerWindow.textPrimary }}
 						href={demoLink}

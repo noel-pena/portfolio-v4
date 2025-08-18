@@ -32,6 +32,7 @@ export const SnackbarProvider = ({
 		<SnackbarContext.Provider value={{ showMessage }}>
 			{children}
 			<Snackbar
+				aria-live="polite"
 				open={open}
 				autoHideDuration={3000}
 				onClose={() => setOpen(false)}

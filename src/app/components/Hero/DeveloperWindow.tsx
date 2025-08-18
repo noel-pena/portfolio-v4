@@ -194,6 +194,7 @@ export default function DeveloperWindow() {
 						</Typography>
 						<Tooltip title="Copied!" open={openToolTip}>
 							<IconButton
+								aria-label="copy button"
 								onClick={async () => {
 									await navigator.clipboard.writeText(developerMarkdown);
 									setOpenToolTip(!openToolTip);
@@ -222,7 +223,7 @@ export default function DeveloperWindow() {
 							>
 								<Typography
 									sx={{
-										color: theme.developerWindow.muted,
+										color: theme.developerWindow.textSecondary,
 										pr: 1,
 										minWidth: "28px",
 										textAlign: "right",

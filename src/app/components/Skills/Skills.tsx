@@ -54,7 +54,11 @@ export default function Skills() {
 			<Container maxWidth="md" disableGutters>
 				<Grid container spacing={4}>
 					{skillsData.map((skill) => (
-						<Grid key={skill.primaryText} size={{ xs: 6, md: 3 }}>
+						<Grid
+							key={skill.primaryText}
+							size={{ xs: 6, md: 3 }}
+							aria-label={skill.primaryText}
+						>
 							<SkillSlot
 								altText={skill.altText}
 								icon={skill.icon}

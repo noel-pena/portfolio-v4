@@ -10,7 +10,6 @@ import {
 	Grid,
 	IconButton,
 	Link,
-	MenuItem,
 	Toolbar,
 	useMediaQuery,
 	useTheme,
@@ -40,6 +39,7 @@ export default function Navbar() {
 					>
 						<Grid display="flex" direction="row" gap={1}>
 							<IconButton
+								aria-label="home icon"
 								component={Link}
 								href="#home"
 								sx={{ borderRadius: "8px", p: 0, px: 1 }}
@@ -54,17 +54,20 @@ export default function Navbar() {
 							</IconButton>
 							{!isMobile &&
 								menuItems.map((menuItem) => (
-									<MenuItem
+									<Button
 										aria-label={`${menuItem.item} link`}
-										role="menuitem"
 										component={Link}
 										href={menuItem.href}
-										sx={{ fontWeight: 200, borderRadius: "8px", px: 1 }}
+										sx={{
+											fontWeight: 200,
+											borderRadius: "8px",
+											px: 1,
+											color: theme.palette.text.primary,
+										}}
 										key={menuItem.item}
-										disableGutters
 									>
 										{menuItem.item}
-									</MenuItem>
+									</Button>
 								))}
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={3}>

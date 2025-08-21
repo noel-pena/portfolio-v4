@@ -1,8 +1,6 @@
 "use client";
 
 import CodeIcon from "@mui/icons-material/Code";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
 	AppBar,
 	Box,
@@ -25,6 +23,8 @@ export default function Navbar() {
 	const menuItems: Array<MenuItemProps> = [
 		{ item: "Skills", href: "#skills" },
 		{ item: "Projects", href: "#projects" },
+		{ item: "Resume", href: "" },
+		{ item: "GitHub", href: "https://github.com/noel-pena" },
 	];
 
 	return (
@@ -52,80 +52,40 @@ export default function Navbar() {
 									}}
 								/>
 							</IconButton>
-							{!isMobile &&
-								menuItems.map((menuItem) => (
-									<Button
-										aria-label={`${menuItem.item} link`}
-										component={Link}
-										href={menuItem.href}
-										sx={{
-											fontWeight: 200,
-											borderRadius: "8px",
-											px: 1,
-											color: theme.palette.text.primary,
-										}}
-										key={menuItem.item}
-									>
-										{menuItem.item}
-									</Button>
-								))}
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={3}>
-							{!isMobile && (
-								<>
-									<Button
-										aria-label="Contact button"
-										variant="contained"
-										size="large"
-										onClick={() => setOpen(true)}
-									>
-										Contact
-									</Button>
-									<Button
-										aria-label="Resume button"
-										variant="outlined"
-										size="large"
-										component={Link}
-										href="https://cdn.noel-pena.com/Noel-Pena.pdf"
-										target="_blank"
-										rel="noopener"
-									>
-										Resume
-									</Button>
-								</>
-							)}
-							<IconButton
-								aria-label="GitHub profile button"
-								sx={{ p: 0 }}
-								component={Link}
-								href="https://github.com/noel-pena"
-								target="_blank"
-								rel="noopener"
-							>
-								<GitHubIcon
+							{/*{!isMobile &&*/}
+							{menuItems.map((menuItem) => (
+								<Button
+									aria-label={`${menuItem.item} link`}
+									component={Link}
+									target="_blank"
+									rel="noopener"
+									href={menuItem.href}
 									sx={{
+										fontWeight: 200,
+										borderRadius: "8px",
+										px: 1,
 										color: theme.palette.text.primary,
-										width: 34,
-										height: 34,
 									}}
-								/>
-							</IconButton>
-							<IconButton
-								aria-label="LinkedIn profile button"
-								sx={{ p: 0 }}
-								component={Link}
-								href="https://linkedin.com/in/noel-pena-1138aa167/"
-								target="_blank"
-								rel="noopener"
-							>
-								<LinkedInIcon
-									sx={{
-										color: theme.palette.text.primary,
-										width: 34,
-										height: 34,
-									}}
-								/>
-							</IconButton>
+									key={menuItem.item}
+								>
+									{menuItem.item}
+								</Button>
+							))}
+							{/*))}*/}
+						</Grid>
+						<Grid display="flex" direction="row" alignItems="center" gap={3}>
+							<>
+								<Button
+									aria-label="Contact button"
+									variant="outlined"
+									size="large"
+									onClick={() => setOpen(true)}
+								>
+									Contact
+								</Button>
+							</>
 						</Grid>
 					</Grid>
 				</Toolbar>

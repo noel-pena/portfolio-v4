@@ -155,7 +155,7 @@ export const theme = createTheme({
 			styleOverrides: {
 				root: {
 					"&:hover": {
-						backgroundColor: "rgba(44,83,100,0.08)",
+						backgroundColor: "transparent",
 					},
 				},
 			},

@@ -26,6 +26,12 @@ export const skillsData: Array<SkillSlotProps> = [
 		altText: "Kotlin Logo",
 	},
 	{
+		primaryText: "Java",
+		primaryColor: "#b07219",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+		altText: "Java Logo",
+	},
+	{
 		primaryText: "Flutter",
 		primaryColor: "#0d1b2a",
 		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
@@ -36,6 +42,24 @@ export const skillsData: Array<SkillSlotProps> = [
 		primaryColor: "#204529",
 		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
 		altText: "Spring Boot Logo",
+	},
+	{
+		primaryText: "Node.js",
+		primaryColor: "#2f5a2b",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+		altText: "Node.js Logo",
+	},
+	{
+		primaryText: "AWS",
+		primaryColor: "#cc7a00",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+		altText: "AWS Logo",
+	},
+	{
+		primaryText: "Azure DevOps",
+		primaryColor: "#0078D7",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+		altText: "Azure DevOps Logo",
 	},
 	{
 		primaryText: "PostgreSQL",

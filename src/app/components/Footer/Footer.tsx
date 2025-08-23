@@ -2,6 +2,7 @@
 
 import { EmailOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
 import CodeIcon from "@mui/icons-material/Code";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
 	Box,
 	Divider,
@@ -183,6 +184,30 @@ export default function Footer() {
 								sx={{ textDecoration: "none", pl: 1 }}
 							>
 								noel.pena@hotmail.com
+							</Typography>
+						</ListItemButton>
+						<ListItemButton
+							aria-label="Link to LinkedIn button"
+							disableGutters
+							sx={{ p: 0, pl: 0.5, py: 0.5, minHeight: 32, borderRadius: 1 }}
+						>
+							<LinkedInIcon
+								sx={{
+									color: theme.developerWindow.muted,
+									width: 16,
+									height: 16,
+								}}
+							/>
+							<Typography
+								component={Link}
+								href="https://www.linkedin.com/in/noel-pena-1138aa167/"
+								rel="noopener"
+								target="_blank"
+								variant="subtitle2"
+								color={theme.developerWindow.muted}
+								sx={{ textDecoration: "none", pl: 1 }}
+							>
+								LinkedIn
 							</Typography>
 						</ListItemButton>
 					</Stack>

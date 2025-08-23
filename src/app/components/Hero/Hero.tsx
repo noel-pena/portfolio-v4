@@ -27,7 +27,7 @@ export default function Hero() {
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
-				height: "calc(100% - 64px)",
+				height: "100%",
 			}}
 		>
 			<Grid

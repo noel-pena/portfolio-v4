@@ -56,7 +56,7 @@ export default function Skills() {
 					{skillsData.map((skill) => (
 						<Grid
 							key={skill.primaryText}
-							size={{ xs: 6, md: 3 }}
+							size={{ xs: 6, sm: 4, md: 3 }}
 							aria-label={skill.primaryText}
 						>
 							<SkillSlot

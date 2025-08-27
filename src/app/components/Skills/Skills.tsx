@@ -34,7 +34,7 @@ export default function Skills() {
 					Tech{" "}
 					<Box
 						component="span"
-						fontFamily="Helvetica Neue"
+						fontFamily="Roboto, Helvetica Neue, Arial, sans-serif"
 						fontWeight={100}
 						letterSpacing={3}
 						color={theme.glowColors.green}

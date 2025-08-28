@@ -8,7 +8,7 @@ export const projectsData: Array<ProjectCardProps> = [
 		imageUrl: "../../snapshots/portfolio.png",
 		altText: "picture of the portfolio app",
 		codeLink: "https://github.com/noel-pena/portfolio-v4",
-		tags: ["TypeScript", "React", "Material UI", "Next.js"],
+		tags: ["TypeScript", "React", "Next.js", "Kotlin", "Ktor", "AWS"],
 	},
 	{
 		title: "Interviewer AI",
@@ -18,7 +18,7 @@ export const projectsData: Array<ProjectCardProps> = [
 		altText: "picture of the interviewer ai app",
 		codeLink: "https://github.com/noel-pena/InterviewerAI",
 		demoLink: "https://interviewerai.onrender.com",
-		tags: ["JavaScript", "React", "Python", "OpenAI API"],
+		tags: ["JavaScript", "React", "Python", "Flask", "OpenAI API"],
 	},
 	{
 		title: "Wallpaper App",

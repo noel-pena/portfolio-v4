@@ -17,13 +17,8 @@ application {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty")
-    implementation("io.ktor:ktor-server-core")
-    implementation("io.ktor:ktor-server-config-yaml")
-    implementation("io.ktor:ktor-server-cors-jvm:3.2.3")
+    implementation("com.amazonaws:aws-lambda-java-core")
+    implementation("io.ktor:ktor-server-cors-jvm")
     implementation("software.amazon.awssdk:ses:2.33.0")
-    implementation("software.amazon.awssdk:auth:2.33.0")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:3.2.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-    testImplementation("io.ktor:ktor-server-test-host")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

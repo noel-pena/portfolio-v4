@@ -55,7 +55,7 @@ export default function ContactForm(props: ContactFormProps) {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true);
 		try {
-			const response = await fetch("https://formspree.io/f/xkgzrvyv", {
+			const response = await fetch("http://localhost:8080/send-email", {
 				method: "POST",
 				headers: {
 					Accept: "application/json",

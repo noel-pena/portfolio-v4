@@ -1,3 +1,5 @@
+package com.noelpena
+
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.ses.SesClient
 import software.amazon.awssdk.services.ses.model.*
@@ -8,21 +10,21 @@ class EmailService {
         .region(Region.US_EAST_1)
         .build()
 
-    fun sendEmail(userName: String, userEmail: String, userMessage: String) {
+    fun sendEmail(name: String, email: String, message: String) {
         val emailBody = """
         New message from website:
 
-        Name: $userName
-        Email: $userEmail
+        Name: $name
+        Email: $email
         Message:
-        $userMessage
+        $message
         """.trimIndent()
 
         val request = SendEmailRequest.builder()
             .destination(Destination.builder().toAddresses("noel.pena@hotmail.com").build())
             .message(
                 Message.builder()
-                    .subject(Content.builder().data("New message from $userName").charset("UTF-8").build())
+                    .subject(Content.builder().data("New message from $name").charset("UTF-8").build())
                     .body(Body.builder()
                         .text(Content.builder().data(emailBody).charset("UTF-8").build())
                         .build())

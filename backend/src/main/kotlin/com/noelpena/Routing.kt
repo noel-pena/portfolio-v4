@@ -1,7 +1,5 @@
-package noelpena
+package com.noelpena
 
-import EmailRequest
-import EmailService
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -16,13 +14,12 @@ fun Application.configureRouting() {
 
             try {
                 val request = kotlinx.serialization.json.Json.decodeFromString<EmailRequest>(rawBody)
-                emailService.sendEmail(request.senderName, request.senderEmail, request.message)
+                emailService.sendEmail(request.name, request.email, request.message)
 
                 call.respondText(
                     """{"status":"success","message":"Email sent!"}""",
                     contentType = io.ktor.http.ContentType.Application.Json
                 )
-
             } catch (e: Exception) {
                 e.printStackTrace()
                 call.respondText(

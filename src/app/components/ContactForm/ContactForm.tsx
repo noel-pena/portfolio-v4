@@ -55,14 +55,14 @@ export default function ContactForm(props: ContactFormProps) {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true);
 		try {
-			const response = await fetch("https://formspree.io/f/xkgzrvyv", {
-				method: "POST",
-				headers: {
-					Accept: "application/json",
-					"Content-type": "application/json",
+			const response = await fetch(
+				"https://nmnuk482q9.execute-api.us-east-1.amazonaws.com/send-email",
+				{
+					method: "POST",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify(data),
 				},
-				body: JSON.stringify(data),
-			});
+			);
 
 			if (response.ok) {
 				showMessage("Message sent successfully.");

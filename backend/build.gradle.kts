@@ -4,21 +4,25 @@ val logback_version: String by project
 plugins {
     kotlin("jvm") version "2.1.10"
     kotlin("plugin.serialization") version "2.1.10"
-    id("io.ktor.plugin") version "3.2.3"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "noelpena"
 version = "0.0.1"
 
-application {
-    mainClass = "io.ktor.server.netty.EngineMain"
+kotlin {
+    jvmToolchain(17)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-netty")
-    implementation("com.amazonaws:aws-lambda-java-core")
-    implementation("io.ktor:ktor-server-cors-jvm")
+    implementation("com.amazonaws:aws-lambda-java-core:1.2.3")
+    implementation("com.amazonaws:aws-lambda-java-events:3.11.2")
     implementation("software.amazon.awssdk:ses:2.33.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 }

@@ -5,7 +5,6 @@ import software.amazon.awssdk.services.ses.SesClient
 import software.amazon.awssdk.services.ses.model.*
 
 class EmailService {
-
     private val sesClient = SesClient.builder()
         .region(Region.US_EAST_1)
         .build()

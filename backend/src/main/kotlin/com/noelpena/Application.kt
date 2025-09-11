@@ -1,21 +1,26 @@
 package com.noelpena
 
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.plugins.cors.routing.*
+import com.amazonaws.services.lambda.runtime.Context
+import com.amazonaws.services.lambda.runtime.RequestHandler
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
+import kotlinx.serialization.json.Json
 
-fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
-}
-
-fun Application.module() {
-    install(CORS) {
-        anyHost()
-//        allowHost("noel-pena.com", schemes = listOf("https"))
-//        allowHost("www.noel-pena.com", schemes = listOf("https"))
-        allowHeader(HttpHeaders.ContentType)
-        allowMethod(HttpMethod.Post)
+class ContactFormLambda : RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+    override fun handleRequest(
+        input: APIGatewayProxyRequestEvent,
+        context: Context
+    ): APIGatewayProxyResponseEvent {
+        return try {
+            val emailRequest = Json.decodeFromString<EmailRequest>(input.body ?: "")
+            EmailService().sendEmail(emailRequest.name, emailRequest.email, emailRequest.message)
+            APIGatewayProxyResponseEvent()
+                .withStatusCode(200)
+                .withBody("""{"message":"Email sent successfully from Lambda handler."}""")
+        } catch (e: Exception) {
+            APIGatewayProxyResponseEvent()
+                .withStatusCode(500)
+                .withBody("""{"error":"Failed to send email from Lambda handler."}""")
+        }
     }
-
-    configureRouting()
 }

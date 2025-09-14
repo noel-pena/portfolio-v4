@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestHandler
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 class ContactFormLambda : RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
@@ -24,3 +25,10 @@ class ContactFormLambda : RequestHandler<APIGatewayProxyRequestEvent, APIGateway
         }
     }
 }
+
+@Serializable
+data class EmailRequest(
+    val name: String,
+    val email: String,
+    val message: String
+)

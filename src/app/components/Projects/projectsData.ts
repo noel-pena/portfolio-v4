@@ -8,7 +8,7 @@ export const projectsData: Array<ProjectCardProps> = [
 		imageUrl: "../../snapshots/portfolio.png",
 		altText: "picture of the portfolio app",
 		codeLink: "https://github.com/noel-pena/portfolio-v4",
-		tags: ["TypeScript", "React", "Next.js", "Kotlin", "Ktor", "AWS"],
+		tags: ["TypeScript", "React", "Next.js", "Kotlin", "AWS"],
 	},
 	{
 		title: "Interviewer AI",

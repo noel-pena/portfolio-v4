@@ -108,6 +108,7 @@ export default function Navbar() {
 					elevation={0}
 					sx={{
 						py: 1,
+						pr: 1,
 						display: "flex",
 						flexDirection: "row",
 						justifyContent: "space-between",

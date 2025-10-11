@@ -108,6 +108,7 @@ export default function DeveloperWindow() {
 
 	return (
 		<Box
+			data-testid="developer-window"
 			sx={{
 				background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.gradient.lightBlue}, ${theme.developerWindow.gradient.darkBlue})`,
 				borderRadius: 2,

@@ -1,9 +1,61 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe } from "vitest";
 import Hero from "@/app/components/Hero/Hero";
 import { renderWithTheme as render } from "@/app/test-utils";
 
-test("renders main title", () => {
-	render(<Hero />);
+describe("Hero Page", () => {
+	function setup() {
+		render(<Hero />);
+	}
 
-	expect(screen.getByText("Noel")).toBeInTheDocument();
+	test("renders title section", () => {
+		setup();
+
+		expect(screen.getByText("Hi, my name is")).toBeInTheDocument();
+		expect(screen.getByText("Noel Peña")).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				"Full stack developer experienced in TypeScript, React, Flutter, and Kotlin. Focused on building clean, responsive applications across web and mobile platforms.",
+			),
+		).toBeInTheDocument();
+		expect(screen.getByRole("link", { name: "Resume button" })).toHaveAttribute(
+			"href",
+			"https://cdn.noel-pena.com/Noel-Pena.pdf",
+		);
+		expect(
+			screen.getByRole("button", { name: "Contact button" }),
+		).toBeInTheDocument();
+	});
+
+	test("contact button opens the contact form", async () => {
+		setup();
+
+		expect(screen.queryByText("Get in Touch")).not.toBeInTheDocument();
+
+		const contactBtn = screen.getByRole("button", { name: "Contact button" });
+
+		fireEvent.click(contactBtn);
+
+		expect(screen.getByText("Get in Touch")).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				"Send me a message and I will get back to you as soon as possible.",
+			),
+		).toBeInTheDocument();
+
+		const nameInput = screen.getByPlaceholderText("Your name");
+		const emailInput = screen.getByPlaceholderText("your.email@example.com");
+		const messageInput = screen.getByPlaceholderText(
+			"Message me about any work or just say hello.",
+		);
+
+		await userEvent.type(nameInput, "Noel Peña");
+		await userEvent.type(emailInput, "noel@example.com");
+		await userEvent.type(messageInput, "Hello!");
+
+		expect(nameInput).toHaveValue("Noel Peña");
+		expect(emailInput).toHaveValue("noel@example.com");
+		expect(messageInput).toHaveValue("Hello!");
+	});
 });

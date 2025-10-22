@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { keyframes } from "@mui/system";
 import type React from "react";
 import Navbar from "@/app/components/Navbar/Navbar";
@@ -20,6 +20,9 @@ export default function AppWrapper({
 }: {
 	children: React.ReactNode;
 }) {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 	return (
 		<Box
 			sx={{
@@ -36,7 +39,7 @@ export default function AppWrapper({
 					width: "50vw",
 					height: "70vw",
 					borderRadius: "50%",
-					filter: "blur(250px)",
+					filter: isMobile ? "blur(120px)" : "blur(250px)",
 					opacity: 0.9,
 					zIndex: 0,
 				},

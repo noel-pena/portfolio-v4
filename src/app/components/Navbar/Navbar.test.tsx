@@ -3,7 +3,7 @@ import { describe } from "vitest";
 import Navbar from "@/app/components/Navbar/Navbar";
 import { render } from "@/app/test-utils";
 
-describe("Nav Bar", () => {
+describe("Navigation bar", () => {
 	function setup() {
 		render(<Navbar />);
 	}

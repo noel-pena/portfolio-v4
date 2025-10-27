@@ -4,7 +4,7 @@ import { describe } from "vitest";
 import Hero from "@/app/components/Hero/Hero";
 import { render } from "@/app/test-utils";
 
-describe("Hero Page", () => {
+describe("Hero section", () => {
 	function setup() {
 		render(<Hero />);
 	}

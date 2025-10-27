@@ -3,7 +3,7 @@ import { describe } from "vitest";
 import Footer from "@/app/components/Footer/Footer";
 import { render } from "@/app/test-utils";
 
-describe("Nav Bar", () => {
+describe("Footer section", () => {
 	function setup() {
 		render(<Footer />);
 	}

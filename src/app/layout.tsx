@@ -18,6 +18,10 @@ export default function RootLayout({
 		<html lang="en" className={montserrat.className}>
 			<head>
 				<title>Portfolio by Noel</title>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1, viewport-fit=cover"
+				/>
 			</head>
 			<body>
 				<AppRouterCacheProvider>

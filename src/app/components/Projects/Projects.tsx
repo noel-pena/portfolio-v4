@@ -35,7 +35,6 @@ export default function Projects() {
 					Featured{" "}
 					<Box
 						component="span"
-						fontFamily="Roboto, Helvetica Neue, Arial, sans-serif"
 						fontWeight={100}
 						color={theme.glowColors.green}
 						letterSpacing={3}

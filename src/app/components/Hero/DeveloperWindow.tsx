@@ -159,6 +159,7 @@ export default function DeveloperWindow() {
 				</Stack>
 				<Typography
 					variant="body2"
+					fontFamily="monospace"
 					sx={{
 						display: "flex",
 						alignItems: "center",

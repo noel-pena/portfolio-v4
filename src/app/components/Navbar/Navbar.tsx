@@ -49,7 +49,6 @@ function HomeIcon(): React.ReactElement {
 				variant="subtitle1"
 				sx={{
 					ml: 0.5,
-					fontFamily: "monospace",
 					color: theme.palette.text.primary,
 				}}
 			>

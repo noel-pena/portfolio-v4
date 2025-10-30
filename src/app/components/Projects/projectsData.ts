@@ -27,7 +27,7 @@ export const projectsData: Array<ProjectCardProps> = [
 		imageUrl: "../../snapshots/wallpaperapp.png",
 		altText: "picture of the wallpaper app",
 		codeLink: "https://github.com/noel-pena/wallpaper-mobile-app",
-		tags: ["Flutter", "Kotlin", "Spring Boot"],
+		tags: ["Flutter", "Kotlin", "Spring Boot", "Wallhaven API"],
 	},
 	{
 		title: "Code-Assisting Discord Bot",

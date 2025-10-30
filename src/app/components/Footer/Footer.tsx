@@ -231,7 +231,7 @@ export default function Footer() {
 						direction={isMobile ? "column" : "row"}
 					>
 						<Typography
-							variant="subtitle2"
+							fontSize={12}
 							color={theme.developerWindow.muted}
 							fontWeight={200}
 						>
@@ -254,7 +254,7 @@ export default function Footer() {
 							and lots of coffee.
 						</Typography>
 						<Typography
-							variant="caption"
+							fontSize={12}
 							color={theme.developerWindow.muted}
 							fontWeight={200}
 						>

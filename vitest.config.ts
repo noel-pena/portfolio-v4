@@ -7,6 +7,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
+			"next/font/google": "/src/__mocks__/nextFontMock.ts",
 		},
 	},
 	test: {

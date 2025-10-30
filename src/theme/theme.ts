@@ -1,4 +1,7 @@
 import { createTheme } from "@mui/material/styles";
+import { Silkscreen } from "next/font/google";
+
+const silkscreen = Silkscreen({ subsets: ["latin"], weight: "400" });
 
 declare module "@mui/material/styles" {
 	interface Theme {
@@ -63,7 +66,7 @@ export const theme = createTheme({
 			main: "#B6F1E9",
 		},
 		background: {
-			default: "#181C1F",
+			default: "#171717",
 			paper: "#0E1522",
 		},
 		text: {
@@ -71,6 +74,7 @@ export const theme = createTheme({
 		},
 	},
 	typography: {
+		fontFamily: silkscreen.style.fontFamily,
 		h3: {
 			fontSize: "2.5rem",
 		},

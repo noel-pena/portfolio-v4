@@ -39,7 +39,7 @@ export default function ProjectCard({
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "space-between",
-				borderRadius: 3,
+				borderRadius: 0,
 				backgroundColor: theme.palette.background.default,
 				color: theme.palette.text.primary,
 				boxShadow: 3,
@@ -91,7 +91,7 @@ export default function ProjectCard({
 									color: theme.developerWindow.textPrimary,
 									fontSize: "0.65rem",
 									height: 24,
-									borderRadius: 1,
+									borderRadius: 0,
 								}}
 							/>
 						))}

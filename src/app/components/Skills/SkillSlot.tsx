@@ -27,7 +27,7 @@ export default function SkillSlot(props: SkillSlotProps) {
 				flexDirection: "column",
 				justifyContent: "space-evenly",
 				alignItems: "center",
-				borderRadius: 3,
+				borderRadius: 0,
 				backgroundColor: "transparent",
 				boxShadow: 3,
 				aspectRatio: "1/1",

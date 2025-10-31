@@ -87,7 +87,7 @@ export default function ContactForm(props: ContactFormProps) {
 				paper: {
 					sx: {
 						bgcolor: theme.palette.background.default,
-						borderRadius: 2,
+						borderRadius: 0,
 					},
 				},
 			}}
@@ -139,7 +139,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.name?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36 },
+									sx: { height: 36, borderRadius: 0 },
 								},
 							}}
 							fullWidth
@@ -155,7 +155,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.email?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36 },
+									sx: { height: 36, borderRadius: 0 },
 								},
 							}}
 							fullWidth
@@ -169,6 +169,11 @@ export default function ContactForm(props: ContactFormProps) {
 							{...register("message")}
 							error={!!errors.message}
 							helperText={errors.message?.message}
+							slotProps={{
+								input: {
+									sx: { borderRadius: 0 },
+								},
+							}}
 							fullWidth
 							margin="dense"
 							placeholder="Message me about any work or just say hello."

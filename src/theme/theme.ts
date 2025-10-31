@@ -126,7 +126,7 @@ export const theme = createTheme({
 			],
 			styleOverrides: {
 				root: {
-					borderRadius: "8px",
+					borderRadius: 0,
 					fontSize: "0.75rem",
 					fontWeight: 200,
 				},
@@ -190,6 +190,18 @@ export const theme = createTheme({
 				root: {
 					"&:hover": {
 						backgroundColor: "rgba(44,83,100,0.08)",
+					},
+				},
+			},
+		},
+		MuiInputBase: {
+			styleOverrides: {
+				input: {
+					"&:-webkit-autofill": {
+						WebkitBoxShadow: "0 0 0 1000px transparent inset",
+						WebkitTextFillColor: "#CFCFCF",
+						caretColor: "#CFCFCF",
+						transition: "background-color 5000s ease-in-out 0s",
 					},
 				},
 			},

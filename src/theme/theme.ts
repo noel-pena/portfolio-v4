@@ -172,6 +172,7 @@ export const theme = createTheme({
 				root: {
 					"&:hover": {
 						backgroundColor: "rgba(44,83,100,0.08)",
+						borderRadius: 0,
 					},
 				},
 			},

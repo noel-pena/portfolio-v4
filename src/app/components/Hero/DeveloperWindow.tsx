@@ -111,7 +111,7 @@ export default function DeveloperWindow() {
 			data-testid="developer-window"
 			sx={{
 				background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.gradient.lightBlue}, ${theme.developerWindow.gradient.darkBlue})`,
-				borderRadius: 2,
+				borderRadius: 0,
 				pb: 2,
 				px: 2,
 				boxShadow: 2,
@@ -172,6 +172,7 @@ export default function DeveloperWindow() {
 			<Card
 				elevation={0}
 				sx={{
+					borderRadius: 0,
 					bgcolor: theme.developerWindow.background,
 					color: theme.developerWindow.textPrimary,
 					fontFamily: "monospace",

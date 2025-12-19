@@ -74,6 +74,10 @@ export default function Navbar() {
 	const [openDrawer, setOpenDrawer] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
+
+	console.log(prefersDarkMode);
+
 	const menuItems: Array<MenuItemProps> = [
 		{
 			item: "Skills",

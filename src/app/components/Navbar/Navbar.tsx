@@ -2,6 +2,7 @@
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
 	AppBar,
@@ -14,6 +15,7 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
+	Stack,
 	Toolbar,
 	Tooltip,
 	Typography,
@@ -23,6 +25,8 @@ import {
 import React from "react";
 import ContactForm from "@/app/components/ContactForm/ContactForm";
 import type { MenuItemProps } from "@/types/MenuItemProps";
+
+// import LightModeIcon from '@mui/icons-material/LightMode';
 
 function HomeIcon(): React.ReactElement {
 	const theme = useTheme();
@@ -203,8 +207,11 @@ export default function Navbar() {
 								</Button>
 							))}
 						</Grid>
-						<Grid display="flex" direction="row" alignItems="center" gap={3}>
-							<>
+						<Grid display="flex" direction="row" alignItems="center" gap={1}>
+							<Stack direction="row" alignItems="center" gap={1}>
+								<Button variant="contained" sx={{ minWidth: 0 }}>
+									<DarkModeIcon />
+								</Button>
 								<Button
 									aria-label="Contact button"
 									variant="outlined"
@@ -213,7 +220,7 @@ export default function Navbar() {
 								>
 									Contact
 								</Button>
-							</>
+							</Stack>
 						</Grid>
 					</Grid>
 				</Toolbar>

@@ -3,6 +3,7 @@
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
 	AppBar,
@@ -25,8 +26,6 @@ import {
 import React from "react";
 import ContactForm from "@/app/components/ContactForm/ContactForm";
 import type { MenuItemProps } from "@/types/MenuItemProps";
-
-// import LightModeIcon from '@mui/icons-material/LightMode';
 
 function HomeIcon(): React.ReactElement {
 	const theme = useTheme();
@@ -72,11 +71,10 @@ function HomeIcon(): React.ReactElement {
 export default function Navbar() {
 	const [openContactForm, setOpenContactForm] = React.useState(false);
 	const [openDrawer, setOpenDrawer] = React.useState(false);
+	const [isDark, setIsDark] = React.useState(true);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
-
-	console.log(prefersDarkMode);
 
 	const menuItems: Array<MenuItemProps> = [
 		{
@@ -213,8 +211,12 @@ export default function Navbar() {
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={1}>
 							<Stack direction="row" alignItems="center" gap={1}>
-								<Button variant="contained" sx={{ minWidth: 0 }}>
-									<DarkModeIcon />
+								<Button
+									variant="contained"
+									sx={{ minWidth: 0 }}
+									onClick={() => setIsDark(!isDark)}
+								>
+									{isDark ? <DarkModeIcon /> : <LightModeIcon />}
 								</Button>
 								<Button
 									aria-label="Contact button"

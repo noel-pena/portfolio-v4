@@ -28,11 +28,26 @@ declare module "@mui/material/styles" {
 			purple: string;
 			wallpaper: string;
 		};
+		skillColors: {
+			react: string;
+			typescript: string;
+			javascript: string;
+			kotlin: string;
+			java: string;
+			flutter: string;
+			springBoot: string;
+			node: string;
+			aws: string;
+			azure: string;
+			postgresql: string;
+			python: string;
+		};
 	}
 
 	interface PaletteOptions {
 		developerWindow?: Palette["developerWindow"];
 		glowColors?: Palette["glowColors"];
+		skillColors?: Palette["skillColors"];
 	}
 }
 
@@ -58,18 +73,18 @@ export const theme = extendTheme({
 					secondary: "#4B5563",
 				},
 				developerWindow: {
-					background: "#FFFFFF",
+					background: "#f6f6f6",
 					textPrimary: "#333333",
 					textSecondary: "#666666",
 					closeDot: "#FF5F56",
 					minimizeDot: "#FFBD2E",
 					fullScreenDot: "#27C93F",
 					gradient: {
-						darkBlue: "#E0EAFC",
-						lightBlue: "#CFDEF3",
-						lighterBlue: "#B8C6DB",
+						darkBlue: "#e6fce0",
+						lightBlue: "#d1f3cf",
+						lighterBlue: "#ab9ad6",
 					},
-					muted: "#9CA3AF",
+					muted: "#6a6b71",
 					variable: "#005CC5",
 					type: "#22863A",
 					developerText: "#6F42C1",
@@ -79,6 +94,20 @@ export const theme = extendTheme({
 					green: "#10B981",
 					purple: "#8B5CF6",
 					wallpaper: "#E5E7EB",
+				},
+				skillColors: {
+					react: "#a2ebfd",
+					typescript: "#3178C6",
+					javascript: "#ede8c2",
+					kotlin: "#9169ff",
+					java: "#5382A1",
+					flutter: "#72a4cd",
+					springBoot: "#bbe3aa",
+					node: "#7fc87f",
+					aws: "#ffcd78",
+					azure: "#0078D7",
+					postgresql: "#336791",
+					python: "#3776AB",
 				},
 			},
 		},
@@ -115,6 +144,20 @@ export const theme = extendTheme({
 					green: "#399E5A",
 					purple: "#5F3D75",
 					wallpaper: "#272d33",
+				},
+				skillColors: {
+					react: "#293960",
+					typescript: "#1c3c64",
+					javascript: "#858221",
+					kotlin: "#311c40",
+					java: "#b07219",
+					flutter: "#0d1b2a",
+					springBoot: "#204529",
+					node: "#2f5a2b",
+					aws: "#935902",
+					azure: "#023f6c",
+					postgresql: "#1b263b",
+					python: "#2b2d42",
 				},
 			},
 		},

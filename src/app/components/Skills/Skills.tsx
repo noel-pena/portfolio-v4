@@ -36,7 +36,7 @@ export default function Skills() {
 						component="span"
 						fontWeight={100}
 						letterSpacing={3}
-						color={theme.glowColors.green}
+						color={theme.vars?.palette.glowColors.green}
 					>
 						Stack
 					</Box>
@@ -44,7 +44,7 @@ export default function Skills() {
 				<Typography
 					variant={isMobile ? "body1" : "subtitle1"}
 					textAlign={isMobile ? "left" : "center"}
-					color={theme.developerWindow.muted}
+					color={theme.vars?.palette.developerWindow.muted}
 					sx={{ fontWeight: 200, mb: isMobile ? 3 : 5 }}
 				>
 					Key Technologies in My Development Arsenal

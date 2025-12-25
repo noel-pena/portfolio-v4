@@ -1,10 +1,10 @@
-import { createTheme } from "@mui/material/styles";
+import { extendTheme } from "@mui/material/styles";
 import { Silkscreen } from "next/font/google";
 
 const silkscreen = Silkscreen({ subsets: ["latin"], weight: "400" });
 
 declare module "@mui/material/styles" {
-	interface Theme {
+	interface Palette {
 		developerWindow: {
 			background: string;
 			textPrimary: string;
@@ -30,98 +30,117 @@ declare module "@mui/material/styles" {
 		};
 	}
 
-	interface ThemeOptions {
-		developerWindow?: {
-			background?: string;
-			textPrimary?: string;
-			textSecondary?: string;
-			closeDot?: string;
-			minimizeDot?: string;
-			fullScreenDot?: string;
-			gradient?: {
-				darkBlue?: string;
-				lightBlue?: string;
-				lighterBlue?: string;
-			};
-			muted?: string;
-			variable?: string;
-			type?: string;
-			developerText?: string;
-		};
-		glowColors?: {
-			yellow?: string;
-			green?: string;
-			purple?: string;
-			wallpaper?: string;
-		};
+	interface PaletteOptions {
+		developerWindow?: Palette["developerWindow"];
+		glowColors?: Palette["glowColors"];
 	}
 }
 
-export const theme = createTheme({
-	palette: {
-		primary: {
-			main: "#AF97C5",
-		},
-		secondary: {
-			main: "#B6F1E9",
-		},
-		background: {
-			default: "#171717",
-			paper: "#0E1522",
-		},
-		text: {
-			primary: "#cfcfcf",
-		},
-	},
+export const theme = extendTheme({
+	colorSchemeSelector: "class",
 	typography: {
 		fontFamily: silkscreen.style.fontFamily,
 		h3: {
 			fontSize: "2.5rem",
 		},
 	},
-	developerWindow: {
-		background: "#1E1E1E",
-		textPrimary: "#D4D4D4",
-		textSecondary: "darkgrey",
-		closeDot: "#FF5757",
-		minimizeDot: "#FFCC33",
-		fullScreenDot: "#4CAF50",
-		gradient: {
-			darkBlue: "#0F2027",
-			lightBlue: "#203A43",
-			lighterBlue: "#2C5364",
+	colorSchemes: {
+		light: {
+			palette: {
+				primary: { main: "#673AB7" },
+				secondary: { main: "#009688" },
+				background: {
+					default: "#F3F4F6",
+					paper: "#FFFFFF",
+				},
+				text: {
+					primary: "#1F2937",
+					secondary: "#4B5563",
+				},
+				developerWindow: {
+					background: "#FFFFFF",
+					textPrimary: "#333333",
+					textSecondary: "#666666",
+					closeDot: "#FF5F56",
+					minimizeDot: "#FFBD2E",
+					fullScreenDot: "#27C93F",
+					gradient: {
+						darkBlue: "#E0EAFC",
+						lightBlue: "#CFDEF3",
+						lighterBlue: "#B8C6DB",
+					},
+					muted: "#9CA3AF",
+					variable: "#005CC5",
+					type: "#22863A",
+					developerText: "#6F42C1",
+				},
+				glowColors: {
+					yellow: "#F59E0B",
+					green: "#10B981",
+					purple: "#8B5CF6",
+					wallpaper: "#E5E7EB",
+				},
+			},
 		},
-		muted: "#838383",
-		variable: "#88ACFF",
-		type: "#69D767",
-		developerText: "#DB88FF",
-	},
-	glowColors: {
-		yellow: "#FFE627",
-		green: "#399E5A",
-		purple: "#5F3D75",
-		wallpaper: "#272d33",
+		dark: {
+			palette: {
+				primary: { main: "#AF97C5" },
+				secondary: { main: "#B6F1E9" },
+				background: {
+					default: "#171717",
+					paper: "#0E1522",
+				},
+				text: {
+					primary: "#cfcfcf",
+				},
+				developerWindow: {
+					background: "#1E1E1E",
+					textPrimary: "#D4D4D4",
+					textSecondary: "darkgrey",
+					closeDot: "#FF5757",
+					minimizeDot: "#FFCC33",
+					fullScreenDot: "#4CAF50",
+					gradient: {
+						darkBlue: "#0F2027",
+						lightBlue: "#203A43",
+						lighterBlue: "#2C5364",
+					},
+					muted: "#838383",
+					variable: "#88ACFF",
+					type: "#69D767",
+					developerText: "#DB88FF",
+				},
+				glowColors: {
+					yellow: "#FFE627",
+					green: "#399E5A",
+					purple: "#5F3D75",
+					wallpaper: "#272d33",
+				},
+			},
+		},
 	},
 	components: {
 		MuiButton: {
 			variants: [
 				{
 					props: { variant: "contained" },
-					style: {
-						backgroundColor: "#203A43",
-						color: "#EAEAEA",
+					style: ({ theme }) => ({
+						backgroundColor:
+							theme.vars.palette.developerWindow.gradient.lightBlue,
+						color: theme.vars.palette.developerWindow.textPrimary,
 						"&:hover": {
-							backgroundColor: "#2C5364",
+							backgroundColor:
+								theme.vars.palette.developerWindow.gradient.lighterBlue,
 						},
-					},
+					}),
 				},
 				{
 					props: { variant: "outlined" },
-					style: {
-						border: "1px solid rgba(234, 234, 234, 0.4)",
+					style: ({ theme }) => ({
+						border: `1px solid ${theme.vars.palette.divider}`,
 						backgroundColor: "transparent",
-						color: "#EAEAEA",
-					},
+						color: theme.vars.palette.text.primary,
+					}),
 				},
 			],
 			styleOverrides: {
@@ -134,20 +153,20 @@ export const theme = createTheme({
 		},
 		MuiOutlinedInput: {
 			styleOverrides: {
-				root: {
-					backgroundColor: "#23282c",
+				root: ({ theme }) => ({
+					backgroundColor: theme.vars.palette.background.paper,
 					"&:hover .MuiOutlinedInput-notchedOutline": {
-						borderColor: "#cccccc",
+						borderColor: theme.vars.palette.text.primary,
 					},
 					"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-						borderColor: "#a0a0a0",
+						borderColor: theme.vars.palette.primary.main,
 					},
-				},
-				notchedOutline: {
-					borderColor: "#838383",
-				},
+				}),
+				notchedOutline: ({ theme }) => ({
+					borderColor: theme.vars.palette.developerWindow.muted,
+				}),
 				input: {
-					p: 0,
+					padding: 0,
 					"::placeholder": {
 						fontSize: "0.875rem",
 						fontWeight: 400,
@@ -169,42 +188,42 @@ export const theme = createTheme({
 				disableRipple: false,
 			},
 			styleOverrides: {
-				root: {
+				root: ({ theme }) => ({
 					"&:hover": {
-						backgroundColor: "rgba(44,83,100,0.08)",
+						backgroundColor: `rgba(${theme.vars.palette.action.activeChannel} / 0.08)`,
 						borderRadius: 0,
 					},
-				},
+				}),
 			},
 		},
 		MuiListItemButton: {
 			styleOverrides: {
-				root: {
+				root: ({ theme }) => ({
 					"&:hover": {
-						backgroundColor: "rgba(44,83,100,0.08)",
+						backgroundColor: `rgba(${theme.vars.palette.action.activeChannel} / 0.08)`,
 					},
-				},
+				}),
 			},
 		},
 		MuiMenuItem: {
 			styleOverrides: {
-				root: {
+				root: ({ theme }) => ({
 					"&:hover": {
-						backgroundColor: "rgba(44,83,100,0.08)",
+						backgroundColor: `rgba(${theme.vars.palette.action.activeChannel} / 0.08)`,
 					},
-				},
+				}),
 			},
 		},
 		MuiInputBase: {
 			styleOverrides: {
-				input: {
+				input: ({ theme }) => ({
 					"&:-webkit-autofill": {
-						WebkitBoxShadow: "0 0 0 1000px transparent inset",
-						WebkitTextFillColor: "#CFCFCF",
-						caretColor: "#CFCFCF",
+						WebkitBoxShadow: `0 0 0 1000px ${theme.vars.palette.background.paper} inset`,
+						WebkitTextFillColor: theme.vars.palette.text.primary,
+						caretColor: theme.vars.palette.text.primary,
 						transition: "background-color 5000s ease-in-out 0s",
 					},
-				},
+				}),
 			},
 		},
 	},

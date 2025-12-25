@@ -86,7 +86,7 @@ export default function ContactForm(props: ContactFormProps) {
 			slotProps={{
 				paper: {
 					sx: {
-						bgcolor: theme.palette.background.default,
+						bgcolor: theme.vars?.palette.background.default,
 						borderRadius: 0,
 					},
 				},
@@ -100,13 +100,13 @@ export default function ContactForm(props: ContactFormProps) {
 					>
 						<CloseIcon
 							fontSize="small"
-							sx={{ color: theme.developerWindow.muted }}
+							sx={{ color: theme.vars?.palette.developerWindow.muted }}
 						/>
 					</IconButton>
 					<Avatar
 						sx={{
-							bgcolor: theme.developerWindow.gradient.lightBlue,
-							color: theme.palette.text.primary,
+							bgcolor: theme.vars?.palette.developerWindow.gradient.lightBlue,
+							color: theme.vars?.palette.text.primary,
 						}}
 					>
 						<EmailOutlined />
@@ -122,7 +122,7 @@ export default function ContactForm(props: ContactFormProps) {
 					<Typography
 						textAlign="center"
 						variant="caption"
-						color={theme.developerWindow.muted}
+						color={theme.vars?.palette.developerWindow.muted}
 						fontWeight={200}
 					>
 						Send me a message and I will get back to you as soon as possible.

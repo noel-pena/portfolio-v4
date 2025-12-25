@@ -34,7 +34,7 @@ export default function AppWrapper({
 				boxSizing: "border-box",
 				overflow: "hidden",
 				position: "relative",
-				backgroundColor: (theme) => theme.palette.background.default,
+				backgroundColor: (theme) => theme.vars?.palette.background.default,
 				paddingTop: "env(safe-area-inset-top)",
 				paddingBottom: "env(safe-area-inset-bottom)",
 				"&::before, &::after": {
@@ -51,13 +51,13 @@ export default function AppWrapper({
 				"&::before": {
 					top: "-10%",
 					left: "-40%",
-					background: (theme) => theme.glowColors.purple,
+					background: (theme) => theme.vars?.palette.glowColors.purple,
 					animation: `${pulseGlowA} 10s ease-in-out infinite`,
 				},
 				"&::after": {
 					bottom: "-10%",
 					right: "-40%",
-					background: (theme) => theme.glowColors.green,
+					background: (theme) => theme.vars?.palette.glowColors.green,
 					animation: `${pulseGlowB} 10s ease-in-out infinite`,
 				},
 			}}

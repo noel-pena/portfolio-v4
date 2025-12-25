@@ -41,9 +41,9 @@ export const SnackbarProvider = ({
 					sx={(theme) => ({
 						bgcolor:
 							severity === "success"
-								? theme.palette.success.main
-								: theme.palette.error.main,
-						color: theme.palette.text.primary,
+								? theme.vars?.palette.success.main
+								: theme.vars?.palette.error.main,
+						color: theme.vars?.palette.text.primary,
 						maxWidth: "fit-content",
 					})}
 					message={message}

@@ -20,6 +20,7 @@ import {
 	Toolbar,
 	Tooltip,
 	Typography,
+	useColorScheme,
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
@@ -42,7 +43,7 @@ function HomeIcon(): React.ReactElement {
 		>
 			<ChevronLeftIcon
 				sx={{
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 					height: 32,
 					width: 32,
 				}}
@@ -52,14 +53,14 @@ function HomeIcon(): React.ReactElement {
 				variant="subtitle1"
 				sx={{
 					ml: 0.5,
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 				}}
 			>
 				Portfolio
 			</Typography>
 			<ChevronRightIcon
 				sx={{
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 					height: 32,
 					width: 32,
 				}}
@@ -71,10 +72,16 @@ function HomeIcon(): React.ReactElement {
 export default function Navbar() {
 	const [openContactForm, setOpenContactForm] = React.useState(false);
 	const [openDrawer, setOpenDrawer] = React.useState(false);
-	const [isDark, setIsDark] = React.useState(true);
+
+	const { mode, setMode } = useColorScheme();
+	const [mounted, setMounted] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
+
+	React.useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	const menuItems: Array<MenuItemProps> = [
 		{
@@ -102,13 +109,17 @@ export default function Navbar() {
 	const glassStyles = {
 		borderBottom: `1px solid ${theme.palette.divider}`,
 		backdropFilter: "blur(10px)",
-		backgroundColor: "transparent",
 	};
+
+	if (!mounted) {
+		return null;
+	}
 
 	if (isMobile) {
 		return (
 			<>
 				<AppBar
+					color="transparent"
 					position="fixed"
 					elevation={0}
 					sx={{
@@ -130,7 +141,7 @@ export default function Navbar() {
 						>
 							<MenuIcon
 								sx={{
-									color: theme.palette.text.primary,
+									color: theme.vars?.palette.text.primary,
 									height: 26,
 									width: 26,
 								}}
@@ -145,7 +156,7 @@ export default function Navbar() {
 					slotProps={{
 						paper: {
 							sx: {
-								bgcolor: theme.palette.background.default,
+								bgcolor: theme.vars?.palette.background.default,
 							},
 						},
 					}}
@@ -163,7 +174,7 @@ export default function Navbar() {
 										fontWeight: 200,
 										borderRadius: "8px",
 										px: 1,
-										color: theme.palette.text.primary,
+										color: theme.vars?.palette.text.primary,
 									}}
 								>
 									{menuItem.item}
@@ -178,7 +189,12 @@ export default function Navbar() {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="fixed" elevation={0} sx={glassStyles}>
+			<AppBar
+				position="fixed"
+				elevation={0}
+				sx={glassStyles}
+				color="transparent"
+			>
 				<Toolbar sx={{ py: 1, px: 0 }}>
 					<Grid
 						container
@@ -201,7 +217,7 @@ export default function Navbar() {
 										fontWeight: 200,
 										borderRadius: "8px",
 										px: 1,
-										color: theme.palette.text.primary,
+										color: theme.vars?.palette.text.primary,
 									}}
 									key={menuItem.item}
 								>
@@ -214,9 +230,9 @@ export default function Navbar() {
 								<Button
 									variant="contained"
 									sx={{ minWidth: 0 }}
-									onClick={() => setIsDark(!isDark)}
+									onClick={() => setMode(mode === "light" ? "dark" : "light")}
 								>
-									{isDark ? <DarkModeIcon /> : <LightModeIcon />}
+									{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
 								</Button>
 								<Button
 									aria-label="Contact button"

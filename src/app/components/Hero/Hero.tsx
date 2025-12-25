@@ -67,7 +67,7 @@ export default function Hero() {
 							<Box
 								component="span"
 								sx={{
-									background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.fullScreenDot}, ${theme.developerWindow.minimizeDot})`,
+									background: `linear-gradient(135deg, ${theme.vars?.palette.developerWindow.gradient.lighterBlue}, ${theme.vars?.palette.developerWindow.fullScreenDot}, ${theme.vars?.palette.developerWindow.minimizeDot})`,
 									WebkitBackgroundClip: "text",
 									WebkitTextFillColor: "transparent",
 									display: "flex",
@@ -81,7 +81,7 @@ export default function Hero() {
 							component="p"
 							variant="subtitle1"
 							textAlign={isMobile ? "center" : "left"}
-							color={theme.developerWindow.muted}
+							color={theme.vars?.palette.developerWindow.muted}
 							sx={{ fontWeight: 200 }}
 						>
 							Full stack developer experienced in TypeScript, React, Flutter,

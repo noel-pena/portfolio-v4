@@ -86,6 +86,7 @@ export default function ContactForm(props: ContactFormProps) {
 			slotProps={{
 				paper: {
 					sx: {
+						backgroundImage: "none",
 						bgcolor: theme.vars?.palette.background.default,
 						borderRadius: 0,
 					},
@@ -139,7 +140,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.name?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36, borderRadius: 0 },
+									sx: { height: 36, borderRadius: 0, pl: 1 },
 								},
 							}}
 							fullWidth
@@ -155,7 +156,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.email?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36, borderRadius: 0 },
+									sx: { height: 36, borderRadius: 0, pl: 1 },
 								},
 							}}
 							fullWidth
@@ -171,7 +172,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.message?.message}
 							slotProps={{
 								input: {
-									sx: { borderRadius: 0 },
+									sx: { borderRadius: 0, p: 1 },
 								},
 							}}
 							fullWidth

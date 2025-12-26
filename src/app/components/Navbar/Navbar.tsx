@@ -77,7 +77,6 @@ export default function Navbar() {
 	const [mounted, setMounted] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
 
 	React.useEffect(() => {
 		setMounted(true);
@@ -106,11 +105,6 @@ export default function Navbar() {
 		},
 	];
 
-	const glassStyles = {
-		borderBottom: `1px solid ${theme.palette.divider}`,
-		backdropFilter: "blur(10px)",
-	};
-
 	if (!mounted) {
 		return null;
 	}
@@ -128,26 +122,36 @@ export default function Navbar() {
 						display: "flex",
 						flexDirection: "row",
 						justifyContent: "space-between",
-						...glassStyles,
+						backdropFilter: "blur(10px)",
 					}}
 				>
 					<HomeIcon />
-					<Tooltip title="Expand menu icon">
-						<IconButton
-							aria-label="open menu icon"
-							onClick={() => {
-								setOpenDrawer(true);
-							}}
+					<Stack direction="row" gap={2} alignItems="center">
+						<Button
+							color="inherit"
+							variant="text"
+							sx={{ minWidth: 0 }}
+							onClick={() => setMode(mode === "light" ? "dark" : "light")}
 						>
-							<MenuIcon
-								sx={{
-									color: theme.vars?.palette.text.primary,
-									height: 26,
-									width: 26,
+							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+						</Button>
+						<Tooltip title="Expand menu icon">
+							<IconButton
+								aria-label="open menu icon"
+								onClick={() => {
+									setOpenDrawer(true);
 								}}
-							/>
-						</IconButton>
-					</Tooltip>
+							>
+								<MenuIcon
+									sx={{
+										color: theme.vars?.palette.text.primary,
+										height: 26,
+										width: 26,
+									}}
+								/>
+							</IconButton>
+						</Tooltip>
+					</Stack>
 				</AppBar>
 				<Drawer
 					anchor="top"
@@ -192,7 +196,7 @@ export default function Navbar() {
 			<AppBar
 				position="fixed"
 				elevation={0}
-				sx={glassStyles}
+				sx={{ backdropFilter: "blur(10px)" }}
 				color="transparent"
 			>
 				<Toolbar sx={{ py: 1, px: 0 }}>
@@ -228,8 +232,8 @@ export default function Navbar() {
 						<Grid display="flex" direction="row" alignItems="center" gap={1}>
 							<Stack direction="row" alignItems="center" gap={1}>
 								<Button
-									variant="contained"
-									sx={{ minWidth: 0 }}
+									color="inherit"
+									variant="text"
 									onClick={() => setMode(mode === "light" ? "dark" : "light")}
 								>
 									{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}

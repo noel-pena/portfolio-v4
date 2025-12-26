@@ -53,6 +53,7 @@ declare module "@mui/material/styles" {
 
 export const theme = extendTheme({
 	colorSchemeSelector: "class",
+	defaultColorScheme: "dark",
 	typography: {
 		fontFamily: silkscreen.style.fontFamily,
 		h3: {
@@ -62,52 +63,52 @@ export const theme = extendTheme({
 	colorSchemes: {
 		light: {
 			palette: {
-				primary: { main: "#673AB7" },
-				secondary: { main: "#009688" },
+				primary: { main: "#000000" },
+				secondary: { main: "#333333" },
 				background: {
-					default: "#F3F4F6",
-					paper: "#FFFFFF",
+					default: "#FFFFFF",
+					paper: "#F8F8F8",
 				},
 				text: {
-					primary: "#1F2937",
-					secondary: "#4B5563",
+					primary: "#000000",
+					secondary: "#555555",
 				},
 				developerWindow: {
-					background: "#f6f6f6",
-					textPrimary: "#333333",
-					textSecondary: "#666666",
-					closeDot: "#FF5F56",
-					minimizeDot: "#FFBD2E",
-					fullScreenDot: "#27C93F",
+					background: "#FFFFFF",
+					textPrimary: "#000000",
+					textSecondary: "#444444",
+					closeDot: "#000000",
+					minimizeDot: "#666666",
+					fullScreenDot: "#AAAAAA",
 					gradient: {
-						darkBlue: "#e6fce0",
-						lightBlue: "#d1f3cf",
-						lighterBlue: "#ab9ad6",
+						darkBlue: "#FFFFFF",
+						lightBlue: "#c8c8c8",
+						lighterBlue: "#757575",
 					},
-					muted: "#6a6b71",
-					variable: "#005CC5",
-					type: "#22863A",
-					developerText: "#6F42C1",
+					muted: "#888888",
+					variable: "#000000",
+					type: "#333333",
+					developerText: "#111111",
 				},
 				glowColors: {
-					yellow: "#F59E0B",
-					green: "#10B981",
-					purple: "#8B5CF6",
-					wallpaper: "#E5E7EB",
+					yellow: "#D1D1D1",
+					green: "#A3A3A3",
+					purple: "#757575",
+					wallpaper: "#F0F0F0",
 				},
 				skillColors: {
-					react: "#a2ebfd",
-					typescript: "#3178C6",
-					javascript: "#ede8c2",
-					kotlin: "#9169ff",
-					java: "#5382A1",
-					flutter: "#72a4cd",
-					springBoot: "#bbe3aa",
-					node: "#7fc87f",
-					aws: "#ffcd78",
-					azure: "#0078D7",
-					postgresql: "#336791",
-					python: "#3776AB",
+					react: "#E0E0E0",
+					typescript: "#D6D6D6",
+					javascript: "#EBEBEB",
+					kotlin: "#CCCCCC",
+					java: "#B3B3B3",
+					flutter: "#C4C4C4",
+					springBoot: "#D1D1D1",
+					node: "#C9C9C9",
+					aws: "#DBDBDB",
+					azure: "#CFCFCF",
+					postgresql: "#C7C7C7",
+					python: "#BFBFBF",
 				},
 			},
 		},
@@ -117,7 +118,7 @@ export const theme = extendTheme({
 				secondary: { main: "#B6F1E9" },
 				background: {
 					default: "#171717",
-					paper: "#0E1522",
+					paper: "#23282c",
 				},
 				text: {
 					primary: "#cfcfcf",
@@ -132,7 +133,7 @@ export const theme = extendTheme({
 					gradient: {
 						darkBlue: "#0F2027",
 						lightBlue: "#203A43",
-						lighterBlue: "#2C5364",
+						lighterBlue: "#335c6e",
 					},
 					muted: "#838383",
 					variable: "#88ACFF",
@@ -205,9 +206,6 @@ export const theme = extendTheme({
 						borderColor: theme.vars.palette.primary.main,
 					},
 				}),
-				notchedOutline: ({ theme }) => ({
-					borderColor: theme.vars.palette.developerWindow.muted,
-				}),
 				input: {
 					padding: 0,
 					"::placeholder": {
@@ -260,12 +258,16 @@ export const theme = extendTheme({
 		MuiInputBase: {
 			styleOverrides: {
 				input: ({ theme }) => ({
-					"&:-webkit-autofill": {
-						WebkitBoxShadow: `0 0 0 1000px ${theme.vars.palette.background.paper} inset`,
-						WebkitTextFillColor: theme.vars.palette.text.primary,
-						caretColor: theme.vars.palette.text.primary,
-						transition: "background-color 5000s ease-in-out 0s",
+					"::placeholder": {
+						fontSize: "0.875rem",
+						fontWeight: 400,
 					},
+					"&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active":
+						{
+							WebkitBoxShadow: `0 0 0 1000px ${theme.vars.palette.background.paper} inset !important`,
+							WebkitTextFillColor: `${theme.vars.palette.text.primary}`,
+							caretColor: `${theme.vars.palette.text.primary}`,
+						},
 				}),
 			},
 		},

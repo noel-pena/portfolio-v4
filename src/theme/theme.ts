@@ -184,6 +184,7 @@ export const theme = extendTheme({
 						border: `1px solid ${theme.vars.palette.divider}`,
 						backgroundColor: "transparent",
 						color: theme.vars.palette.text.primary,
+						backdropFilter: "blur(10px)",
 					}),
 				},
 			],

@@ -2,6 +2,8 @@
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
 	AppBar,
@@ -14,9 +16,11 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
+	Stack,
 	Toolbar,
 	Tooltip,
 	Typography,
+	useColorScheme,
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
@@ -39,7 +43,7 @@ function HomeIcon(): React.ReactElement {
 		>
 			<ChevronLeftIcon
 				sx={{
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 					height: 32,
 					width: 32,
 				}}
@@ -49,14 +53,14 @@ function HomeIcon(): React.ReactElement {
 				variant="subtitle1"
 				sx={{
 					ml: 0.5,
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 				}}
 			>
 				Portfolio
 			</Typography>
 			<ChevronRightIcon
 				sx={{
-					color: theme.palette.text.primary,
+					color: theme.vars?.palette.text.primary,
 					height: 32,
 					width: 32,
 				}}
@@ -68,8 +72,16 @@ function HomeIcon(): React.ReactElement {
 export default function Navbar() {
 	const [openContactForm, setOpenContactForm] = React.useState(false);
 	const [openDrawer, setOpenDrawer] = React.useState(false);
+
+	const { mode, setMode } = useColorScheme();
+	const [mounted, setMounted] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+	React.useEffect(() => {
+		setMounted(true);
+	}, []);
+
 	const menuItems: Array<MenuItemProps> = [
 		{
 			item: "Skills",
@@ -93,16 +105,15 @@ export default function Navbar() {
 		},
 	];
 
-	const glassStyles = {
-		borderBottom: `1px solid ${theme.palette.divider}`,
-		backdropFilter: "blur(10px)",
-		backgroundColor: "transparent",
-	};
+	if (!mounted) {
+		return null;
+	}
 
 	if (isMobile) {
 		return (
 			<>
 				<AppBar
+					color="transparent"
 					position="fixed"
 					elevation={0}
 					sx={{
@@ -111,26 +122,36 @@ export default function Navbar() {
 						display: "flex",
 						flexDirection: "row",
 						justifyContent: "space-between",
-						...glassStyles,
+						backdropFilter: "blur(10px)",
 					}}
 				>
 					<HomeIcon />
-					<Tooltip title="Expand menu icon">
-						<IconButton
-							aria-label="open menu icon"
-							onClick={() => {
-								setOpenDrawer(true);
-							}}
+					<Stack direction="row" gap={2} alignItems="center">
+						<Button
+							color="inherit"
+							variant="text"
+							sx={{ minWidth: 0 }}
+							onClick={() => setMode(mode === "light" ? "dark" : "light")}
 						>
-							<MenuIcon
-								sx={{
-									color: theme.palette.text.primary,
-									height: 26,
-									width: 26,
+							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+						</Button>
+						<Tooltip title="Expand menu icon">
+							<IconButton
+								aria-label="open menu icon"
+								onClick={() => {
+									setOpenDrawer(true);
 								}}
-							/>
-						</IconButton>
-					</Tooltip>
+							>
+								<MenuIcon
+									sx={{
+										color: theme.vars?.palette.text.primary,
+										height: 26,
+										width: 26,
+									}}
+								/>
+							</IconButton>
+						</Tooltip>
+					</Stack>
 				</AppBar>
 				<Drawer
 					anchor="top"
@@ -139,7 +160,7 @@ export default function Navbar() {
 					slotProps={{
 						paper: {
 							sx: {
-								bgcolor: theme.palette.background.default,
+								bgcolor: theme.vars?.palette.background.default,
 							},
 						},
 					}}
@@ -157,7 +178,7 @@ export default function Navbar() {
 										fontWeight: 200,
 										borderRadius: "8px",
 										px: 1,
-										color: theme.palette.text.primary,
+										color: theme.vars?.palette.text.primary,
 									}}
 								>
 									{menuItem.item}
@@ -172,7 +193,12 @@ export default function Navbar() {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="fixed" elevation={0} sx={glassStyles}>
+			<AppBar
+				position="fixed"
+				elevation={0}
+				sx={{ backdropFilter: "blur(10px)" }}
+				color="transparent"
+			>
 				<Toolbar sx={{ py: 1, px: 0 }}>
 					<Grid
 						container
@@ -195,7 +221,7 @@ export default function Navbar() {
 										fontWeight: 200,
 										borderRadius: "8px",
 										px: 1,
-										color: theme.palette.text.primary,
+										color: theme.vars?.palette.text.primary,
 									}}
 									key={menuItem.item}
 								>
@@ -203,8 +229,15 @@ export default function Navbar() {
 								</Button>
 							))}
 						</Grid>
-						<Grid display="flex" direction="row" alignItems="center" gap={3}>
-							<>
+						<Grid display="flex" direction="row" alignItems="center" gap={1}>
+							<Stack direction="row" alignItems="center" gap={1}>
+								<Button
+									color="inherit"
+									variant="text"
+									onClick={() => setMode(mode === "light" ? "dark" : "light")}
+								>
+									{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+								</Button>
 								<Button
 									aria-label="Contact button"
 									variant="outlined"
@@ -213,7 +246,7 @@ export default function Navbar() {
 								>
 									Contact
 								</Button>
-							</>
+							</Stack>
 						</Grid>
 					</Grid>
 				</Toolbar>

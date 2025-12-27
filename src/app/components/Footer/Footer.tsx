@@ -46,7 +46,7 @@ export default function Footer() {
 				justifyContent: "space-between",
 				flexDirection: "column",
 				minHeight: isMobile ? "75%" : "40%",
-				background: `linear-gradient(135deg, ${theme.palette.background.default}, ${theme.glowColors.wallpaper}, ${theme.palette.background.default})`,
+				background: `linear-gradient(135deg, ${theme.vars?.palette.background.default}, ${theme.vars?.palette.glowColors.wallpaper}, ${theme.vars?.palette.background.default})`,
 			}}
 		>
 			<Box
@@ -58,7 +58,7 @@ export default function Footer() {
 					width: 100,
 					height: 100,
 					bgcolor: "transparent",
-					border: `1px solid ${theme.glowColors.purple}`,
+					border: `1px solid ${theme.vars?.palette.glowColors.purple}`,
 					borderRadius: "50%",
 					opacity: "40%",
 				}}
@@ -72,7 +72,7 @@ export default function Footer() {
 					width: 100,
 					height: 100,
 					bgcolor: "transparent",
-					border: `1px solid ${theme.glowColors.green}`,
+					border: `1px solid ${theme.vars?.palette.glowColors.green}`,
 					borderRadius: "50%",
 					opacity: "40%",
 				}}
@@ -86,7 +86,7 @@ export default function Footer() {
 					width: 100,
 					height: 100,
 					bgcolor: "transparent",
-					border: `1px solid ${theme.glowColors.purple}`,
+					border: `1px solid ${theme.vars?.palette.glowColors.purple}`,
 					borderRadius: "50%",
 					opacity: "40%",
 				}}
@@ -100,7 +100,7 @@ export default function Footer() {
 					width: 100,
 					height: 100,
 					bgcolor: "transparent",
-					border: `1px solid ${theme.glowColors.green}`,
+					border: `1px solid ${theme.vars?.palette.glowColors.green}`,
 					borderRadius: "50%",
 					opacity: "40%",
 				}}
@@ -116,7 +116,7 @@ export default function Footer() {
 
 					<Typography
 						variant="subtitle2"
-						color={theme.developerWindow.muted}
+						color={theme.vars?.palette.developerWindow.muted}
 						fontWeight={200}
 						pl={1}
 					>
@@ -149,7 +149,7 @@ export default function Footer() {
 									>
 										<Typography
 											variant="subtitle2"
-											color={theme.developerWindow.muted}
+											color={theme.vars?.palette.developerWindow.muted}
 										>
 											{menuItem.item}
 										</Typography>
@@ -171,7 +171,7 @@ export default function Footer() {
 						>
 							<EmailOutlined
 								sx={{
-									color: theme.developerWindow.muted,
+									color: theme.vars?.palette.developerWindow.muted,
 									width: 16,
 									height: 16,
 								}}
@@ -180,7 +180,7 @@ export default function Footer() {
 								component={Link}
 								href="mailto:noel.pena@hotmail.com"
 								variant="subtitle2"
-								color={theme.developerWindow.muted}
+								color={theme.vars?.palette.developerWindow.muted}
 								sx={{ textDecoration: "none", pl: 1 }}
 							>
 								noel.pena@hotmail.com
@@ -193,7 +193,7 @@ export default function Footer() {
 						>
 							<LinkedInIcon
 								sx={{
-									color: theme.developerWindow.muted,
+									color: theme.vars?.palette.developerWindow.muted,
 									width: 16,
 									height: 16,
 								}}
@@ -204,7 +204,7 @@ export default function Footer() {
 								rel="noopener"
 								target="_blank"
 								variant="subtitle2"
-								color={theme.developerWindow.muted}
+								color={theme.vars?.palette.developerWindow.muted}
 								sx={{ textDecoration: "none", pl: 1 }}
 							>
 								LinkedIn
@@ -221,7 +221,7 @@ export default function Footer() {
 						height: "1px",
 						border: "none",
 						zIndex: 0,
-						background: `linear-gradient(135deg, ${theme.developerWindow.gradient.darkBlue}, ${theme.glowColors.green}, ${theme.developerWindow.gradient.darkBlue})`,
+						background: `linear-gradient(135deg, ${theme.vars?.palette.developerWindow.gradient.darkBlue}, ${theme.vars?.palette.glowColors.green}, ${theme.vars?.palette.developerWindow.gradient.darkBlue})`,
 					}}
 				/>
 				<Grid size={{ xs: 12 }} p={4}>
@@ -232,7 +232,7 @@ export default function Footer() {
 					>
 						<Typography
 							fontSize={12}
-							color={theme.developerWindow.muted}
+							color={theme.vars?.palette.developerWindow.muted}
 							fontWeight={200}
 						>
 							© {new Date().getFullYear()} Built with
@@ -255,7 +255,7 @@ export default function Footer() {
 						</Typography>
 						<Typography
 							fontSize={12}
-							color={theme.developerWindow.muted}
+							color={theme.vars?.palette.developerWindow.muted}
 							fontWeight={200}
 						>
 							Powered by React & Material UI

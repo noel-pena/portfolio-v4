@@ -4,6 +4,7 @@ import {
 	Card,
 	CardMedia,
 	Typography,
+	useColorScheme,
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
@@ -18,6 +19,7 @@ export interface SkillSlotProps {
 export default function SkillSlot(props: SkillSlotProps) {
 	const { altText, icon, primaryText, primaryColor } = props;
 	const theme = useTheme();
+	const { mode } = useColorScheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
@@ -28,7 +30,7 @@ export default function SkillSlot(props: SkillSlotProps) {
 				justifyContent: "space-evenly",
 				alignItems: "center",
 				borderRadius: 0,
-				backgroundColor: "transparent",
+				backgroundColor: theme.vars?.palette.background.default,
 				boxShadow: 3,
 				aspectRatio: "1/1",
 				transition: "background-color 0.3s ease-in-out, color 0.3s ease-in-out",
@@ -40,7 +42,11 @@ export default function SkillSlot(props: SkillSlotProps) {
 			<CardMedia
 				component="img"
 				image={icon}
-				sx={{ width: 100, height: 100 }}
+				sx={{
+					width: 100,
+					height: 100,
+					filter: mode === "light" ? "grayscale(100%)" : null,
+				}}
 				alt={altText}
 			/>
 			<Typography fontWeight={200} variant={isMobile ? "subtitle1" : "h6"}>

@@ -40,8 +40,8 @@ export default function ProjectCard({
 				flexDirection: "column",
 				justifyContent: "space-between",
 				borderRadius: 0,
-				backgroundColor: theme.palette.background.default,
-				color: theme.palette.text.primary,
+				backgroundColor: theme.vars?.palette.background.default,
+				color: theme.vars?.palette.text.primary,
 				boxShadow: 3,
 				height: "100%",
 				transition: "box-shadow 0.3s ease-in-out",
@@ -64,7 +64,7 @@ export default function ProjectCard({
 						height: 300,
 						objectFit: "cover",
 						transition: "transform 0.3s ease-in-out, filter 0.3s ease-in-out",
-						filter: "blur(3px)",
+						filter: "blur(3px) grayscale(100%)",
 					}}
 				/>
 			</Box>
@@ -74,7 +74,7 @@ export default function ProjectCard({
 				</Typography>
 				<Typography
 					variant="body2"
-					color={theme.developerWindow.muted}
+					color={theme.vars?.palette.developerWindow.muted}
 					fontWeight={200}
 				>
 					{description}
@@ -87,8 +87,9 @@ export default function ProjectCard({
 								label={tag}
 								variant="filled"
 								sx={{
-									bgcolor: theme.developerWindow.gradient.lightBlue,
-									color: theme.developerWindow.textPrimary,
+									bgcolor:
+										theme.vars?.palette.developerWindow.gradient.lightBlue,
+									color: theme.vars?.palette.developerWindow.textPrimary,
 									fontSize: "0.65rem",
 									height: 24,
 									borderRadius: 0,
@@ -103,7 +104,7 @@ export default function ProjectCard({
 					<Button
 						aria-label={`${title} code source button`}
 						size="small"
-						sx={{ color: theme.developerWindow.textPrimary }}
+						sx={{ color: theme.vars?.palette.developerWindow.textPrimary }}
 						href={codeLink}
 						target="_blank"
 						rel="noopener"
@@ -117,7 +118,7 @@ export default function ProjectCard({
 					<Button
 						aria-label={`${title} demo button`}
 						size="small"
-						sx={{ color: theme.developerWindow.textPrimary }}
+						sx={{ color: theme.vars?.palette.developerWindow.textPrimary }}
 						href={demoLink}
 						variant="outlined"
 						target="_blank"

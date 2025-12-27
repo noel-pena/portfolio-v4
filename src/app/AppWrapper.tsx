@@ -15,6 +15,9 @@ const pulseGlowB = keyframes({
 	"50%": { transform: "scale(1)", opacity: 0.5 },
 });
 
+const GRID_SIZE = "20px";
+const GRID_OPACITY = 0.025;
+
 export default function AppWrapper({
 	children,
 }: {
@@ -34,7 +37,7 @@ export default function AppWrapper({
 				boxSizing: "border-box",
 				overflow: "hidden",
 				position: "relative",
-				backgroundColor: (theme) => theme.palette.background.default,
+				backgroundColor: (theme) => theme.vars?.palette.background.default,
 				paddingTop: "env(safe-area-inset-top)",
 				paddingBottom: "env(safe-area-inset-bottom)",
 				"&::before, &::after": {
@@ -51,17 +54,36 @@ export default function AppWrapper({
 				"&::before": {
 					top: "-10%",
 					left: "-40%",
-					background: (theme) => theme.glowColors.purple,
+					background: (theme) => theme.vars?.palette.glowColors.purple,
 					animation: `${pulseGlowA} 10s ease-in-out infinite`,
 				},
 				"&::after": {
 					bottom: "-10%",
 					right: "-40%",
-					background: (theme) => theme.glowColors.green,
+					background: (theme) => theme.vars?.palette.glowColors.green,
 					animation: `${pulseGlowB} 10s ease-in-out infinite`,
 				},
 			}}
 		>
+			<Box
+				sx={{
+					position: "absolute",
+					inset: 0,
+					zIndex: 0,
+					pointerEvents: "none",
+					opacity: GRID_OPACITY,
+					backgroundSize: `${GRID_SIZE} ${GRID_SIZE}`,
+					backgroundImage: (theme) => `
+                    linear-gradient(to right, ${theme.vars?.palette.text.primary} 1px, transparent 1px),
+                    linear-gradient(to bottom, ${theme.vars?.palette.text.primary} 1px, transparent 1px)
+                `,
+					maskImage:
+						"radial-gradient(circle at center, black 60%, transparent 100%)",
+					WebkitMaskImage:
+						"radial-gradient(circle at center, black 30%, transparent 100%)",
+				}}
+			/>
+
 			<Box
 				sx={{
 					flexGrow: 1,

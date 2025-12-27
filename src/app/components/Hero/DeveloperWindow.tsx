@@ -30,10 +30,10 @@ function CodeLines({
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
-		let color = theme.developerWindow.textPrimary;
+		let color = theme.vars?.palette.developerWindow.textPrimary;
 
 		if (["type", "const"].includes(token)) {
-			color = theme.developerWindow.variable;
+			color = theme.vars?.palette.developerWindow.variable;
 		} else if (
 			[
 				"string",
@@ -45,9 +45,9 @@ function CodeLines({
 				`${new Date().getFullYear() - 2023}`,
 			].includes(token)
 		) {
-			color = theme.developerWindow.type;
+			color = theme.vars?.palette.developerWindow.type;
 		} else if (["Developer"].includes(token)) {
-			color = theme.developerWindow.developerText;
+			color = theme.vars?.palette.developerWindow.developerText;
 		}
 
 		return (
@@ -110,7 +110,7 @@ export default function DeveloperWindow() {
 		<Box
 			data-testid="developer-window"
 			sx={{
-				background: `linear-gradient(135deg, ${theme.developerWindow.gradient.lighterBlue}, ${theme.developerWindow.gradient.lightBlue}, ${theme.developerWindow.gradient.darkBlue})`,
+				background: `linear-gradient(135deg, ${theme.vars?.palette.developerWindow.gradient.lighterBlue}, ${theme.vars?.palette.developerWindow.gradient.lightBlue}, ${theme.vars?.palette.developerWindow.gradient.darkBlue})`,
 				borderRadius: 0,
 				pb: 2,
 				px: 2,
@@ -137,7 +137,7 @@ export default function DeveloperWindow() {
 							width: "12px",
 							height: "12px",
 							borderRadius: "50%",
-							bgcolor: theme.developerWindow.closeDot,
+							bgcolor: theme.vars?.palette.developerWindow.closeDot,
 						}}
 					/>
 					<Box
@@ -145,7 +145,7 @@ export default function DeveloperWindow() {
 							width: "12px",
 							height: "12px",
 							borderRadius: "50%",
-							bgcolor: theme.developerWindow.minimizeDot,
+							bgcolor: theme.vars?.palette.developerWindow.minimizeDot,
 						}}
 					/>
 					<Box
@@ -153,7 +153,7 @@ export default function DeveloperWindow() {
 							width: "12px",
 							height: "12px",
 							borderRadius: "50%",
-							bgcolor: theme.developerWindow.fullScreenDot,
+							bgcolor: theme.vars?.palette.developerWindow.fullScreenDot,
 						}}
 					/>
 				</Stack>
@@ -163,7 +163,7 @@ export default function DeveloperWindow() {
 					sx={{
 						display: "flex",
 						alignItems: "center",
-						color: theme.developerWindow.textPrimary,
+						color: theme.vars?.palette.developerWindow.textPrimary,
 					}}
 				>
 					portfolio/components/portfolio.tsx
@@ -173,8 +173,8 @@ export default function DeveloperWindow() {
 				elevation={0}
 				sx={{
 					borderRadius: 0,
-					bgcolor: theme.developerWindow.background,
-					color: theme.developerWindow.textPrimary,
+					bgcolor: theme.vars?.palette.developerWindow.background,
+					color: theme.vars?.palette.developerWindow.textPrimary,
 					fontFamily: "monospace",
 					p: isMobile ? 0 : 1,
 				}}
@@ -187,7 +187,7 @@ export default function DeveloperWindow() {
 					>
 						<Typography
 							sx={{
-								color: theme.developerWindow.textSecondary,
+								color: theme.vars?.palette.developerWindow.textSecondary,
 								fontFamily: "monospace",
 								fontSize: isMobile ? "0.55rem" : "0.64rem",
 								py: 1,
@@ -210,7 +210,7 @@ export default function DeveloperWindow() {
 									sx={{
 										width: "12px",
 										height: "12px",
-										color: theme.developerWindow.textSecondary,
+										color: theme.vars?.palette.developerWindow.textSecondary,
 									}}
 								/>
 							</IconButton>
@@ -226,7 +226,7 @@ export default function DeveloperWindow() {
 							>
 								<Typography
 									sx={{
-										color: theme.developerWindow.textSecondary,
+										color: theme.vars?.palette.developerWindow.textSecondary,
 										pr: 1,
 										minWidth: "28px",
 										textAlign: "right",

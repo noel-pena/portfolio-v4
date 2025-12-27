@@ -86,7 +86,8 @@ export default function ContactForm(props: ContactFormProps) {
 			slotProps={{
 				paper: {
 					sx: {
-						bgcolor: theme.palette.background.default,
+						backgroundImage: "none",
+						bgcolor: theme.vars?.palette.background.default,
 						borderRadius: 0,
 					},
 				},
@@ -100,13 +101,13 @@ export default function ContactForm(props: ContactFormProps) {
 					>
 						<CloseIcon
 							fontSize="small"
-							sx={{ color: theme.developerWindow.muted }}
+							sx={{ color: theme.vars?.palette.developerWindow.muted }}
 						/>
 					</IconButton>
 					<Avatar
 						sx={{
-							bgcolor: theme.developerWindow.gradient.lightBlue,
-							color: theme.palette.text.primary,
+							bgcolor: theme.vars?.palette.developerWindow.gradient.lightBlue,
+							color: theme.vars?.palette.text.primary,
 						}}
 					>
 						<EmailOutlined />
@@ -122,7 +123,7 @@ export default function ContactForm(props: ContactFormProps) {
 					<Typography
 						textAlign="center"
 						variant="caption"
-						color={theme.developerWindow.muted}
+						color={theme.vars?.palette.developerWindow.muted}
 						fontWeight={200}
 					>
 						Send me a message and I will get back to you as soon as possible.
@@ -139,7 +140,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.name?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36, borderRadius: 0 },
+									sx: { height: 36, borderRadius: 0, pl: 1 },
 								},
 							}}
 							fullWidth
@@ -155,7 +156,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.email?.message}
 							slotProps={{
 								input: {
-									sx: { height: 36, borderRadius: 0 },
+									sx: { height: 36, borderRadius: 0, pl: 1 },
 								},
 							}}
 							fullWidth
@@ -171,7 +172,7 @@ export default function ContactForm(props: ContactFormProps) {
 							helperText={errors.message?.message}
 							slotProps={{
 								input: {
-									sx: { borderRadius: 0 },
+									sx: { borderRadius: 0, p: 1 },
 								},
 							}}
 							fullWidth

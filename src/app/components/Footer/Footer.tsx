@@ -45,7 +45,7 @@ export default function Footer() {
 				display: "flex",
 				justifyContent: "space-between",
 				flexDirection: "column",
-				minHeight: isMobile ? "75%" : "40%",
+				minHeight: isMobile ? "75%" : "25%",
 				background: `linear-gradient(135deg, ${theme.vars?.palette.background.default}, ${theme.vars?.palette.glowColors.wallpaper}, ${theme.vars?.palette.background.default})`,
 			}}
 		>

@@ -33,17 +33,12 @@ export default function Hero() {
 			<Grid
 				container
 				justifyContent="space-around"
-				width="100%"
+				alignItems="center"
 				maxWidth="lg"
 				spacing={4}
 			>
 				{!isMobile && (
-					<Grid
-						size={{ xs: 12, md: 6 }}
-						minWidth={326}
-						maxWidth={400}
-						width="100%"
-					>
+					<Grid size={{ xs: 12, md: 6 }} maxWidth={400}>
 						<DeveloperWindow />
 					</Grid>
 				)}
@@ -63,7 +58,7 @@ export default function Hero() {
 							variant={isMobile ? "h3" : "h2"}
 							textAlign={isMobile ? "center" : "left"}
 						>
-							Hi, my name is
+							Hi, I am
 							<Box
 								component="span"
 								sx={{
@@ -85,8 +80,7 @@ export default function Hero() {
 							sx={{ fontWeight: 200 }}
 						>
 							Full stack developer experienced in TypeScript, React, Flutter,
-							and Kotlin. Focused on building clean, responsive applications
-							across web and mobile platforms.
+							Java, and Kotlin.
 						</Typography>
 						<Stack
 							direction={isMobile ? "column" : "row"}

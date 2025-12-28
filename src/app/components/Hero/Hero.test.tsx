@@ -12,11 +12,11 @@ describe("Hero section", () => {
 	test("renders title section", () => {
 		setup();
 
-		expect(screen.getByText("Hi, my name is")).toBeInTheDocument();
+		expect(screen.getByText("Hi, I am")).toBeInTheDocument();
 		expect(screen.getByText("Noel Peña")).toBeInTheDocument();
 		expect(
 			screen.getByText(
-				"Full stack developer experienced in TypeScript, React, Flutter, and Kotlin. Focused on building clean, responsive applications across web and mobile platforms.",
+				"Full stack developer experienced in TypeScript, React, Flutter, Java, and Kotlin.",
 			),
 		).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "Resume button" })).toHaveAttribute(

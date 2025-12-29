@@ -2,7 +2,7 @@
 
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { keyframes } from "@mui/system";
-import type React from "react";
+import React from "react";
 import Navbar from "@/app/components/Navbar/Navbar";
 
 const pulseGlowA = keyframes({
@@ -25,6 +25,19 @@ export default function AppWrapper({
 }) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const [isLoading, setIsLoading] = React.useState(true);
+
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 100);
+
+		return () => clearTimeout(timer);
+	}, []);
+
+	if (isLoading) {
+		return null;
+	}
 
 	return (
 		<Box

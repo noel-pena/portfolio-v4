@@ -139,6 +139,9 @@ export default function Navbar() {
 							onClick={() => {
 								setOpenDrawer(true);
 							}}
+							onTouchEnd={() => {
+								setOpenDrawer(true);
+							}}
 						>
 							<MenuIcon
 								sx={{

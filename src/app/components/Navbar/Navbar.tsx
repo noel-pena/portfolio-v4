@@ -18,7 +18,6 @@ import {
 	ListItemButton,
 	Stack,
 	Toolbar,
-	Tooltip,
 	Typography,
 	useColorScheme,
 	useMediaQuery,
@@ -135,22 +134,20 @@ export default function Navbar() {
 						>
 							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
 						</Button>
-						<Tooltip title="Expand menu icon">
-							<IconButton
-								aria-label="open menu icon"
-								onClick={() => {
-									setOpenDrawer(true);
+						<IconButton
+							aria-label="open menu icon"
+							onClick={() => {
+								setOpenDrawer(true);
+							}}
+						>
+							<MenuIcon
+								sx={{
+									color: theme.vars?.palette.text.primary,
+									height: 26,
+									width: 26,
 								}}
-							>
-								<MenuIcon
-									sx={{
-										color: theme.vars?.palette.text.primary,
-										height: 26,
-										width: 26,
-									}}
-								/>
-							</IconButton>
-						</Tooltip>
+							/>
+						</IconButton>
 					</Stack>
 				</AppBar>
 				<Drawer

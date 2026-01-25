@@ -71,6 +71,7 @@ function HomeIcon(): React.ReactElement {
 export default function Navbar() {
 	const [openContactForm, setOpenContactForm] = React.useState(false);
 	const [openDrawer, setOpenDrawer] = React.useState(false);
+	const [isClosing, setIsClosing] = React.useState(false);
 
 	const { mode, setMode } = useColorScheme();
 	const [mounted, setMounted] = React.useState(false);
@@ -80,6 +81,17 @@ export default function Navbar() {
 	React.useEffect(() => {
 		setMounted(true);
 	}, []);
+
+	const handleDrawerClose = () => {
+		setIsClosing(true);
+		setOpenDrawer(false);
+	};
+
+	const handleDrawerToggle = () => {
+		if (!isClosing) {
+			setOpenDrawer(!openDrawer);
+		}
+	};
 
 	const menuItems: Array<MenuItemProps> = [
 		{
@@ -134,16 +146,11 @@ export default function Navbar() {
 						>
 							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
 						</Button>
-						<Button
+						<IconButton
 							aria-label="open menu icon"
-							onClick={() => {
-								setOpenDrawer(true);
-							}}
+							onClick={handleDrawerToggle}
 							sx={{
-								minWidth: 0,
-								p: 1,
 								color: theme.vars?.palette.text.primary,
-								touchAction: "manipulation",
 							}}
 						>
 							<MenuIcon
@@ -152,13 +159,14 @@ export default function Navbar() {
 									width: 26,
 								}}
 							/>
-						</Button>
+						</IconButton>
 					</Box>
 				</AppBar>
 				<Drawer
 					anchor="top"
 					open={openDrawer}
-					onClose={() => setOpenDrawer(false)}
+					onClose={handleDrawerClose}
+					onTransitionEnd={() => setIsClosing(false)}
 					slotProps={{
 						paper: {
 							sx: {

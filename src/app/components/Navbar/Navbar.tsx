@@ -143,6 +143,7 @@ export default function Navbar() {
 								minWidth: 0,
 								p: 1,
 								color: theme.vars?.palette.text.primary,
+								touchAction: "manipulation",
 							}}
 						>
 							<MenuIcon

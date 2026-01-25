@@ -125,7 +125,7 @@ export default function Navbar() {
 					}}
 				>
 					<HomeIcon />
-					<Stack direction="row" gap={2} alignItems="center">
+					<Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
 						<Button
 							color="inherit"
 							variant="text"
@@ -139,7 +139,6 @@ export default function Navbar() {
 							onClick={() => {
 								setOpenDrawer(true);
 							}}
-							disableRipple
 						>
 							<MenuIcon
 								sx={{
@@ -149,7 +148,7 @@ export default function Navbar() {
 								}}
 							/>
 						</IconButton>
-					</Stack>
+					</Box>
 				</AppBar>
 				<Drawer
 					anchor="top"
@@ -160,6 +159,9 @@ export default function Navbar() {
 							sx: {
 								bgcolor: theme.vars?.palette.background.default,
 							},
+						},
+						root: {
+							keepMounted: true,
 						},
 					}}
 				>

@@ -1,10 +1,20 @@
-"use client";
-
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import type { Metadata, Viewport } from "next";
 import type React from "react";
-import { SnackbarProvider } from "@/app/components/ContactForm/SnackbarContext";
-import { theme } from "@/theme/theme";
+import Providers from "@/app/Providers";
+
+export const metadata: Metadata = {
+	title: "Portfolio by Noel",
+	appleWebApp: {
+		capable: true,
+	},
+};
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	viewportFit: "cover",
+	userScalable: false,
+};
 
 export default function RootLayout({
 	children,
@@ -13,21 +23,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<title>Portfolio by Noel</title>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=0"
-				/>
-				<meta name="apple-mobile-web-app-capable" content="yes" />
-			</head>
 			<body>
-				<AppRouterCacheProvider>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						<SnackbarProvider>{children}</SnackbarProvider>
-					</ThemeProvider>
-				</AppRouterCacheProvider>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

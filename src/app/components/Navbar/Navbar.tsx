@@ -74,13 +74,8 @@ export default function Navbar() {
 	const [isClosing, setIsClosing] = React.useState(false);
 
 	const { mode, setMode } = useColorScheme();
-	const [mounted, setMounted] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-	React.useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	const handleDrawerClose = () => {
 		setIsClosing(true);
@@ -115,10 +110,6 @@ export default function Navbar() {
 			target: "_blank",
 		},
 	];
-
-	if (!mounted) {
-		return null;
-	}
 
 	if (isMobile) {
 		return (
@@ -163,6 +154,7 @@ export default function Navbar() {
 					</Box>
 				</AppBar>
 				<Drawer
+					variant="temporary"
 					anchor="top"
 					open={openDrawer}
 					onClose={handleDrawerClose}

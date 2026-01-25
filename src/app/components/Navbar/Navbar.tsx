@@ -134,20 +134,24 @@ export default function Navbar() {
 						>
 							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
 						</Button>
-						<IconButton
+						<Button
 							aria-label="open menu icon"
 							onClick={() => {
 								setOpenDrawer(true);
 							}}
+							sx={{
+								minWidth: 0,
+								p: 1,
+								color: theme.vars?.palette.text.primary,
+							}}
 						>
 							<MenuIcon
 								sx={{
-									color: theme.vars?.palette.text.primary,
 									height: 26,
 									width: 26,
 								}}
 							/>
-						</IconButton>
+						</Button>
 					</Box>
 				</AppBar>
 				<Drawer

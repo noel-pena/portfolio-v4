@@ -4,9 +4,6 @@ import Providers from "@/app/Providers";
 
 export const metadata: Metadata = {
 	title: "Portfolio by Noel",
-	appleWebApp: {
-		capable: true,
-	},
 };
 
 export const viewport: Viewport = {

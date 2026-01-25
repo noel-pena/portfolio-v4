@@ -146,7 +146,7 @@ export default function Navbar() {
 						>
 							{mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
 						</Button>
-						<IconButton
+						<Button
 							aria-label="open menu icon"
 							onClick={handleDrawerToggle}
 							sx={{
@@ -159,7 +159,7 @@ export default function Navbar() {
 									width: 26,
 								}}
 							/>
-						</IconButton>
+						</Button>
 					</Box>
 				</AppBar>
 				<Drawer

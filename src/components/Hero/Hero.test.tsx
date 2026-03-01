@@ -1,8 +1,8 @@
 import { fireEvent, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe } from "vitest";
+import { describe, expect, test } from "vitest";
 import Hero from "@/components/Hero/Hero";
-import { render } from "@/test-utils";
+import { render } from "../../test-utils";
 
 describe("Hero section", () => {
 	function setup() {

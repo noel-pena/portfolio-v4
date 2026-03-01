@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import { describe } from "vitest";
-import Skills from "@/components/Skills/Skills";
-import { render } from "@/test-utils";
+import { describe, expect, test } from "vitest";
+import Skills from "../../components/Skills/Skills";
+import { render } from "../../test-utils";
 
 describe("Skills section", () => {
 	function setup() {

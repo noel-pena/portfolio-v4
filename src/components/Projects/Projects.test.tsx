@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import { describe } from "vitest";
-import Projects from "@/components/Projects/Projects";
-import { render } from "@/test-utils";
+import { describe, expect, test } from "vitest";
+import Projects from "../../components/Projects/Projects";
+import { render } from "../../test-utils";
 
 describe("Projects section", () => {
 	function setup() {

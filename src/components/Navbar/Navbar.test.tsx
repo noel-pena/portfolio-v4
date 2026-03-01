@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import { describe } from "vitest";
-import Navbar from "@/components/Navbar/Navbar";
-import { render } from "@/test-utils";
+import { describe, expect, test } from "vitest";
+import Navbar from "../../components/Navbar/Navbar";
+import { render } from "../../test-utils";
 
 describe("Navigation bar", () => {
 	function setup() {

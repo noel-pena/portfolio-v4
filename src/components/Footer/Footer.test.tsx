@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import { describe } from "vitest";
-import Footer from "@/components/Footer/Footer";
-import { render } from "@/test-utils";
+import { describe, expect, test } from "vitest";
+import Footer from "../../components/Footer/Footer";
+import { render } from "../../test-utils";
 
 describe("Footer section", () => {
 	function setup() {

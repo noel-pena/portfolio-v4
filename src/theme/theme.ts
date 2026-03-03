@@ -1,7 +1,4 @@
 import { extendTheme } from "@mui/material/styles";
-import { Silkscreen } from "next/font/google";
-
-const silkscreen = Silkscreen({ subsets: ["latin"], weight: "400" });
 
 declare module "@mui/material/styles" {
 	interface Palette {
@@ -55,7 +52,7 @@ export const theme = extendTheme({
 	colorSchemeSelector: "class",
 	defaultColorScheme: "dark",
 	typography: {
-		fontFamily: silkscreen.style.fontFamily,
+		fontFamily: "Silkscreen, sans-serif",
 		h3: {
 			fontSize: "2.5rem",
 		},
@@ -184,7 +181,6 @@ export const theme = extendTheme({
 						border: `1px solid ${theme.vars.palette.divider}`,
 						backgroundColor: "transparent",
 						color: theme.vars.palette.text.primary,
-						backdropFilter: "blur(10px)",
 					}),
 				},
 			],

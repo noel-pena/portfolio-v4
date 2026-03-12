@@ -9,4 +9,22 @@ export default defineConfig({
 		globals: true,
 		setupFiles: ["./src/setupTests.ts"],
 	},
+	ssr: {
+		noExternal: ["@csstools/css-calc", "@asamuzakjp/css-color"],
+	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					"react-vendor": ["react", "react-dom", "react-router-dom"],
+					"mui-vendor": [
+						"@mui/material",
+						"@mui/icons-material",
+						"@emotion/react",
+						"@emotion/styled",
+					],
+				},
+			},
+		},
+	},
 });

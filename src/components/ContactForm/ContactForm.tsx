@@ -15,11 +15,11 @@ import {
 	Stack,
 	TextField,
 	Typography,
+	useTheme,
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { theme } from "../../theme/theme";
 import { useSnackbar } from "./SnackbarContext";
 
 const formSchema = z.object({
@@ -49,6 +49,8 @@ export default function ContactForm(props: ContactFormProps) {
 	});
 	const { showMessage } = useSnackbar();
 	const [loading, setLoading] = React.useState(false);
+
+	const theme = useTheme();
 
 	const onSubmit = async (data: FormData) => {
 		setLoading(true);

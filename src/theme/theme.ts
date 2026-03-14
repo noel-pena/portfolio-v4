@@ -38,6 +38,10 @@ declare module "@mui/material/styles" {
 			azure: string;
 			postgresql: string;
 			python: string;
+			drupal: string;
+			php: string;
+			symfony: string;
+			scss: string;
 		};
 	}
 
@@ -106,6 +110,10 @@ export const theme = extendTheme({
 					azure: "#CFCFCF",
 					postgresql: "#C7C7C7",
 					python: "#BFBFBF",
+					drupal: "#D0D0D0",
+					php: "#D0D0D0",
+					symfony: "#D0D0D0",
+					scss: "#D0D0D0",
 				},
 			},
 		},
@@ -156,6 +164,10 @@ export const theme = extendTheme({
 					azure: "#023f6c",
 					postgresql: "#1b263b",
 					python: "#2b2d42",
+					drupal: "#00598e",
+					php: "#474A85",
+					symfony: "#393838",
+					scss: "#7a3e5d",
 				},
 			},
 		},

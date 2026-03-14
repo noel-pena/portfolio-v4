@@ -75,4 +75,28 @@ export const skillsData: Array<SkillSlotProps> = [
 		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
 		altText: "Python Logo",
 	},
+	{
+		primaryText: "Drupal",
+		primaryColor: skillVar("drupal"),
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-original.svg",
+		altText: "Drupal Logo",
+	},
+	{
+		primaryText: "PHP",
+		primaryColor: skillVar("php"),
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+		altText: "PHP Logo",
+	},
+	{
+		primaryText: "Symfony",
+		primaryColor: skillVar("symfony"),
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg",
+		altText: "Symfony Logo",
+	},
+	{
+		primaryText: "SCSS",
+		primaryColor: skillVar("scss"),
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
+		altText: "SCSS Logo",
+	},
 ];

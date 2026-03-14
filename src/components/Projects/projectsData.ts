@@ -18,12 +18,12 @@ export const projectsData: Array<ProjectCardProps> = [
 		altText: "picture of the interviewer ai app",
 		codeLink: "https://github.com/noel-pena/InterviewerAI",
 		demoLink: "https://interviewerai.onrender.com",
-		tags: ["JavaScript", "React", "Python", "Flask", "OpenAI API"],
+		tags: ["React", "Python", "Flask", "OpenAI API"],
 	},
 	{
 		title: "Wallpaper App",
 		description:
-			"A mobile app offering curated high-quality wallpapers with tagging, downloads, and favorites, built with Flutter and Kotlin.",
+			"A mobile app offering curated high-quality wallpapers with tagging, downloads, and favorites, built with Flutter/Dart and Kotlin.",
 		imageUrl: "../../snapshots/wallpaperapp.png",
 		altText: "picture of the wallpaper app",
 		codeLink: "https://github.com/noel-pena/wallpaper-mobile-app",

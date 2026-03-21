@@ -19,6 +19,8 @@ export default function Skills() {
 			id="skills"
 			sx={{
 				px: 4,
+				py: 4,
+				display: "flex",
 				flexDirection: "column",
 				minHeight: "100%",
 			}}

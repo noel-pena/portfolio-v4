@@ -122,6 +122,7 @@ export default function Navbar() {
 						display: "flex",
 						flexDirection: "row",
 						justifyContent: "space-between",
+						backdropFilter: "blur(3px)",
 					}}
 				>
 					<HomeIcon />
@@ -195,7 +196,14 @@ export default function Navbar() {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="fixed" elevation={0} color="transparent">
+			<AppBar
+				position="fixed"
+				elevation={0}
+				color="transparent"
+				sx={{
+					backdropFilter: "blur(3px)",
+				}}
+			>
 				<Toolbar sx={{ py: 1, px: 0 }}>
 					<Grid
 						container

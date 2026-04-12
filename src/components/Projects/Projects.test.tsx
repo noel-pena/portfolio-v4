@@ -37,7 +37,7 @@ describe("Projects section", () => {
 		expect(screen.getByText("Wallpaper App")).toBeInTheDocument();
 		expect(
 			screen.getByText(
-				"A mobile app offering curated high-quality wallpapers with tagging, downloads, and favorites, built with Flutter and Kotlin.",
+				"A mobile app offering curated high-quality wallpapers with tagging, downloads, and favorites, built with Flutter/Dart and Kotlin.",
 			),
 		).toBeInTheDocument();
 

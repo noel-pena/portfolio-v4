@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Snackbar, SnackbarContent } from "@mui/material";
 import React from "react";
 

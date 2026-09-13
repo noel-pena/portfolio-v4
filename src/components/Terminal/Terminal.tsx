@@ -1,4 +1,4 @@
-import { Box, InputBase, Stack, useTheme } from "@mui/material";
+import { Box, InputBase, Stack, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { GITHUB_URL, RESUME_URL, YEARS_OF_EXPERIENCE } from "../../constants";
 import { sendContactMessage } from "../ContactForm/contactApi";
@@ -65,6 +65,8 @@ export default function Terminal() {
 	const scrollRef = React.useRef<HTMLDivElement>(null);
 
 	const dw = theme.vars?.palette.codeWindow;
+	const isNarrow = useMediaQuery(theme.breakpoints.down("sm"));
+	const shellPrompt = isNarrow ? "$" : PROMPT;
 
 	React.useEffect(() => {
 		scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
@@ -206,7 +208,7 @@ export default function Terminal() {
 		}
 	};
 
-	const activePrompt = contactStep ? CONTACT_PROMPTS[contactStep] : PROMPT;
+	const activePrompt = contactStep ? CONTACT_PROMPTS[contactStep] : shellPrompt;
 
 	return (
 		<Section
@@ -269,9 +271,12 @@ export default function Terminal() {
 								<>
 									<Box
 										component="span"
-										sx={{ color: line.prompt ? dw?.type : dw?.variable }}
+										sx={{
+											color: line.prompt ? dw?.type : dw?.variable,
+											whiteSpace: "nowrap",
+										}}
 									>
-										{line.prompt ?? PROMPT}
+										{line.prompt ?? shellPrompt}
 									</Box>{" "}
 									{line.text}
 								</>
@@ -283,7 +288,11 @@ export default function Terminal() {
 					<Stack direction="row" alignItems="center" gap={1}>
 						<Box
 							component="span"
-							sx={{ color: contactStep ? dw?.type : dw?.variable }}
+							sx={{
+								color: contactStep ? dw?.type : dw?.variable,
+								whiteSpace: "nowrap",
+								flexShrink: 0,
+							}}
 						>
 							{activePrompt}
 						</Box>
@@ -307,6 +316,7 @@ export default function Terminal() {
 							}}
 							sx={{
 								flexGrow: 1,
+								minWidth: 0,
 								color: dw?.textPrimary,
 								fontFamily: "monospace",
 								fontSize: "0.75rem",

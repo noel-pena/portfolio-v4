@@ -17,6 +17,12 @@ interface SessionLine {
 	text: string;
 }
 
+// Widest line the session will ever show ("$ " prefix on commands), so the
+// block can reserve its final width and stay put while text types out.
+const maxLineCh = Math.max(
+	...SESSION.flatMap((step) => [step.command.length + 2, step.output.length]),
+);
+
 const TYPE_DELAY_MS = 80;
 const OUTPUT_DELAY_MS = 350;
 const NEXT_COMMAND_DELAY_MS = 900;
@@ -111,6 +117,7 @@ export default function TypedCodeLine() {
 				fontSize: "0.8rem",
 				lineHeight: 1.7,
 				minHeight: `${lineCount * 1.7}em`,
+				width: `min(${maxLineCh}ch, 100%)`,
 				pt: 1,
 				textAlign: "left",
 			}}

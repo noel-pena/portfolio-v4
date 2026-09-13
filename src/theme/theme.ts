@@ -250,6 +250,14 @@ export const theme = extendTheme({
 		},
 	},
 	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				html: {
+					WebkitTextSizeAdjust: "100%",
+					textSizeAdjust: "100%",
+				},
+			},
+		},
 		MuiButton: {
 			variants: [
 				{

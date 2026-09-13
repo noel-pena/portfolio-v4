@@ -1,16 +1,18 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { keyframes } from "@mui/system";
 import type React from "react";
 import Navbar from "./components/Navbar/Navbar";
 
+// Opacity-only pulses stay on the GPU compositor; animating scale or blur
+// forces continuous re-rasterization, which tanks frame rates on mobile.
 const pulseGlowA = keyframes({
-	"0%, 100%": { transform: "scale(1)", opacity: 0.5 },
-	"50%": { transform: "scale(1.1)", opacity: 0.7 },
+	"0%, 100%": { opacity: 0.5 },
+	"50%": { opacity: 0.8 },
 });
 
 const pulseGlowB = keyframes({
-	"0%, 100%": { transform: "scale(1.1)", opacity: 0.7 },
-	"50%": { transform: "scale(1)", opacity: 0.5 },
+	"0%, 100%": { opacity: 0.8 },
+	"50%": { opacity: 0.5 },
 });
 
 const GRID_SIZE = "20px";
@@ -21,9 +23,6 @@ export default function AppWrapper({
 }: {
 	children: React.ReactNode;
 }) {
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
 	return (
 		<Box
 			sx={{
@@ -39,26 +38,29 @@ export default function AppWrapper({
 				paddingTop: "env(safe-area-inset-top)",
 				paddingBottom: "env(safe-area-inset-bottom)",
 				"&::before, &::after": {
-					willChange: "transform, opacity",
+					willChange: "opacity",
 					content: '""',
 					position: "absolute",
-					width: "50vw",
-					height: "70vw",
-					borderRadius: "50%",
-					filter: isMobile ? "blur(120px)" : "blur(250px)",
-					opacity: 0.9,
+					width: "85vw",
+					height: "110vw",
 					zIndex: 0,
+					pointerEvents: "none",
+					"@media (prefers-reduced-motion: reduce)": {
+						animation: "none",
+					},
 				},
 				"&::before": {
-					top: "-10%",
-					left: "-40%",
-					background: (theme) => theme.vars?.palette.glowColors.purple,
+					top: "-25%",
+					left: "-50%",
+					background: (theme) =>
+						`radial-gradient(closest-side, ${theme.vars?.palette.glowColors.purple}, transparent)`,
 					animation: `${pulseGlowA} 10s ease-in-out infinite`,
 				},
 				"&::after": {
-					bottom: "-10%",
-					right: "-40%",
-					background: (theme) => theme.vars?.palette.glowColors.green,
+					bottom: "-25%",
+					right: "-50%",
+					background: (theme) =>
+						`radial-gradient(closest-side, ${theme.vars?.palette.glowColors.green}, transparent)`,
 					animation: `${pulseGlowB} 10s ease-in-out infinite`,
 				},
 			}}

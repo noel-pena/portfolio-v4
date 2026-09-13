@@ -60,6 +60,7 @@ export default function ProjectCard({
 					component="img"
 					image={imageUrl}
 					alt={altText}
+					loading="lazy"
 					sx={{
 						height: 300,
 						objectFit: "cover",

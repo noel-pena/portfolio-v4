@@ -18,20 +18,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { CONTACT_API_URL } from "../../constants";
+import { sendContactMessage } from "./contactApi";
+import { type ContactFormData, contactSchema } from "./contactSchema";
 import { useSnackbar } from "./SnackbarContext";
-
-const formSchema = z.object({
-	name: z.string().min(2, "Name must be at least 2 characters"),
-	email: z.email("Invalid email address"),
-	message: z
-		.string()
-		.min(5, "Minimum 5 characters")
-		.max(200, "Maximum 200 characters"),
-});
-
-type FormData = z.infer<typeof formSchema>;
 
 type ContactFormProps = {
 	open: boolean;
@@ -44,8 +33,8 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm<FormData>({
-		resolver: zodResolver(formSchema),
+	} = useForm<ContactFormData>({
+		resolver: zodResolver(contactSchema),
 		mode: "onBlur",
 	});
 	const { showMessage } = useSnackbar();
@@ -53,16 +42,10 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
 
 	const theme = useTheme();
 
-	const onSubmit = async (data: FormData) => {
+	const onSubmit = async (data: ContactFormData) => {
 		setLoading(true);
 		try {
-			const response = await fetch(CONTACT_API_URL, {
-				method: "POST",
-				headers: { "Content-type": "application/json" },
-				body: JSON.stringify(data),
-			});
-
-			if (response.ok) {
+			if (await sendContactMessage(data)) {
 				showMessage("Message sent successfully.");
 				reset();
 				onClose();

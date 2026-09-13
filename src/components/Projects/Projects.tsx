@@ -1,65 +1,33 @@
-import {
-	Box,
-	Grid,
-	Stack,
-	Typography,
-	useMediaQuery,
-	useTheme,
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
+import GitHubActivity from "../../components/GitHub/GitHubActivity";
 import ProjectCard from "../../components/Projects/ProjectCard";
 import { projectsData } from "../../components/Projects/projectsData";
+import Section, { SubHeading } from "../shared/Section";
 
 export default function Projects() {
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
 	return (
-		<Box
+		<Section
 			id="projects"
-			sx={{
-				flexDirection: "column",
-				minHeight: "100%",
-				pb: 3,
-				pt: isMobile ? 7 : 0,
-				px: 4,
-			}}
+			title="Featured"
+			accent="Projects"
+			subtitle="A Showcase of My Personal Projects as a Full-stack Developer"
+			maxWidth="lg"
 		>
-			<Stack>
-				<Typography
-					variant={isMobile ? "h4" : "h3"}
-					textAlign={isMobile ? "left" : "center"}
-					mb={1}
-				>
-					Featured{" "}
-					<Box
-						component="span"
-						fontWeight={100}
-						color={theme.vars?.palette.glowColors.green}
-						letterSpacing={3}
-					>
-						Projects
-					</Box>
-				</Typography>
-				<Typography
-					variant={isMobile ? "body1" : "subtitle1"}
-					textAlign={isMobile ? "left" : "center"}
-					color={theme.vars?.palette.developerWindow.muted}
-					sx={{ fontWeight: 200, mb: isMobile ? 3 : 5 }}
-				>
-					A Showcase of My Personal Projects as a Full-stack Developer
-				</Typography>
-			</Stack>
-			<Grid container justifyContent="center" alignItems="center" spacing={5}>
+			<Grid container justifyContent="center" spacing={5}>
 				{projectsData.map((project) => (
 					<Grid
 						key={project.title}
-						size={{ xs: 12, md: 6, xl: 3 }}
+						size={{ xs: 12, sm: 6 }}
 						aria-label={project.title}
 					>
 						<ProjectCard {...project} />
 					</Grid>
 				))}
 			</Grid>
-		</Box>
+			<SubHeading title="GitHub Activity" />
+			<Container maxWidth="md" disableGutters>
+				<GitHubActivity />
+			</Container>
+		</Section>
 	);
 }

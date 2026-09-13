@@ -3,12 +3,16 @@ import type { MenuItemProps } from "../types/MenuItemProps";
 
 export const navMenuItems: Array<MenuItemProps> = [
 	{
-		item: "Skills",
-		href: "#skills",
+		item: "About",
+		href: "#about",
 	},
 	{
 		item: "Projects",
 		href: "#projects",
+	},
+	{
+		item: "Skills",
+		href: "#skills",
 	},
 	{
 		item: "Resume",

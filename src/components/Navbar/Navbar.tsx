@@ -21,9 +21,23 @@ import {
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material/styles";
 import React from "react";
 import { useContactForm } from "../../components/ContactForm/ContactFormContext";
 import { navMenuItems } from "../../data/navigation";
+
+// iOS-style glass: heavy blur + saturation behind a translucent tint, with
+// hairline highlights standing in for light catching the pane's edges.
+const glassSx = {
+	backgroundColor: (theme) =>
+		`rgba(${theme.vars?.palette.background.defaultChannel} / 0.55)`,
+	backdropFilter: "blur(14px) saturate(180%)",
+	WebkitBackdropFilter: "blur(14px) saturate(180%)",
+	borderBottom: (theme) =>
+		`1px solid rgba(${theme.vars?.palette.text.primaryChannel} / 0.08)`,
+	boxShadow: (theme) =>
+		`inset 0 1px 0 rgba(${theme.vars?.palette.text.primaryChannel} / 0.08)`,
+} satisfies SxProps<Theme>;
 
 function HomeIcon(): React.ReactElement {
 	const theme = useTheme();
@@ -94,12 +108,12 @@ export default function Navbar() {
 					position="fixed"
 					elevation={0}
 					sx={{
+						...glassSx,
 						py: 1,
 						pr: 1,
 						display: "flex",
 						flexDirection: "row",
 						justifyContent: "space-between",
-						backdropFilter: "blur(3px)",
 					}}
 				>
 					<HomeIcon />
@@ -190,14 +204,7 @@ export default function Navbar() {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar
-				position="fixed"
-				elevation={0}
-				color="transparent"
-				sx={{
-					backdropFilter: "blur(3px)",
-				}}
-			>
+			<AppBar position="fixed" elevation={0} color="transparent" sx={glassSx}>
 				<Toolbar sx={{ py: 1, px: 0 }}>
 					<Grid
 						container

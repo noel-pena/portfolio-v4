@@ -1,7 +1,9 @@
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
 	Box,
 	Button,
 	Grid,
+	IconButton,
 	Link,
 	Stack,
 	Typography,
@@ -10,6 +12,7 @@ import {
 } from "@mui/material";
 import { useContactForm } from "../../components/ContactForm/ContactFormContext";
 import DeveloperWindow from "../../components/Hero/DeveloperWindow";
+import TypedCodeLine from "../../components/Hero/TypedCodeLine";
 import { RESUME_URL } from "../../constants";
 
 export default function Hero() {
@@ -22,10 +25,14 @@ export default function Hero() {
 			id="home"
 			sx={{
 				px: 4,
+				pt: { xs: 12, md: 4 },
+				pb: { xs: 4, md: 4 },
 				display: "flex",
+				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
-				height: "100%",
+				gap: { xs: 4, md: 2 },
+				minHeight: "100%",
 			}}
 		>
 			<Grid
@@ -33,7 +40,7 @@ export default function Hero() {
 				justifyContent="space-around"
 				alignItems="center"
 				maxWidth="lg"
-				spacing={4}
+				spacing={{ xs: 5, md: 4 }}
 			>
 				<Grid
 					size={{ xs: 12, md: 6 }}
@@ -82,15 +89,22 @@ export default function Hero() {
 							Full stack developer experienced in TypeScript, React, Flutter,
 							Java, and Kotlin.
 						</Typography>
+						<TypedCodeLine />
 						<Stack
 							direction={isMobile ? "column" : "row"}
 							alignItems="center"
-							gap={isMobile ? 3 : 2}
+							gap={isMobile ? 2 : 2}
 							pt={isMobile ? 1 : 2}
+							width={isMobile ? "100%" : "auto"}
 						>
 							<Button
 								aria-label="Contact button"
-								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
+								sx={{
+									minWidth: 150,
+									width: isMobile ? "100%" : "auto",
+									maxWidth: 320,
+									p: isMobile ? 2 : 1,
+								}}
 								variant="contained"
 								onClick={openContactForm}
 							>
@@ -102,7 +116,12 @@ export default function Hero() {
 								href={RESUME_URL}
 								target="_blank"
 								rel="noopener"
-								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
+								sx={{
+									minWidth: 150,
+									width: isMobile ? "100%" : "auto",
+									maxWidth: 320,
+									p: isMobile ? 2 : 1,
+								}}
 								variant="outlined"
 							>
 								Resume
@@ -111,6 +130,24 @@ export default function Hero() {
 					</Stack>
 				</Grid>
 			</Grid>
+			<IconButton
+				aria-label="scroll to about section"
+				component={Link}
+				href="#about"
+				sx={{
+					color: theme.vars?.palette.developerWindow.muted,
+					"@keyframes heroScrollPulse": {
+						"0%, 100%": { opacity: 0.25 },
+						"50%": { opacity: 1 },
+					},
+					animation: "heroScrollPulse 2.5s ease-in-out infinite",
+					"@media (prefers-reduced-motion: reduce)": {
+						animation: "none",
+					},
+				}}
+			>
+				<KeyboardArrowDownIcon />
+			</IconButton>
 		</Box>
 	);
 }

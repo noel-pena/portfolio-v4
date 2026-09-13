@@ -19,6 +19,31 @@ declare module "@mui/material/styles" {
 			type: string;
 			developerText: string;
 		};
+		codeWindow: {
+			frame: {
+				light: string;
+				mid: string;
+				dark: string;
+			};
+			background: string;
+			border: string;
+			textPrimary: string;
+			textSecondary: string;
+			muted: string;
+			variable: string;
+			type: string;
+			developerText: string;
+			closeDot: string;
+			minimizeDot: string;
+			fullScreenDot: string;
+		};
+		contributions: {
+			level0: string;
+			level1: string;
+			level2: string;
+			level3: string;
+			level4: string;
+		};
 		glowColors: {
 			yellow: string;
 			green: string;
@@ -47,6 +72,8 @@ declare module "@mui/material/styles" {
 
 	interface PaletteOptions {
 		developerWindow?: Palette["developerWindow"];
+		codeWindow?: Palette["codeWindow"];
+		contributions?: Palette["contributions"];
 		glowColors?: Palette["glowColors"];
 		skillColors?: Palette["skillColors"];
 	}
@@ -90,6 +117,31 @@ export const theme = extendTheme({
 					variable: "#000000",
 					type: "#333333",
 					developerText: "#111111",
+				},
+				codeWindow: {
+					frame: {
+						light: "#FAFBFC",
+						mid: "#EAEDF0",
+						dark: "#D6DBE0",
+					},
+					background: "#F6F8FA",
+					border: "#D0D7DE",
+					textPrimary: "#1F2328",
+					textSecondary: "#6E7781",
+					muted: "#57606A",
+					variable: "#0550AE",
+					type: "#116329",
+					developerText: "#8250DF",
+					closeDot: "#FF5F57",
+					minimizeDot: "#FEBC2E",
+					fullScreenDot: "#28C840",
+				},
+				contributions: {
+					level0: "#EBEDF0",
+					level1: "#4EC366",
+					level2: "#3AA850",
+					level3: "#2B8B42",
+					level4: "#216E39",
 				},
 				glowColors: {
 					yellow: "#D1D1D1",
@@ -144,6 +196,31 @@ export const theme = extendTheme({
 					variable: "#88ACFF",
 					type: "#69D767",
 					developerText: "#DB88FF",
+				},
+				codeWindow: {
+					frame: {
+						light: "#252525",
+						mid: "#232323",
+						dark: "#151515",
+					},
+					background: "#171717",
+					border: "#30363D",
+					textPrimary: "#D4D8DE",
+					textSecondary: "#7D858E",
+					muted: "#8B949E",
+					variable: "#79A8FF",
+					type: "#56D364",
+					developerText: "#D2A8FF",
+					closeDot: "#FF5F57",
+					minimizeDot: "#FEBC2E",
+					fullScreenDot: "#28C840",
+				},
+				contributions: {
+					level0: "#22272C",
+					level1: "#1A6E40",
+					level2: "#22954F",
+					level3: "#2CBC5E",
+					level4: "#39D353",
 				},
 				glowColors: {
 					yellow: "#FFE627",

@@ -1,10 +1,17 @@
 import { screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import Projects from "../../components/Projects/Projects";
 import { render } from "../../test-utils";
 
 describe("Projects section", () => {
+	afterEach(() => {
+		vi.unstubAllGlobals();
+	});
+
 	function setup() {
+		// The section embeds GitHub activity; keep its fetches out of tests.
+		vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
+		vi.spyOn(console, "error").mockImplementation(() => {});
 		render(<Projects />);
 	}
 

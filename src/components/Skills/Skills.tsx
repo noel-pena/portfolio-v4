@@ -1,73 +1,32 @@
-import {
-	Box,
-	Container,
-	Grid,
-	Stack,
-	Typography,
-	useMediaQuery,
-	useTheme,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import SkillSlot from "../../components/Skills/SkillSlot";
 import { skillsData } from "../../components/Skills/skillsData";
+import Section from "../shared/Section";
 
 export default function Skills() {
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
 	return (
-		<Box
+		<Section
 			id="skills"
-			sx={{
-				px: 4,
-				py: 4,
-				display: "flex",
-				flexDirection: "column",
-				minHeight: "100%",
-			}}
+			title="Tech"
+			accent="Stack"
+			subtitle="Key Technologies in My Development Arsenal"
 		>
-			<Stack>
-				<Typography
-					variant={isMobile ? "h4" : "h3"}
-					textAlign={isMobile ? "left" : "center"}
-					mb={1}
-				>
-					Tech{" "}
-					<Box
-						component="span"
-						fontWeight={100}
-						letterSpacing={3}
-						color={theme.vars?.palette.glowColors.green}
+			<Grid container spacing={2}>
+				{skillsData.map((skill) => (
+					<Grid
+						key={skill.primaryText}
+						size={{ xs: 4, sm: 3, md: 1.5 }}
+						aria-label={skill.primaryText}
 					>
-						Stack
-					</Box>
-				</Typography>
-				<Typography
-					variant={isMobile ? "body1" : "subtitle1"}
-					textAlign={isMobile ? "left" : "center"}
-					color={theme.vars?.palette.developerWindow.muted}
-					sx={{ fontWeight: 200, mb: isMobile ? 3 : 5 }}
-				>
-					Key Technologies in My Development Arsenal
-				</Typography>
-			</Stack>
-			<Container maxWidth="md" disableGutters>
-				<Grid container spacing={4}>
-					{skillsData.map((skill) => (
-						<Grid
-							key={skill.primaryText}
-							size={{ xs: 6, sm: 4, md: 3 }}
-							aria-label={skill.primaryText}
-						>
-							<SkillSlot
-								altText={skill.altText}
-								icon={skill.icon}
-								primaryColor={skill.primaryColor}
-								primaryText={skill.primaryText}
-							/>
-						</Grid>
-					))}
-				</Grid>
-			</Container>
-		</Box>
+						<SkillSlot
+							altText={skill.altText}
+							icon={skill.icon}
+							primaryColor={skill.primaryColor}
+							primaryText={skill.primaryText}
+						/>
+					</Grid>
+				))}
+			</Grid>
+		</Section>
 	);
 }

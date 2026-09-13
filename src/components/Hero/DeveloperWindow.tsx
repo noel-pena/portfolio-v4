@@ -22,7 +22,7 @@ const codeLines = [
 	"",
 	"const developer: Developer = {",
 	"   name: 'Noel',",
-	"   skills: ['TypeScript', 'Flutter', 'Kotlin'],",
+	"   skills: ['TypeScript', 'Flutter', 'Kotlin']",
 	`   yearsOfExperience: ${YEARS_OF_EXPERIENCE},`,
 	"}",
 ];
@@ -56,16 +56,17 @@ function CodeLine({
 }): React.ReactNode {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	const cw = theme.vars?.palette.codeWindow;
 
 	return tokens.map(({ key, token }) => {
-		let color = theme.vars?.palette.developerWindow.textPrimary;
+		let color = cw?.textPrimary;
 
 		if (keywordTokens.includes(token)) {
-			color = theme.vars?.palette.developerWindow.variable;
+			color = cw?.variable;
 		} else if (valueTokens.includes(token)) {
-			color = theme.vars?.palette.developerWindow.type;
+			color = cw?.type;
 		} else if (token === "Developer") {
-			color = theme.vars?.palette.developerWindow.developerText;
+			color = cw?.developerText;
 		}
 
 		return (
@@ -90,16 +91,18 @@ export default function DeveloperWindow() {
 	const [openToolTip, setOpenToolTip] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	const cw = theme.vars?.palette.codeWindow;
 
 	return (
 		<Box
 			data-testid="developer-window"
 			sx={{
-				background: `linear-gradient(135deg, ${theme.vars?.palette.developerWindow.gradient.lighterBlue}, ${theme.vars?.palette.developerWindow.gradient.lightBlue}, ${theme.vars?.palette.developerWindow.gradient.darkBlue})`,
+				background: `linear-gradient(180deg, ${cw?.frame.light}, ${cw?.frame.mid} 30%, ${cw?.frame.dark})`,
+				border: `1px solid ${cw?.border}`,
 				borderRadius: 0,
 				pb: 2,
 				px: 2,
-				boxShadow: 2,
+				boxShadow: 4,
 			}}
 		>
 			<Box
@@ -124,7 +127,7 @@ export default function DeveloperWindow() {
 								width: "12px",
 								height: "12px",
 								borderRadius: "50%",
-								bgcolor: theme.vars?.palette.developerWindow[dot],
+								bgcolor: cw?.[dot],
 							}}
 						/>
 					))}
@@ -135,7 +138,8 @@ export default function DeveloperWindow() {
 					sx={{
 						display: "flex",
 						alignItems: "center",
-						color: theme.vars?.palette.developerWindow.textPrimary,
+						color: cw?.textSecondary,
+						fontSize: "0.7rem",
 					}}
 				>
 					portfolio/components/portfolio.tsx
@@ -145,8 +149,9 @@ export default function DeveloperWindow() {
 				elevation={0}
 				sx={{
 					borderRadius: 0,
-					bgcolor: theme.vars?.palette.developerWindow.background,
-					color: theme.vars?.palette.developerWindow.textPrimary,
+					border: `1px solid ${cw?.border}`,
+					bgcolor: cw?.background,
+					color: cw?.textPrimary,
 					fontFamily: "monospace",
 					p: isMobile ? 0 : 1,
 				}}
@@ -159,7 +164,7 @@ export default function DeveloperWindow() {
 					>
 						<Typography
 							sx={{
-								color: theme.vars?.palette.developerWindow.textSecondary,
+								color: cw?.textSecondary,
 								fontFamily: "monospace",
 								fontSize: isMobile ? "0.55rem" : "0.64rem",
 								py: 1,
@@ -182,7 +187,7 @@ export default function DeveloperWindow() {
 									sx={{
 										width: "12px",
 										height: "12px",
-										color: theme.vars?.palette.developerWindow.textSecondary,
+										color: cw?.textSecondary,
 									}}
 								/>
 							</IconButton>
@@ -198,7 +203,7 @@ export default function DeveloperWindow() {
 							>
 								<Typography
 									sx={{
-										color: theme.vars?.palette.developerWindow.textSecondary,
+										color: cw?.textSecondary,
 										pr: 1,
 										minWidth: "28px",
 										textAlign: "right",

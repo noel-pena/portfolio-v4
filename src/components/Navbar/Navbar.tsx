@@ -22,8 +22,8 @@ import {
 	useTheme,
 } from "@mui/material";
 import React from "react";
-import ContactForm from "../../components/ContactForm/ContactForm";
-import type { MenuItemProps } from "../../types/MenuItemProps";
+import { useContactForm } from "../../components/ContactForm/ContactFormContext";
+import { navMenuItems } from "../../data/navigation";
 
 function HomeIcon(): React.ReactElement {
 	const theme = useTheme();
@@ -67,10 +67,10 @@ function HomeIcon(): React.ReactElement {
 }
 
 export default function Navbar() {
-	const [openContactForm, setOpenContactForm] = React.useState(false);
 	const [openDrawer, setOpenDrawer] = React.useState(false);
 	const [isClosing, setIsClosing] = React.useState(false);
 
+	const { openContactForm } = useContactForm();
 	const { mode, setMode } = useColorScheme();
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -85,29 +85,6 @@ export default function Navbar() {
 			setOpenDrawer(!openDrawer);
 		}
 	};
-
-	const menuItems: Array<MenuItemProps> = [
-		{
-			item: "Skills",
-			href: "#skills",
-		},
-		{
-			item: "Projects",
-			href: "#projects",
-		},
-		{
-			item: "Resume",
-			href: "https://cdn.noel-pena.com/Noel-Pena.pdf",
-			rel: "noopener",
-			target: "_blank",
-		},
-		{
-			item: "GitHub",
-			href: "https://github.com/noel-pena",
-			rel: "noopener",
-			target: "_blank",
-		},
-	];
 
 	if (isMobile) {
 		return (
@@ -169,7 +146,7 @@ export default function Navbar() {
 					}}
 				>
 					<List>
-						{menuItems.map((menuItem) => (
+						{navMenuItems.map((menuItem) => (
 							<ListItem key={menuItem.item}>
 								<ListItemButton
 									aria-label={`${menuItem.item} link`}
@@ -188,6 +165,23 @@ export default function Navbar() {
 								</ListItemButton>
 							</ListItem>
 						))}
+						<ListItem>
+							<ListItemButton
+								aria-label="Contact link"
+								onClick={() => {
+									handleDrawerClose();
+									openContactForm();
+								}}
+								sx={{
+									fontWeight: 200,
+									borderRadius: "8px",
+									px: 1,
+									color: theme.vars?.palette.text.primary,
+								}}
+							>
+								Contact
+							</ListItemButton>
+						</ListItem>
 					</List>
 				</Drawer>
 			</>
@@ -215,7 +209,7 @@ export default function Navbar() {
 							<HomeIcon />
 						</Grid>
 						<Grid display="flex" direction="row" alignItems="center" gap={3}>
-							{menuItems.map((menuItem) => (
+							{navMenuItems.map((menuItem) => (
 								<Button
 									aria-label={`${menuItem.item} link`}
 									component={Link}
@@ -247,7 +241,7 @@ export default function Navbar() {
 									aria-label="Contact button"
 									variant="outlined"
 									size="large"
-									onClick={() => setOpenContactForm(true)}
+									onClick={openContactForm}
 								>
 									Contact
 								</Button>
@@ -256,10 +250,6 @@ export default function Navbar() {
 					</Grid>
 				</Toolbar>
 			</AppBar>
-			<ContactForm
-				open={openContactForm}
-				onClose={() => setOpenContactForm(false)}
-			/>
 		</Box>
 	);
 }

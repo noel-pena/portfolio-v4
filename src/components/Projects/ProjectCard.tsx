@@ -9,8 +9,8 @@ import {
 	Chip,
 	Stack,
 	Typography,
+	useTheme,
 } from "@mui/material";
-import { theme } from "../../theme/theme";
 
 export interface ProjectCardProps {
 	title: string;
@@ -31,6 +31,8 @@ export default function ProjectCard({
 	codeLink,
 	demoLink,
 }: ProjectCardProps) {
+	const theme = useTheme();
+
 	return (
 		<Card
 			sx={{

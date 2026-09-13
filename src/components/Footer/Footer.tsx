@@ -13,27 +13,11 @@ import {
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
-import type { MenuItemProps } from "../../types/MenuItemProps";
+import { footerMenuItems } from "../../data/navigation";
 
 export default function Footer() {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	const menuItems: Array<MenuItemProps> = [
-		{
-			item: "Skills",
-			anchorRef: "#skills",
-		},
-		{
-			item: "Projects",
-			anchorRef: "#projects",
-		},
-		{
-			item: "Resume",
-			href: "https://cdn.noel-pena.com/Noel-Pena.pdf",
-			rel: "noopener",
-			target: "_blank",
-		},
-	];
 
 	return (
 		<Box
@@ -129,12 +113,12 @@ export default function Footer() {
 						</Typography>
 						<Stack>
 							<List disablePadding>
-								{menuItems.map((menuItem) => (
+								{footerMenuItems.map((menuItem) => (
 									<ListItemButton
 										aria-label={`${menuItem.item} link`}
 										key={menuItem.item}
 										component={Link}
-										href={menuItem.href || menuItem.anchorRef}
+										href={menuItem.href}
 										rel={menuItem.rel || undefined}
 										target={menuItem.target || undefined}
 										sx={{

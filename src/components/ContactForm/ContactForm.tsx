@@ -9,7 +9,6 @@ import {
 	CircularProgress,
 	Dialog,
 	DialogContent,
-	type DialogProps,
 	DialogTitle,
 	IconButton,
 	Stack,
@@ -20,6 +19,7 @@ import {
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { CONTACT_API_URL } from "../../constants";
 import { useSnackbar } from "./SnackbarContext";
 
 const formSchema = z.object({
@@ -33,15 +33,16 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-type ContactFormProps = DialogProps & {
-	onResult?: (msg: string) => void;
+type ContactFormProps = {
+	open: boolean;
+	onClose: () => void;
 };
 
-export default function ContactForm(props: ContactFormProps) {
-	const { open, onClose } = props;
+export default function ContactForm({ open, onClose }: ContactFormProps) {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormData>({
 		resolver: zodResolver(formSchema),
@@ -55,24 +56,22 @@ export default function ContactForm(props: ContactFormProps) {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true);
 		try {
-			const response = await fetch(
-				"https://nmnuk482q9.execute-api.us-east-1.amazonaws.com/send-email",
-				{
-					method: "POST",
-					headers: { "Content-type": "application/json" },
-					body: JSON.stringify(data),
-				},
-			);
+			const response = await fetch(CONTACT_API_URL, {
+				method: "POST",
+				headers: { "Content-type": "application/json" },
+				body: JSON.stringify(data),
+			});
 
 			if (response.ok) {
 				showMessage("Message sent successfully.");
-				onClose?.({}, "backdropClick");
+				reset();
+				onClose();
 			} else {
-				showMessage("Submission error.");
+				showMessage("Submission error.", "error");
 				console.error("Submission error.");
 			}
 		} catch (error) {
-			showMessage("Network error. Please try again.");
+			showMessage("Network error. Please try again.", "error");
 			console.error("Network error: ", error);
 		} finally {
 			setLoading(false);
@@ -95,10 +94,7 @@ export default function ContactForm(props: ContactFormProps) {
 		>
 			<DialogTitle>
 				<Stack alignItems="center">
-					<IconButton
-						onClick={(e) => onClose?.(e, "backdropClick")}
-						sx={{ alignSelf: "end", p: 0 }}
-					>
+					<IconButton onClick={onClose} sx={{ alignSelf: "end", p: 0 }}>
 						<CloseIcon
 							fontSize="small"
 							sx={{ color: theme.vars?.palette.developerWindow.muted }}
@@ -131,7 +127,14 @@ export default function ContactForm(props: ContactFormProps) {
 				</Stack>
 			</DialogTitle>
 			<DialogContent>
-				<Box display="flex" flexDirection="column" gap={2} pb={1}>
+				<Box
+					component="form"
+					onSubmit={handleSubmit(onSubmit)}
+					display="flex"
+					flexDirection="column"
+					gap={2}
+					pb={1}
+				>
 					<Stack>
 						<Typography variant="body2">Name</Typography>
 						<TextField
@@ -183,6 +186,7 @@ export default function ContactForm(props: ContactFormProps) {
 						/>
 					</Stack>
 					<Button
+						type="submit"
 						sx={{ mt: 1, "& .MuiButton-endIcon": { mb: 0.25 } }}
 						endIcon={
 							loading ? (
@@ -193,7 +197,6 @@ export default function ContactForm(props: ContactFormProps) {
 						}
 						variant="contained"
 						disableElevation
-						onClick={handleSubmit(onSubmit)}
 					>
 						Send
 					</Button>

@@ -8,12 +8,12 @@ import {
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
-import React from "react";
-import ContactForm from "../../components/ContactForm/ContactForm";
+import { useContactForm } from "../../components/ContactForm/ContactFormContext";
 import DeveloperWindow from "../../components/Hero/DeveloperWindow";
+import { RESUME_URL } from "../../constants";
 
 export default function Hero() {
-	const [open, setOpen] = React.useState(false);
+	const { openContactForm } = useContactForm();
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -35,11 +35,13 @@ export default function Hero() {
 				maxWidth="lg"
 				spacing={4}
 			>
-				{!isMobile && (
-					<Grid size={{ xs: 12, md: 6 }} maxWidth={400}>
-						<DeveloperWindow />
-					</Grid>
-				)}
+				<Grid
+					size={{ xs: 12, md: 6 }}
+					maxWidth={400}
+					sx={{ display: { xs: "none", md: "block" } }}
+				>
+					<DeveloperWindow />
+				</Grid>
 				<Grid size={{ xs: 12, md: 6 }}>
 					<Stack
 						display="flex"
@@ -90,14 +92,14 @@ export default function Hero() {
 								aria-label="Contact button"
 								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
 								variant="contained"
-								onClick={() => setOpen(true)}
+								onClick={openContactForm}
 							>
 								Contact
 							</Button>
 							<Button
 								aria-label="Resume button"
 								component={Link}
-								href="https://cdn.noel-pena.com/Noel-Pena.pdf"
+								href={RESUME_URL}
 								target="_blank"
 								rel="noopener"
 								sx={{ minWidth: isMobile ? 225 : 150, p: isMobile ? 2 : 1 }}
@@ -109,7 +111,6 @@ export default function Hero() {
 					</Stack>
 				</Grid>
 			</Grid>
-			<ContactForm open={open} onClose={() => setOpen(false)} />
 		</Box>
 	);
 }

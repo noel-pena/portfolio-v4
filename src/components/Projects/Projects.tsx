@@ -56,15 +56,7 @@ export default function Projects() {
 						size={{ xs: 12, md: 6, xl: 3 }}
 						aria-label={project.title}
 					>
-						<ProjectCard
-							title={project.title}
-							description={project.description}
-							imageUrl={project.imageUrl}
-							altText={project.altText}
-							codeLink={project.codeLink}
-							demoLink={project.demoLink}
-							tags={project.tags}
-						/>
+						<ProjectCard {...project} />
 					</Grid>
 				))}
 			</Grid>

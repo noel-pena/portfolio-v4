@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { Snackbar, SnackbarContent } from "@mui/material";
 import React from "react";
 
@@ -21,14 +20,18 @@ export const SnackbarProvider = ({
 		"success",
 	);
 
-	const showMessage = (msg: string, type: "success" | "error" = "success") => {
-		setMessage(msg);
-		setSeverity(type);
-		setOpen(true);
-	};
+	const showMessage = React.useCallback(
+		(msg: string, type: "success" | "error" = "success") => {
+			setMessage(msg);
+			setSeverity(type);
+			setOpen(true);
+		},
+		[],
+	);
+	const value = React.useMemo(() => ({ showMessage }), [showMessage]);
 
 	return (
-		<SnackbarContext.Provider value={{ showMessage }}>
+		<SnackbarContext.Provider value={value}>
 			{children}
 			<Snackbar
 				aria-live="polite"

@@ -11,46 +11,66 @@ import {
 	useTheme,
 } from "@mui/material";
 import React from "react";
+import { YEARS_OF_EXPERIENCE } from "../../constants";
 
-type CodeLinesProps = {
-	id: number;
-	content: string;
-};
+const codeLines = [
+	"type Developer = {",
+	"   name: string",
+	"   skills: string[]",
+	"   yearsOfExperience: number",
+	"}",
+	"",
+	"const developer: Developer = {",
+	"   name: 'Noel',",
+	"   skills: ['TypeScript', 'Flutter', 'Kotlin'],",
+	`   yearsOfExperience: ${YEARS_OF_EXPERIENCE},`,
+	"}",
+];
 
-function CodeLines({
-	line,
-	uniqueId,
+const developerMarkdown = codeLines.join("\n");
+
+const tokenizedLines = codeLines.map((content, lineIndex) => ({
+	lineNumber: lineIndex + 1,
+	tokens: content
+		.split(/(\s+|[[\]{}:,'])/g)
+		.map((token, tokenIndex) => ({ key: `${lineIndex}-${tokenIndex}`, token })),
+}));
+
+const keywordTokens = ["type", "const"];
+const valueTokens = [
+	"string",
+	"Noel",
+	"TypeScript",
+	"Flutter",
+	"Kotlin",
+	"number",
+	`${YEARS_OF_EXPERIENCE}`,
+];
+
+const dotColors = ["closeDot", "minimizeDot", "fullScreenDot"] as const;
+
+function CodeLine({
+	tokens,
 }: {
-	line: string;
-	uniqueId: string;
+	tokens: Array<{ key: string; token: string }>;
 }): React.ReactNode {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-	return line.split(/(\s+|[[\]{}:,'])/g).map((token) => {
+	return tokens.map(({ key, token }) => {
 		let color = theme.vars?.palette.developerWindow.textPrimary;
 
-		if (["type", "const"].includes(token)) {
+		if (keywordTokens.includes(token)) {
 			color = theme.vars?.palette.developerWindow.variable;
-		} else if (
-			[
-				"string",
-				"Noel",
-				"TypeScript",
-				"Flutter",
-				"Kotlin",
-				"number",
-				`${new Date().getFullYear() - 2023}`,
-			].includes(token)
-		) {
+		} else if (valueTokens.includes(token)) {
 			color = theme.vars?.palette.developerWindow.type;
-		} else if (["Developer"].includes(token)) {
+		} else if (token === "Developer") {
 			color = theme.vars?.palette.developerWindow.developerText;
 		}
 
 		return (
 			<Typography
-				key={`${uniqueId}-${Math.random() * 10}`}
+				key={key}
 				component="span"
 				sx={{
 					color,
@@ -70,39 +90,6 @@ export default function DeveloperWindow() {
 	const [openToolTip, setOpenToolTip] = React.useState(false);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-	const uniqueId = React.useId();
-	const developerMarkdown = `
-		type Developer = {
-		  name: string;
-		  skills: string[];
-		  yearsOfExperience: number;
-		}
-		
-		const developer: Developer = {
-		  name: 'Noel',
-		  skills: ['TypeScript', 'Flutter', 'Kotlin'],
-		  yearsOfExperience: ${new Date().getFullYear() - 2023}
-		}
-	`;
-	const codeLines: Array<CodeLinesProps> = [
-		{ id: 1, content: "type Developer = {" },
-		{ id: 2, content: "   name: string" },
-		{ id: 3, content: "   skills: string[]" },
-		{ id: 4, content: "   yearsOfExperience: number" },
-		{ id: 5, content: "}" },
-		{ id: 6, content: "" },
-		{ id: 7, content: "const developer: Developer = {" },
-		{ id: 8, content: "   name: 'Noel'," },
-		{
-			id: 9,
-			content: "   skills: ['TypeScript', 'Flutter', 'Kotlin'],",
-		},
-		{
-			id: 10,
-			content: `   yearsOfExperience: ${new Date().getFullYear() - 2023},`,
-		},
-		{ id: 11, content: "}" },
-	];
 
 	return (
 		<Box
@@ -130,30 +117,17 @@ export default function DeveloperWindow() {
 						flexDirection: "row",
 					}}
 				>
-					<Box
-						sx={{
-							width: "12px",
-							height: "12px",
-							borderRadius: "50%",
-							bgcolor: theme.vars?.palette.developerWindow.closeDot,
-						}}
-					/>
-					<Box
-						sx={{
-							width: "12px",
-							height: "12px",
-							borderRadius: "50%",
-							bgcolor: theme.vars?.palette.developerWindow.minimizeDot,
-						}}
-					/>
-					<Box
-						sx={{
-							width: "12px",
-							height: "12px",
-							borderRadius: "50%",
-							bgcolor: theme.vars?.palette.developerWindow.fullScreenDot,
-						}}
-					/>
+					{dotColors.map((dot) => (
+						<Box
+							key={dot}
+							sx={{
+								width: "12px",
+								height: "12px",
+								borderRadius: "50%",
+								bgcolor: theme.vars?.palette.developerWindow[dot],
+							}}
+						/>
+					))}
 				</Stack>
 				<Typography
 					variant="body2"
@@ -198,7 +172,7 @@ export default function DeveloperWindow() {
 								aria-label="copy button"
 								onClick={async () => {
 									await navigator.clipboard.writeText(developerMarkdown);
-									setOpenToolTip(!openToolTip);
+									setOpenToolTip(true);
 									setTimeout(() => {
 										setOpenToolTip(false);
 									}, 2000);
@@ -214,8 +188,8 @@ export default function DeveloperWindow() {
 							</IconButton>
 						</Tooltip>
 					</Stack>
-					{codeLines.map((line) => (
-						<Box px={isMobile ? 0 : 1} key={line.id}>
+					{tokenizedLines.map((line) => (
+						<Box px={isMobile ? 0 : 1} key={line.lineNumber}>
 							<Stack
 								display="flex"
 								direction="row"
@@ -233,9 +207,9 @@ export default function DeveloperWindow() {
 										py: "2px",
 									}}
 								>
-									{line.id}
+									{line.lineNumber}
 								</Typography>
-								<CodeLines line={line.content} uniqueId={uniqueId} />
+								<CodeLine tokens={line.tokens} />
 							</Stack>
 						</Box>
 					))}
